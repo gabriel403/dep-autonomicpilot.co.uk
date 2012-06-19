@@ -1,3 +1,3 @@
 autonomicpilot.co.uk
 ====================
-A simple PHP driven blog
+A simple PHP driven blog.
