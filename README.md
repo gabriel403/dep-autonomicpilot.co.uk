@@ -8,9 +8,13 @@ running the generate_*.php files will parse the markdown files and render them i
 A single index.html file is created with all the articales in a single page.
 
 CHANGELOG:
+
 0.2
+
 * Reworked include system for main page.
 * Added links to blog post on side bar.
 * Improved some ui.
+
 0.1
+
 * Initial work done on markdown parsing into html.
