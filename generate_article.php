@@ -7,11 +7,19 @@ if ($handle = opendir('markdown')) {
         {
             if ( ob_start() )
             {
-                $content = Markdown(file_get_contents('markdown/'.$entry));
+                $filename = str_replace(".md", "", $entry);
+
+                $content = Markdown(file_get_contents("markdown/$entry"));
                 include "template.php";
-                
+
                 $output = ob_get_contents();
-                file_put_contents('content/'.str_replace('.md', '.html', $entry), $output);
+
+                if(file_exists("content/$filename.html"))
+                {
+                    unlink("content/$filename.html");
+                }
+                file_put_contents("content/$filename.html", $output);
+
                 ob_end_clean();
             }
 

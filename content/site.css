@@ -1,0 +1,42 @@
+.float_left
+{
+    float: left;
+}
+.clear_both {
+    clear: both;
+}
+
+.article_link {
+    height: 50px;
+    background-color: #D8D8D8;
+    border-top: black solid 4px;
+    margin-bottom: 20px;
+}
+.article_content {
+    background-color: #D8D8D8;
+    border-top: black solid 4px;
+    min-height: 100px;
+    padding: 20px 0px 40px 0px;
+    margin-bottom: 20px;
+}
+
+#content_outer div {
+    padding: 10px;
+}
+
+
+#left,#right {
+    width: 20%;
+}
+#main {
+    width: 60%;
+}
+#header {
+    border: 1px solid black;
+    margin: 50px auto auto auto;
+    width: 90%;
+}
+#content_outer {
+    margin: 50px auto auto auto;
+    width: 90%;
+}
