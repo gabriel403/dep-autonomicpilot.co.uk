@@ -33,11 +33,22 @@
 
 <h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
 
-<p>Content is written in markdown into the markdown folder,
-running the generate_*.php files will parse the markdown files and render them into static html files inside the content directory.
-A single index.html file is created with all the articales in a single page.</p>
+<p>Content is written in markdown files in the Post folder, if extended properties are needed these can be placed in a php file of the same name which extends the Post abstract, if this is not provided it will be generated and initially set post created time as time() and the blog entry title as the filename.
+Running the GenerateAll.php file will parse the markdown files and render them into static html files inside the content directory.
+It will also create the central index.html with all blog entries listed shown in brief as well as a list of links on lhs to individual blog entries.</p>
 
 <p>CHANGELOG:</p>
+
+<p>0.3</p>
+
+<ul>
+<li>Reluctantly added abstract properties file associated with the markdown files.</li>
+<li>Added properties file generator</li>
+<li>Implemented psr-0 autoloader</li>
+<li>Renamed markdown directory to Post directory</li>
+<li>Added more UI work, logo, css, reworked links</li>
+<li>Reworked generator</li>
+</ul>
 
 <p>0.2</p>
 
