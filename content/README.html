@@ -4,23 +4,55 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="reset.css" />
         <link rel="stylesheet" type="text/css" href="site.css" />
+        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
+
     </head>
     <body>
-        <div id="header">&nbsp;</div>
+        <div id="header">
+            <a href='/'>&nbsp;</a>
+            <div>The 8-bit ramblings of a rabid mind</div>
+        </div>
         <div id="content_outer">
             <div id="left" class="float_left">
-                <p class="article_link">
-    <a href='README.html'>README</a><br />
-    21/06/12 19:52:52</p>
-<p class="article_link">
-    <a href='READMEB.html'>READMEB</a><br />
-    21/06/12 19:52:52</p>
+                <div class="article_link">
+    <div>
+        <a href='#README'>README</a><br />
+        20/06/12 08:10:13    </div>
+    <a class="article_link_main" href='README.html'>&nbsp;</a>
+</div>
+<div class="article_link">
+    <div>
+        <a href='#READMEB'>READMEB</a><br />
+        22/06/12 16:04:33    </div>
+    <a class="article_link_main" href='READMEB.html'>&nbsp;</a>
+</div>
             </div>
             <div id="main" class="float_left">
-                <h1>autonomicpilot.co.uk</h1>
+                <div class="article_content" id="README">
+    <h1>autonomicpilot.co.uk</h1>
 
-<p>A simple PHP driven blog using mark down parsed into html and rendered statically.</p>
-            </div>
+<h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
+
+<p>Content is written in markdown into the markdown folder,
+running the generate_*.php files will parse the markdown files and render them into static html files inside the content directory.
+A single index.html file is created with all the articales in a single page.</p>
+
+<p>CHANGELOG:</p>
+
+<p>0.2</p>
+
+<ul>
+<li>Reworked include system for main page.</li>
+<li>Added links to blog post on side bar.</li>
+<li>Improved some ui.</li>
+</ul>
+
+<p>0.1</p>
+
+<ul>
+<li>Initial work done on markdown parsing into html.</li>
+</ul>
+</div>            </div>
             <div id="right" class="float_left">&nbsp;</div>
             <br class="clear_both" />
         </div>
