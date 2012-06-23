@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="reset.css" />
+        <link rel="stylesheet" type="text/css" href="site.css" />
+        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
+
+    </head>
+    <body>
+        <div id="main_box">
+            <div id="header">
+                <a href='/'>&nbsp;</a>
+                <div>The 8-bit ramblings of a rabid mind</div>
+            </div>
+            <div id="content_outer">
+                <div id="left" class="float_left">
+                    <div class="article_link">
+    <div>
+        <a href="/#README">Readme/Changes File</a><br />
+        23/06/12 20:40:02
+    </div>
+    <a class="article_link_main" href='/README.html'>&nbsp;</a>
+</div>
+                </div>
+                <div id="main" class="float_left">
+                    <div class="article_content" id="README">
+    <h1 class="article_title"><a href="/README.html">Readme/Changes File</a></h1>
+    <h1>autonomicpilot.co.uk</h1>
+
+<h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
+
+<p>Content is written in markdown files in the Post folder, if extended properties are needed these can be placed in a php file of the same name which extends the Post abstract, if this is not provided it will be generated and initially set post created time as time() and the blog entry title as the filename.
+Running the GenerateAll.php file will parse the markdown files and render them into static html files inside the content directory.
+It will also create the central index.html with all blog entries listed shown in brief as well as a list of links on lhs to individual blog entries.</p>
+
+<p>CHANGELOG:</p>
+
+<p>0.4</p>
+
+<ul>
+<li>Reworked backend to be more object oriented</li>
+<li>Reworked backend classnames to use namespaces</li>
+<li>Removed template files and converted to static strings &amp; heredocs using properties</li>
+<li>Added some basic phpdoc</li>
+<li>Added some basic configuration</li>
+<li>Renamed the content dir to Content</li>
+<li>Centralised generation into a single script and moved generation files into a single Renderer file</li>
+<li>Posts now sort by date of creation in descending order</li>
+<li>Post titles are now read to create links, and also header inside the post</li>
+<li>#refs inside individual entries now return to main page to go to anchors</li>
+<li>Replaced hardcoded directory refs to config refs</li>
+</ul>
+
+<p>0.3</p>
+
+<ul>
+<li>Reluctantly added abstract properties file associated with the markdown files.</li>
+<li>Added properties file generator</li>
+<li>Implemented psr-0 autoloader</li>
+<li>Renamed markdown directory to Post directory</li>
+<li>Added more UI work, logo, css, reworked links</li>
+<li>Reworked generator</li>
+</ul>
+
+<p>0.2</p>
+
+<ul>
+<li>Reworked include system for main page.</li>
+<li>Added links to blog post on side bar.</li>
+<li>Improved some ui.</li>
+</ul>
+
+<p>0.1</p>
+
+<ul>
+<li>Initial work done on markdown parsing into html.</li>
+</ul>
+
+</div>
+                </div>
+                <div id="right" class="float_left">&nbsp;</div>
+                <br class="clear_both" />
+            </div>
+        </div>
+    </body>
+</html>

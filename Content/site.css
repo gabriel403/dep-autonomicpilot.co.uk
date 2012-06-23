@@ -1,0 +1,80 @@
+.float_left
+{
+    float: left;
+}
+.clear_both {
+    clear: both;
+}
+
+.article_link > div {
+    float: left;
+}
+.article_link_main {
+    background-color: transparent;
+    background-image: url(linkchain.png);
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+    float: right;
+    text-decoration: none;
+}
+
+.article_link {
+    height: 40px;
+    background-color: #D8D8D8;
+    border-top: black solid 4px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.article_content {
+    background-color: #D8D8D8;
+    border-top: black solid 4px;
+    min-height: 100px;
+    padding: 20px 5px 40px 5px;
+    margin-bottom: 20px;
+}
+
+#content_outer > div {
+    padding: 10px;
+}
+
+
+#left,#right {
+    width: 20%;
+}
+#main {
+    width: 60%;
+}
+#header {
+    height: 200px;
+    margin: 20px auto 0px auto;
+    width: 90%;
+}
+
+#header > a {
+    width: 400px;
+    height: 200px;
+    background-color: transparent;
+    background-image: url(logo.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+    display: block;
+    float: left;
+}
+#header > div {
+    float: left;
+    padding-top: 90px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#content_outer {
+    margin: 0px auto auto auto;
+    width: 90%;
+}
+
+#main_box {
+    background-color: #E8E8E8;
+    width: 95%;
+    margin: 20px auto 0px auto;
+}
