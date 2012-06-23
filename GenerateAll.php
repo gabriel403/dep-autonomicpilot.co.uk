@@ -1,6 +1,11 @@
 <?php
-include "GenerateMainpage.php";
-include "GenerateArticle.php";
+chdir(__DIR__);
+include "markdown.php";
+
+$ar = new Autonomicpilot\Renderer();
+$ar->preRenderConsumption();
+$ar->renderMainPage();
+$ar->renderArticlePages();
 
 function __autoload($className)
 {
@@ -19,5 +24,3 @@ function __autoload($className)
     }
     return false;
 }
-
-

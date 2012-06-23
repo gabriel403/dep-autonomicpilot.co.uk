@@ -9,6 +9,20 @@ It will also create the central index.html with all blog entries listed shown in
 
 CHANGELOG:
 
+0.4
+
+* Reworked backend to be more object oriented
+* Reworked backend classnames to use namespaces
+* Removed template files and converted to static strings & heredocs using properties
+* Added some basic phpdoc
+* Added some basic configuration
+* Renamed the content dir to Content
+* Centralised generation into a single script and moved generation files into a single Renderer file
+* Posts now sort by date of creation in descending order
+* Post titles are now read to create links, and also header inside the post
+* #refs inside individual entries now return to main page to go to anchors
+* Replaced hardcoded directory refs to config refs
+
 0.3
 
 * Reluctantly added abstract properties file associated with the markdown files.

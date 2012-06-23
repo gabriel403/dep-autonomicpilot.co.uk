@@ -1,10 +1,16 @@
 <?php
-class Post_README extends Post
+namespace Post;
+use \Autonomicpilot\Post as Post;
+class README extends Post
 {
+    /**
+     * @return Autonomicpilot\Post
+     */
     public function __construct()
     {
-        $this->publishedDatetime = 1340179813;
+        $this->publishedTime = 1340484002;
         $this->filename = "README";
-        $this->title = "README";
+        $this->title = "Readme/Changes File";
+        return $this;
     }
 }
