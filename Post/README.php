@@ -1,9 +1,22 @@
 <?php
+/**
+ * README properties file
+ * 
+ * @package Autonomicpilot
+ */
+
 namespace Post;
 use \Autonomicpilot\Post as Post;
+/**
+ * README properties class
+ * 
+ * @package Autonomicpilot
+ */
 class README extends Post
 {
     /**
+     * Constructor
+     * 
      * @return Autonomicpilot\Post
      */
     public function __construct()

@@ -1,8 +1,13 @@
 <?php
 /**
- *
+ * Renderer file
  */
 namespace Autonomicpilot;
+/**
+ * Renderer class
+ * 
+ * @package Autonomicpilot
+ */
 class Renderer
 {
     /** @var array */
@@ -22,14 +27,17 @@ class Renderer
 
 
     /**
+     * 
      * @return int
      */
-    public function time(){
+    public function time()
+    {
         return time();
     }
 
 
     /**
+     * 
      * @return string
      */
     public function getClassname()
@@ -39,6 +47,7 @@ class Renderer
 
 
     /**
+     * 
      * @return string
      */
     public function getContentString()
@@ -48,6 +57,7 @@ class Renderer
 
 
     /**
+     * 
      * @return string
      */
     public function getLinkString()
@@ -57,11 +67,12 @@ class Renderer
 
 
     /**
+     * 
      * @return void
      */
     public function preRenderConsumption()
     {
-        $this->config = Config::GetConfig();
+        $this->config = Config::getConfig();
         if ($handle = opendir('Post')) {
 
             while (false !== ($entry = readdir($handle))) {
@@ -81,15 +92,16 @@ class Renderer
 
 
     /**
+     * 
      * @return void
      */
     public function renderMainPage()
     {
         $pp = $this->config['Post']['post_path'];
-        $cp =$this->config['Post']['content_path'];
+        $cp = $this->config['Post']['content_path'];
         $this->bbu = $this->config['Post']['blog_base_url'];
 
-        foreach ( $this->posts as $filename => $markdown ) {
+        foreach ($this->posts as $filename => $markdown) {
             $this->classname = $filename;
 
             if ( !class_exists("$pp\\$filename") ) {
@@ -108,7 +120,7 @@ class Renderer
         krsort($this->links);
 
         $output = TemplateStrings::getMainTemplateText($this);
-        if ( file_exists("$cp/index.html") ){
+        if ( file_exists("$cp/index.html") ) {
             unlink("$cp/index.html");
         }
         file_put_contents("$cp/index.html", $output);
@@ -116,6 +128,7 @@ class Renderer
 
 
     /**
+     * 
      * @return void
      */
     public function renderArticlePages()
@@ -123,7 +136,7 @@ class Renderer
         $cp = $this->config['Post']['content_path'];
         $this->bbu = $this->config['Post']['blog_base_url'];
 
-        foreach ( $this->posts as $filename => $markdown ) {
+        foreach ($this->posts as $filename => $markdown) {
             $class          = "Post\\$filename";
 
             $this->post     = new $class();

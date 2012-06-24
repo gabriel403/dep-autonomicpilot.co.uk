@@ -3,10 +3,19 @@
  *
  */
 namespace Autonomicpilot;
+/**
+ * Static class and functions for templates
+ * 
+ * @package Autonomicpilot
+ */
 class TemplateStrings
 {
 
     /**
+     * Side link text
+     * 
+     * @param Renderer $renderer Renderer object
+     * 
      * @return string
      */
     public static function getSideLinkText(Renderer $renderer)
@@ -24,6 +33,10 @@ EOT;
 
 
     /**
+     * Small article text
+     * 
+     * @param Renderer $renderer Renderer object
+     * 
      * @return string
      */
     public static function getSmallArticleText(Renderer $renderer)
@@ -38,6 +51,10 @@ SA;
 
 
     /**
+     * Main html template
+     * 
+     * @param Renderer $renderer Renderer object
+     * 
      * @return string
      */
     public static function getMainTemplateText(Renderer $renderer)
@@ -76,9 +93,14 @@ MT;
 
 
     /**
+     * Class definition for post properties
+     * 
+     * @param Renderer $renderer Renderer object
+     * 
      * @return string
      */
-    public static function getPostClassDefinition(Renderer $renderer) {
+    public static function getPostClassDefinition(Renderer $renderer) 
+    {
         return <<<"PC"
 <?php
 namespace Post;

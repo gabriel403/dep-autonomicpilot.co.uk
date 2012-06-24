@@ -1,12 +1,25 @@
 <?php
+/**
+ * Main launch file
+ * 
+ * @author Gabriel Baker <gabriel@autonomicpilot.co.uk>
+ */
+
 chdir(__DIR__);
-include "markdown.php";
+require "markdown.php";
 
 $ar = new Autonomicpilot\Renderer();
 $ar->preRenderConsumption();
 $ar->renderMainPage();
 $ar->renderArticlePages();
 
+/**
+ * Autoloader psr-0
+ * 
+ * @param string $className Name of the class trying to be instantiated
+ * 
+ * @return bool
+ */
 function __autoload($className)
 {
     $className = ltrim($className, '\\');
@@ -19,7 +32,7 @@ function __autoload($className)
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
     if ( file_exists($fileName) ) {
-        require $fileName;
+        include $fileName;
         return true;
     }
     return false;
