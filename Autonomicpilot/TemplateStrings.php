@@ -67,6 +67,21 @@ SA;
         <link rel="stylesheet" type="text/css" href="reset.css" />
         <link rel="stylesheet" type="text/css" href="site.css" />
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
+        <script type="text/javascript">
+            var dsloaded = false;
+            function showthatshizzle() {
+                if ( dsloaded )
+                    return false;
+                disqus_shortname = 'autonomicpilot';
+                dsloaded = true;
+
+                document.getElementById('disqus_thread').style.display = 'block';
+
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            }
+        </script>
 
     </head>
     <body>
@@ -81,6 +96,9 @@ SA;
                 </div>
                 <div id="main" class="float_left">
                     {$renderer->getContentString()}
+                    <a href="#" onclick="showthatshizzle();return false;">Comments</a>
+                    <div id="disqus_thread" style="display: none;"></div>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 </div>
                 <div id="right" class="float_left">&nbsp;</div>
                 <br class="clear_both" />

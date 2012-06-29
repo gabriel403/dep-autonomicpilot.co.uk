@@ -78,3 +78,7 @@
     width: 95%;
     margin: 20px auto 0px auto;
 }
+
+#disqus_thread {
+    display: none;
+}
