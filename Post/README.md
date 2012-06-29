@@ -7,7 +7,16 @@ Content is written in markdown files in the Post folder, if extended properties 
 Running the GenerateAll.php file will parse the markdown files and render them into static html files inside the content directory.
 It will also create the central index.html with all blog entries listed shown in brief as well as a list of links on lhs to individual blog entries.
 
+Requirements:
+PHP5.4 on the rendering system.
+Simple HTML server for hosting the site.
+
 CHANGELOG:
+
+0.5
+* Added disqus commenting system
+* Moved disqus' js loading to an onclick
+* Added some codesniffer stuff
 
 0.4
 
