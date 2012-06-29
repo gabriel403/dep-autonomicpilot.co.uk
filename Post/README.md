@@ -14,6 +14,7 @@ Simple HTML server for hosting the site.
 CHANGELOG:
 
 0.5
+
 * Added disqus commenting system
 * Moved disqus' js loading to an onclick
 * Added some codesniffer stuff
