@@ -7,13 +7,22 @@
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
             var dsloaded = false;
-            function showthatshizzle() {
+            var disqus_url = 'http://autonomicpilot.co.uk/';
+            var disqus_div = 'disqus_thread_main';
+            function showthatshizzle(disqurl, disqdiv) {
+                if ( disqurl )
+                    disqus_url = disqurl;
+
+                if ( disqdiv )
+                    disqus_div = disqdiv;
+
                 if ( dsloaded )
                     return false;
-                disqus_shortname = 'autonomicpilot';
+
+                var disqus_shortname = 'autonomicpilot';
                 dsloaded = true;
 
-                document.getElementById('disqus_thread').style.display = 'block';
+                document.getElementById(disqus_div).style.display = 'block';
 
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -27,21 +36,24 @@
             <div id="header">
                 <a href='/'>&nbsp;</a>
                 <div>The 8-bit ramblings of a rabid mind</div>
+                <br class="clear_both" />
             </div>
             <div id="content_outer">
                 <div id="left" class="float_left">
-                    <div class="article_link">
-    <div>
-        <a href="/#README">Readme/Changes File</a><br />
-        23/06/12 20:40:02
-    </div>
-    <a class="article_link_main" href='/README.html'>&nbsp;</a>
-</div>
+                                        <div class="article_link">
+                        <div>
+                            <a href="/#README">Readme/Changes File</a><br />
+                            23/06/12 20:40:02
+                        </div>
+                        <a class="article_link_main" href='/README.html'>&nbsp;</a>
+                        <br class="clear_both" />
+                    </div>
                 </div>
                 <div id="main" class="float_left">
-                    <div class="article_content" id="README">
-    <h1 class="article_title"><a href="/README.html">Readme/Changes File</a></h1>
-    <h1>autonomicpilot.co.uk</h1>
+                    <div>
+                                            <div class="article_content" id="README">
+                        <h1 class="article_title"><a href="/README.html">Readme/Changes File</a></h1>
+                        <h1>autonomicpilot.co.uk</h1>
 
 <h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
 
@@ -104,12 +116,24 @@ Simple HTML server for hosting the site.</p>
 <li>Initial work done on markdown parsing into html.</li>
 </ul>
 
-</div>
-                    <a href="#" onclick="showthatshizzle();return false;">Comments</a>
-                    <div id="disqus_thread" style="display: none;"></div>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        <a href="#" onclick="showthatshizzle('http://autonomicpilot.co.uk/README.html','disqus_thread_README');return false;">Comments</a>
+                        <div id="disqus_thread_README" style="display: none;"></div>
+                    </div>
+                        <a href="#" onclick="showthatshizzle();return false;">Comments</a>
+                        <div id="disqus_thread_main" style="display: none;"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
                 </div>
-                <div id="right" class="float_left">&nbsp;</div>
+                <div id="right" class="float_left">
+                                        <div class="article_link">
+                        <div>
+                            <a href="/#README">Readme/Changes File</a><br />
+                            23/06/12 20:40:02
+                        </div>
+                        <a class="article_link_main" href='/README.html'>&nbsp;</a>
+                        <br class="clear_both" />
+                    </div>
+                </div>
                 <br class="clear_both" />
             </div>
         </div>

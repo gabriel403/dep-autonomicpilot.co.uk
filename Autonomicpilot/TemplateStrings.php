@@ -20,15 +20,16 @@ class TemplateStrings
      */
     public static function getSideLinkText(Renderer $renderer)
     {
-        return <<<"EOT"
-<div class="article_link">
-    <div>
-        <a href="{$renderer->bbu}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
-        {$renderer->post->getPublishedDatetime()}
-    </div>
-    <a class="article_link_main" href='{$renderer->bbu}{$renderer->post->getFilename()}.html'>&nbsp;</a>
-</div>
-EOT;
+        return <<<"SLT"
+                    <div class="article_link">
+                        <div>
+                            <a href="{$renderer->bbu}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
+                            {$renderer->post->getPublishedDatetime()}
+                        </div>
+                        <a class="article_link_main" href='{$renderer->bbu}{$renderer->post->getFilename()}.html'>&nbsp;</a>
+                        <br class="clear_both" />
+                    </div>
+SLT;
     }
 
 
@@ -42,10 +43,12 @@ EOT;
     public static function getSmallArticleText(Renderer $renderer)
     {
         return <<<"SA"
-<div class="article_content" id="{$renderer->post->getFilename()}">
-    <h1 class="article_title"><a href="{$renderer->bbu}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
-    {$renderer->post->getMarkdownText()}
-</div>
+                    <div class="article_content" id="{$renderer->post->getFilename()}">
+                        <h1 class="article_title"><a href="{$renderer->bbu}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
+                        {$renderer->post->getMarkdownText()}
+                        <a href="#" onclick="showthatshizzle('http://autonomicpilot.co.uk{$renderer->bbu}{$renderer->post->getFilename()}.html','disqus_thread_{$renderer->post->getFilename()}');return false;">Comments</a>
+                        <div id="disqus_thread_{$renderer->post->getFilename()}" style="display: none;"></div>
+                    </div>
 SA;
     }
 
@@ -69,13 +72,22 @@ SA;
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
             var dsloaded = false;
-            function showthatshizzle() {
+            var disqus_url = 'http://autonomicpilot.co.uk/';
+            var disqus_div = 'disqus_thread_main';
+            function showthatshizzle(disqurl, disqdiv) {
+                if ( disqurl )
+                    disqus_url = disqurl;
+
+                if ( disqdiv )
+                    disqus_div = disqdiv;
+
                 if ( dsloaded )
                     return false;
-                disqus_shortname = 'autonomicpilot';
+
+                var disqus_shortname = 'autonomicpilot';
                 dsloaded = true;
 
-                document.getElementById('disqus_thread').style.display = 'block';
+                document.getElementById(disqus_div).style.display = 'block';
 
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -89,18 +101,23 @@ SA;
             <div id="header">
                 <a href='/'>&nbsp;</a>
                 <div>The 8-bit ramblings of a rabid mind</div>
+                <br class="clear_both" />
             </div>
             <div id="content_outer">
                 <div id="left" class="float_left">
                     {$renderer->getLinkString()}
                 </div>
                 <div id="main" class="float_left">
-                    {$renderer->getContentString()}
-                    <a href="#" onclick="showthatshizzle();return false;">Comments</a>
-                    <div id="disqus_thread" style="display: none;"></div>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <div>
+                        {$renderer->getContentString()}
+                        <a href="#" onclick="showthatshizzle();return false;">Comments</a>
+                        <div id="disqus_thread_main" style="display: none;"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
                 </div>
-                <div id="right" class="float_left">&nbsp;</div>
+                <div id="right" class="float_left">
+                    {$renderer->getLinkString()}
+                </div>
                 <br class="clear_both" />
             </div>
         </div>
