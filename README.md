@@ -13,6 +13,11 @@ Simple HTML server for hosting the site.
 
 CHANGELOG:
 
+0.5.1
+
+* Responsive CSS
+* Initial attempt at disqus
+
 0.5
 
 * Added disqus commenting system
