@@ -24,10 +24,10 @@ class TemplateStrings
         return <<<"SLT"
                     <div class="article_link">
                         <div>
-                            <a href="{$config->Post->content_path}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
+                            <a href="{$config->Post->blog_base_url}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
                             {$renderer->post->getPublishedDatetime()}
                         </div>
-                        <a class="article_link_main" href='{$renderer->bbu}{$renderer->post->getFilename()}.html'>&nbsp;</a>
+                        <a class="article_link_main" href='{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
                         <br class="clear_both" />
                     </div>
 SLT;
@@ -43,11 +43,12 @@ SLT;
      */
     public static function getSmallArticleText(Renderer $renderer)
     {
+        $config = Config::getInstance();
         return <<<"SA"
                     <div class="article_content" id="{$renderer->post->getFilename()}">
-                        <h1 class="article_title"><a href="{$renderer->bbu}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
+                        <h1 class="article_title"><a href="{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
                         {$renderer->post->getMarkdownText()}
-                        <a href="#" onclick="showthatshizzle('http://autonomicpilot.co.uk{$renderer->bbu}{$renderer->post->getFilename()}.html','disqus_thread_{$renderer->post->getFilename()}');return false;">Comments</a>
+                        <a href="#" onclick="showthatshizzle('http://autonomicpilot.co.uk{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html','disqus_thread_{$renderer->post->getFilename()}');return false;">Comments</a>
                         <div id="disqus_thread_{$renderer->post->getFilename()}" style="display: none;"></div>
                     </div>
 SA;
@@ -107,11 +108,11 @@ SA;
             </div>
             <div id="content_outer">
                 <div id="left" class="float_left">
-                    {$renderer->getLinkString()}
+{$renderer->getLinkString()}
                 </div>
                 <div id="main" class="float_left">
                     <div>
-                        {$renderer->getContentString()}
+{$renderer->getContentString()}
                         <a href="#" onclick="showthatshizzle();return false;">Comments</a>
                         <div id="disqus_thread_main" style="display: none;"></div>
                         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
