@@ -72,7 +72,6 @@ class Renderer
      */
     public function preRenderConsumption()
     {
-        $this->config = Config::getConfig();
         if ($handle = opendir('Post')) {
 
             while (false !== ($entry = readdir($handle))) {
@@ -97,9 +96,9 @@ class Renderer
      */
     public function renderMainPage()
     {
-        $pp = $this->config['Post']['post_path'];
-        $cp = $this->config['Post']['content_path'];
-        $this->bbu = $this->config['Post']['blog_base_url'];
+        $config = Config::getInstance();
+        $pp = $config->Post->post_path;
+        $cp = $config->Post->content_path;
 
         foreach ($this->posts as $filename => $markdown) {
             $this->classname = $filename;
@@ -133,8 +132,9 @@ class Renderer
      */
     public function renderArticlePages()
     {
-        $cp = $this->config['Post']['content_path'];
-        $this->bbu = $this->config['Post']['blog_base_url'];
+        $config = Config::getInstance();
+
+        $cp = $config->Post->content_path;
 
         foreach ($this->posts as $filename => $markdown) {
             $class          = "Post\\$filename";

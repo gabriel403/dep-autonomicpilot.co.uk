@@ -20,10 +20,11 @@ class TemplateStrings
      */
     public static function getSideLinkText(Renderer $renderer)
     {
+        $config = Config::getInstance();
         return <<<"SLT"
                     <div class="article_link">
                         <div>
-                            <a href="{$renderer->bbu}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
+                            <a href="{$config->Post->content_path}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
                             {$renderer->post->getPublishedDatetime()}
                         </div>
                         <a class="article_link_main" href='{$renderer->bbu}{$renderer->post->getFilename()}.html'>&nbsp;</a>
@@ -62,11 +63,12 @@ SA;
      */
     public static function getMainTemplateText(Renderer $renderer)
     {
+        $config = Config::getInstance();
         return <<<"MT"
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>{$config->Post->prepended_title}</title>
         <link rel="stylesheet" type="text/css" href="reset.css" />
         <link rel="stylesheet" type="text/css" href="site.css" />
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />

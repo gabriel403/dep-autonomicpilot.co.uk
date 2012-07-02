@@ -9,18 +9,30 @@ namespace Autonomicpilot;
  * 
  * @package Autonomicpilot
  */
-class Config
+class Config extends \ArrayObject
 {
-    private static $configini = [];
+    private static $instance;
 
-    /**
-     * Reads the configuration file
-     * 
-     * @return array
-     */
-    public static function getConfig()
+    public function __construct($data)
     {
-        self::$configini = parse_ini_file("configuration.ini", true);
-        return self::$configini;
+        foreach($data as $key => $value) {
+            if(is_array($value)){
+                $value = new self($value);
+            }
+            $this->offsetSet($key, $value);
+        }
+
+        parent::setFlags(parent::ARRAY_AS_PROPS);
     }
+
+    public static function getInstance()
+    {
+        if ( null == self::$instance)
+        {
+            $data = parse_ini_file("configuration.ini", true);
+            self::$instance = new Config($data);
+        }
+        return self::$instance;
+    }
+
 }
