@@ -1,12 +1,9 @@
 <?php
-/**
- * Config parser
- */
 namespace Autonomicpilot;
 
 /**
  * Config parser
- * 
+ *
  * @package Autonomicpilot
  */
 class Config extends \ArrayObject

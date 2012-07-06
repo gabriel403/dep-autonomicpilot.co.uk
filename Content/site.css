@@ -97,6 +97,19 @@
     display: none;
 }
 
+a:link {
+    color: black;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    color: black;
+}
+a:active {
+    color: black;
+}
+
 @media screen and (max-width: 1180px) {
     #right {
         display: none;
@@ -107,7 +120,7 @@
     }
 }
 
-@media screen and (max-width: 1088px) {
+@media screen and (max-width: 1050px) {
     #header > div {
         float: none;
         padding-top: 10px;
@@ -118,13 +131,15 @@
         float: none;
         margin-left: auto;
         margin-right: auto;
+        width: 100%;
     }
 
     #left {
         float: none;
         margin-left: auto;
         margin-right: auto;
-        width: 80%;
+        width: 100%;
+        padding: 0px 5px 0px 5px;
     }
 
     #header > a {
@@ -139,12 +154,5 @@
 }
 
 @media screen and (max-width: 800px) {
-
-    #main {
-        width: 100%;
-    }
-
-    #left {
-        width: 100%;
-    }
+    /*Add stuff for select b0xen*/
 }

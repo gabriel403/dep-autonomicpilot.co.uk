@@ -1,7 +1,4 @@
 <?php
-/**
- * Renderer file
- */
 namespace Autonomicpilot;
 /**
  * Renderer class

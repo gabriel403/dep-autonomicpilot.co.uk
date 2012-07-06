@@ -1,7 +1,4 @@
 <?php
-/**
- *
- */
 namespace Autonomicpilot;
 /**
  * Static class and functions for templates
@@ -61,7 +58,7 @@ SA;
                         <h1 class="article_title"><a href="{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
                         {$renderer->post->getMarkdownText()}
                         <a href="#" onclick="showthatshizzle();return false;">Comments</a>
-                        <div id="disqus_thread" style="display: none;"></div>
+                        <div id="disqus_thread"></div>
                         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     </div>
 MA;

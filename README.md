@@ -13,6 +13,11 @@ Simple HTML server for hosting the site.
 
 CHANGELOG:
 
+0.5.2
+
+* Reworked disqus into single articles only
+* Tweaks to css
+
 0.5.1
 
 * Responsive CSS
