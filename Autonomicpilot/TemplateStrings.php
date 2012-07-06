@@ -48,10 +48,23 @@ SLT;
                     <div class="article_content" id="{$renderer->post->getFilename()}">
                         <h1 class="article_title"><a href="{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
                         {$renderer->post->getMarkdownText()}
-                        <a href="#" onclick="showthatshizzle('http://autonomicpilot.co.uk{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html','disqus_thread_{$renderer->post->getFilename()}');return false;">Comments</a>
-                        <div id="disqus_thread_{$renderer->post->getFilename()}" style="display: none;"></div>
                     </div>
 SA;
+    }
+
+
+    public static function getMainArticleText(Renderer $renderer)
+    {
+        $config = Config::getInstance();
+        return <<<"MA"
+                    <div class="article_content" id="{$renderer->post->getFilename()}">
+                        <h1 class="article_title"><a href="{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
+                        {$renderer->post->getMarkdownText()}
+                        <a href="#" onclick="showthatshizzle();return false;">Comments</a>
+                        <div id="disqus_thread" style="display: none;"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+MA;
     }
 
 
@@ -75,19 +88,15 @@ SA;
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
             var dsloaded = false;
-            var disqus_url = 'http://autonomicpilot.co.uk/';
-            var disqus_div = 'disqus_thread_main';
-            function showthatshizzle(disqurl, disqdiv) {
-                if ( disqurl )
-                    disqus_url = disqurl;
-
-                if ( disqdiv )
-                    disqus_div = disqdiv;
+            var disqus_div = 'disqus_thread';
+            function showthatshizzle() {
+                var disqus_shortname = 'autonomicpilot';
 
                 if ( dsloaded )
-                    return false;
+                {
+                    return;
+                }
 
-                var disqus_shortname = 'autonomicpilot';
                 dsloaded = true;
 
                 document.getElementById(disqus_div).style.display = 'block';
@@ -113,9 +122,6 @@ SA;
                 <div id="main" class="float_left">
                     <div>
 {$renderer->getContentString()}
-                        <a href="#" onclick="showthatshizzle();return false;">Comments</a>
-                        <div id="disqus_thread_main" style="display: none;"></div>
-                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     </div>
                 </div>
                 <div id="right" class="float_left">

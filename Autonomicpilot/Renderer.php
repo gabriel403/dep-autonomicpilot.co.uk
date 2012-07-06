@@ -141,7 +141,7 @@ class Renderer
 
             $this->post     = new $class();
 
-            $this->content  = [TemplateStrings::getSmallArticleText($this)];
+            $this->content  = [TemplateStrings::getMainArticleText($this)];
 
             $output         = TemplateStrings::getMainTemplateText($this);
             if ( file_exists("$cp/$filename.html") ) {
