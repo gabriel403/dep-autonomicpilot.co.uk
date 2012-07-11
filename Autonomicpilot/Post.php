@@ -10,7 +10,9 @@ abstract class Post
     /** */
     protected $title;
     /** */
-    protected $tags;
+    protected $tags = [];
+    /** */
+    protected $categories = [];
     /** */
     protected $publishedTime;
 
@@ -35,7 +37,7 @@ abstract class Post
      */
     public function getTags()
     {
-        return $this->tags;
+        return implode(", ", $this->tags);
     }
 
     /**

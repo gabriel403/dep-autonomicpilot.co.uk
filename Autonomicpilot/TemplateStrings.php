@@ -25,6 +25,9 @@ class TemplateStrings
                             {$renderer->post->getPublishedDatetime()}
                         </div>
                         <a class="article_link_main" href='{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
+                        <div class="article_tags">
+                        {$renderer->post->getTags()}
+                        </div>
                         <br class="clear_both" />
                     </div>
 SLT;

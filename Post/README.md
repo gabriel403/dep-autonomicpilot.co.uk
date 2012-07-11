@@ -13,6 +13,10 @@ Simple HTML server for hosting the site.
 
 CHANGELOG:
 
+0.5.3
+
+* Changed krsort to ksort
+
 0.5.2
 
 * Reworked disqus into single articles only

@@ -37,7 +37,7 @@
     background-color: #D8D8D8;
     border-top: black solid 4px;
     min-height: 100px;
-    padding: 20px 5px 40px 5px;
+    padding: 0px 5px 40px 5px;
     margin-bottom: 20px;
 }
 
@@ -120,7 +120,7 @@ a:active {
     }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1088px) {
     #header > div {
         float: none;
         padding-top: 10px;
@@ -132,6 +132,7 @@ a:active {
         margin-left: auto;
         margin-right: auto;
         width: 100%;
+        clear: both;
     }
 
     #left {
@@ -150,6 +151,8 @@ a:active {
 
     .article_link {
         width: 200px;
+        float: left;
+        margin-right: 5px;
     }
 }
 

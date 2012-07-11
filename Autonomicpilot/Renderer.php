@@ -112,8 +112,8 @@ class Renderer
             $this->links[$this->post->getPublishedDatetime()]   = TemplateStrings::getSideLinkText($this);
         }
 
-        krsort($this->content);
-        krsort($this->links);
+        ksort($this->content);
+        ksort($this->links);
 
         $output = TemplateStrings::getMainTemplateText($this);
         if ( file_exists("$cp/index.html") ) {
