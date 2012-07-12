@@ -120,12 +120,21 @@ a:active {
     }
 }
 
-@media screen and (max-width: 1088px) {
+@media screen and (max-width: 1089px) {
     #header > div {
         float: none;
         padding-top: 10px;
         text-align: center;
     }
+
+    #header > a {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 1088px) {
 
     #main {
         float: none;
@@ -141,12 +150,6 @@ a:active {
         margin-right: auto;
         width: 100%;
         padding: 0px 5px 0px 5px;
-    }
-
-    #header > a {
-        float: none;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .article_link {
