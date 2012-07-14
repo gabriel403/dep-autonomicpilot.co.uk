@@ -12,6 +12,7 @@ class BlogIntro extends Post
         $this->filename = "BlogIntro";
         $this->title = "Blog Introduction";
         $this->tags = ["html", "responsive", "php", "noframework", "blog"];
+        $this->category = "blog";
         return $this;
     }
 }
