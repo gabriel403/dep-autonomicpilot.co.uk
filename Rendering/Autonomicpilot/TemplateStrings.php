@@ -141,6 +141,12 @@ MA;
                 <div>The 8-bit ramblings of a rabid mind</div>
                 <br class="clear_both" />
             </div>
+            <div id="top_nav">
+                <div class="box0n float_left third_width"><a href="/">Home</a></div>
+                <div class="box0n float_left third_width"><a href="{$config->Post->blog_base_url}">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/cv">CV</a></div>
+                <br class="clear_both" />
+            </div>
             <div id="content_outer">
                 <div id="left" class="float_left">
 {$renderer->getLinkString()}

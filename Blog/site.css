@@ -19,6 +19,18 @@ body
 .article_link > .article_link_text {
     float: left;
 }
+.full_width {
+    width: 100%;
+}
+.third_width {
+    width: 30%;
+}
+
+#top_nav {
+    width: 33%;
+    margin: 0px auto;
+}
+
 .article_link_main {
     background-color: transparent;
     background-image: url(linkchain.png);
@@ -36,7 +48,7 @@ body
     border-top: black solid 4px;
     font-size: 1.2em;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 1%;
 }
 
 .article_link {
@@ -45,7 +57,7 @@ body
 }
 .article_content {
     min-height: 100px;
-    padding: 0px 5px 40px 5px;
+    padding: 0% 1% 8% 1%;
 }
 
 #content_outer > div {
@@ -64,7 +76,7 @@ body
     margin: 0px auto 0px auto;
 }
 #main > div {
-    padding: 0px 5px 0px 5px;
+    padding: 0% 1% 0% 1%;
 }
 #header {
     /*height: 200px;*/
