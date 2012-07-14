@@ -201,5 +201,27 @@ class {$renderer->getClassname()} extends Post
 PC;
     }
 
+    public static function getSitemap()
+    {
+        return <<<"SM"
+        <?xml version="1.0" encoding="UTF-8"?\>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+SM;
+
+    }
+
+    public static function getSitemapEntry(Renderer $renderer)
+    {
+        $config = Config::getInstance();
+        return <<<"SME"
+           <url>
+              <loc>{$config->site->address}{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html</loc>
+              <lastmod>{$renderer->post->getPublishedDatetime()}</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+           </url>
+SME;
+    }
+
 }
 
