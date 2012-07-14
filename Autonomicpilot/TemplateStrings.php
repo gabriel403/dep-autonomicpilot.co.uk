@@ -85,9 +85,7 @@ MA;
 
     /**
      * Main html template
-     * 
      * @param Renderer $renderer Renderer object
-     * 
      * @return string
      */
     public static function getMainTemplateText(Renderer $renderer)
