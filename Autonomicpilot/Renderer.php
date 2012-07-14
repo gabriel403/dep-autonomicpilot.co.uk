@@ -41,7 +41,6 @@ class Renderer
     //     }
     // }
 
-
     public function getTagCloud()
     {
         $return = "";
