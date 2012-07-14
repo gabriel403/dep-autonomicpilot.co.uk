@@ -1,0 +1,183 @@
+body
+{
+    font-size: 12px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.float_left
+{
+    float: left;
+}
+.float_right
+{
+    float: right;
+}
+.clear_both {
+    clear: both;
+}
+
+.article_link > .article_link_text {
+    float: left;
+}
+.full_width {
+    width: 100%;
+}
+.third_width {
+    width: 30%;
+}
+
+#top_nav {
+    width: 33%;
+    margin: 0px auto;
+}
+
+.article_link_main {
+    background-color: transparent;
+    background-image: url(linkchain.png);
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+    float: left;
+    text-decoration: none;
+    display: block;
+}
+
+.box0n {
+    background-color: #D8D8D8;
+    border-top: black solid 4px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    padding: 1%;
+}
+
+.article_link {
+    /*height: 40px;*/
+    min-width: 200px;
+}
+.article_content {
+    min-height: 100px;
+    padding: 0% 1% 8% 1%;
+}
+
+#content_outer > div {
+    /*padding: 5px;*/
+}
+
+#left {
+
+}
+
+#left,#right {
+    width: 20%;
+}
+#main {
+    width: 60%;
+    margin: 0px auto 0px auto;
+}
+#main > div {
+    padding: 0% 1% 0% 1%;
+}
+#header {
+    /*height: 200px;*/
+    margin: 20px auto 0px auto;
+    width: 90%;
+}
+
+#header > a {
+    width: 400px;
+    height: 200px;
+    background-color: transparent;
+    background-image: url(logo.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+    display: block;
+    float: left;
+}
+#header > div {
+    float: left;
+    padding-top: 90px;
+    font-family: 'Press Start 2P', cursive;
+    word-wrap: break-word;
+}
+
+#content_outer {
+    margin: 0px auto auto auto;
+    width: 100%;
+}
+
+#main_box {
+    background-color: #E8E8E8;
+    width: 98%;
+    margin: 20px auto 0px auto;
+}
+
+#disqus_thread {
+    display: none;
+}
+
+a:link {
+    color: black;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    color: black;
+}
+a:active {
+    color: black;
+}
+
+@media screen and (max-width: 1180px) {
+    #right {
+        display: none;
+    }
+
+    #main {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1089px) {
+    #header > div {
+        float: none;
+        padding-top: 10px;
+        text-align: center;
+    }
+
+    #header > a {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 1088px) {
+
+    #main {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        clear: both;
+    }
+
+    #left {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 0px 5px 0px 5px;
+    }
+
+    .article_link {
+        width: 200px;
+        float: left;
+        margin-right: 5px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /*Add stuff for select b0xen*/
+}
