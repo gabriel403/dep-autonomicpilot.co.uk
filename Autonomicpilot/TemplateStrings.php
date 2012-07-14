@@ -85,6 +85,7 @@ MA;
 
     /**
      * Main html template
+     * 
      * @param Renderer $renderer Renderer object
      * @return string
      */
