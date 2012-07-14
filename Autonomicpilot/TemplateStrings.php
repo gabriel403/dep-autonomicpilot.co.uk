@@ -206,18 +206,20 @@ PC;
         return <<<"SM"
         <?xml version="1.0" encoding="UTF-8"?\>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        {$renderer->getSitemapURLs()}
+        </urlset>
 SM;
 
     }
 
-    public static function getSitemapEntry(Renderer $renderer)
+    public static function getSitemapEntry(Renderer $renderer, $spacer)
     {
         $config = Config::getInstance();
         return <<<"SME"
            <url>
-              <loc>{$config->site->address}{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html</loc>
+              <loc>{$config->site->address}{$config->Post->blog_base_url}{$spacer}{$renderer->post->getFilename()}.html</loc>
               <lastmod>{$renderer->post->getPublishedDatetime()}</lastmod>
-              <changefreq>monthly</changefreq>
+              <changefreq>daily</changefreq>
               <priority>0.8</priority>
            </url>
 SME;
