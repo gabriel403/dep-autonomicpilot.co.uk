@@ -25,23 +25,23 @@ class Renderer
     /** @var Autonomicpilot\Post */
     public $post;
 
-    // public function getSitemapURLs() {
-    //     foreach ( $this->posts as $post )
-    //     {
-    //         $this->post = $post;
-    //         TemplateStrings::getSitemapEntry($this, "");
-    //     }
-    //     foreach ( $this->tags as $tag => $posts )
-    //     {
-    //         $this->post = $posts[0];
-    //         TemplateStrings::getSitemapEntry($this, "Tags/");
-    //     }
-    //     foreach ( $this->categories as $category => $posts )
-    //     {
-    //         $this->post = $posts[0];
-    //         TemplateStrings::getSitemapEntry($this, "Categories/");
-    //     }
-    // }
+    public function getSitemapURLs() {
+        foreach ( $this->posts as $post )
+        {
+            $this->post = $post;
+            TemplateStrings::getSitemapEntry($this, "");
+        }
+        foreach ( $this->tags as $tag => $posts )
+        {
+            $this->post = $posts[0];
+            TemplateStrings::getSitemapEntry($this, "Tags/");
+        }
+        foreach ( $this->categories as $category => $posts )
+        {
+            $this->post = $posts[0];
+            TemplateStrings::getSitemapEntry($this, "Categories/");
+        }
+    }
 
 
     public function getTagCloud()
