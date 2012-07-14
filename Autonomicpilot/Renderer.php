@@ -16,14 +16,12 @@ class Renderer
     /** @var string */
     private $classname = "";
 
-    private $post = null;
-
     public $tags = [];
     public $categories = [];
     public $sitemapURLs = "";
 
     /** @var Autonomicpilot\Post */
-    public $post;
+    public $post = null;
 
     // public function getSitemapURLs() {
     //     foreach ( $this->posts as $post )
