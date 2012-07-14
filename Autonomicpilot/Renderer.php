@@ -18,9 +18,32 @@ class Renderer
     /** */
     public $config = [];
 
+    public $tags = [];
+    public $categories = [];
+
 
     /** @var Autonomicpilot\Post */
     public $post;
+
+    public function getTagCloud()
+    {
+        $return = "";
+        foreach ( $this->tags as $tag => $tagPosts )
+        {
+            $return .= TemplateStrings::tagLinkText($tag).":".count($tagPosts);
+        }
+        return $return;
+    }
+
+    public function getCategorySet()
+    {
+        $return = "";
+        foreach ( $this->categories as $category => $categoryPosts )
+        {
+            $return .= TemplateStrings::categoryLinkText($category);
+        }
+        return $return;
+    }
 
 
     /**
@@ -108,6 +131,16 @@ class Renderer
 
             $this->post     = new $class();
 
+            if ( "" !== $this->post->getCategory()) 
+            {
+                $this->categories[$this->post->getCategory()][] = $this->post;
+            }
+
+            foreach ( $this->post->getTags() as $tag )
+            {
+                $this->tags[$tag][] = $this->post;
+            }
+
             $this->content[$this->post->getPublishedDatetime()] = TemplateStrings::getSmallArticleText($this);
             $this->links[$this->post->getPublishedDatetime()]   = TemplateStrings::getSideLinkText($this);
         }
@@ -122,6 +155,51 @@ class Renderer
         file_put_contents("$cp/index.html", $output);
     }
 
+    public function renderTagPages()
+    {
+        $config = Config::getInstance();
+        $pp = $config->Post->post_path;
+        $cp = $config->Post->content_path;
+
+        $output = "";
+        foreach ( $this->tags as $tag => $tagPosts )
+        {
+            $output = "";
+            $this->content = [];
+            $this->links = [];
+            foreach ( $tagPosts as $tagPost )
+            {
+                $this->post = $tagPost;
+                $this->content[$this->post->getPublishedDatetime()] = TemplateStrings::getSmallArticleText($this);
+                $this->links[$this->post->getPublishedDatetime()]   = TemplateStrings::getSideLinkText($this);
+            }
+            $output = TemplateStrings::getMainTemplateText($this);
+            file_put_contents("$cp/Tags/$tag.html", $output);
+        }
+    }
+
+    public function renderCategoryPages()
+    {
+        $config = Config::getInstance();
+        $pp = $config->Post->post_path;
+        $cp = $config->Post->content_path;
+
+        $output = "";
+        foreach ( $this->categories as $category => $categoryPosts )
+        {
+            $output = "";
+            $this->content = [];
+            $this->links = [];
+            foreach ( $categoryPosts as $categoryPost )
+            {
+                $this->post = $categoryPost;
+                $this->content[$this->post->getPublishedDatetime()] = TemplateStrings::getSmallArticleText($this);
+                $this->links[$this->post->getPublishedDatetime()]   = TemplateStrings::getSideLinkText($this);
+            }
+            $output = TemplateStrings::getMainTemplateText($this);
+            file_put_contents("$cp/Categories/$category.html", $output);
+        }
+    }
 
     /**
      * 

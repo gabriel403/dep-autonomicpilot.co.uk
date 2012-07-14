@@ -12,6 +12,8 @@ $ar = new Autonomicpilot\Renderer();
 $ar->preRenderConsumption();
 $ar->renderMainPage();
 $ar->renderArticlePages();
+$ar->renderTagPages();
+$ar->renderCategoryPages();
 
 /**
  * Autoloader psr-0

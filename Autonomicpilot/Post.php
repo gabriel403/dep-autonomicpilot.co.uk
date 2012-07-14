@@ -12,9 +12,17 @@ abstract class Post
     /** */
     protected $tags = [];
     /** */
-    protected $categories = [];
+    protected $category = "Uncategorised";
     /** */
     protected $publishedTime;
+
+    /**
+     *
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 
     /**
      *
@@ -37,7 +45,17 @@ abstract class Post
      */
     public function getTags()
     {
-        return implode(", ", $this->tags);
+        return $this->tags;
+    }
+
+    public function getTagLinks()
+    {
+        $return = "";
+        foreach ( $this->tags as $tag )
+        {
+            $return .= TemplateStrings::tagLinkText($tag);
+        }
+        return $return;
     }
 
     /**

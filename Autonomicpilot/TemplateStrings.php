@@ -19,20 +19,35 @@ class TemplateStrings
     {
         $config = Config::getInstance();
         return <<<"SLT"
-                    <div class="article_link">
-                        <div>
+                    <div class="article_link box0n">
+                        <div class="article_link_text">
                             <a href="{$config->Post->blog_base_url}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
                             {$renderer->post->getPublishedDatetime()}
                         </div>
                         <a class="article_link_main" href='{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
-                        <div class="article_tags">
-                        {$renderer->post->getTags()}
-                        </div>
                         <br class="clear_both" />
+                        <div class="article_tags">
+                        {$renderer->post->getTagLinks()}
+                        </div>
                     </div>
 SLT;
     }
 
+    public static function tagLinkText($tag)
+    {
+        $config = Config::getInstance();
+        return <<< "CLT"
+        <a href="{$config->Post->blog_base_url}Tags/$tag.html">$tag</a>
+CLT;
+    }
+
+    public static function categoryLinkText($category)
+    {
+        $config = Config::getInstance();
+        return <<< "CLT"
+        <a href="{$config->Post->blog_base_url}Categories/$category.html">$category</a><br />
+CLT;
+    }
 
     /**
      * Small article text
@@ -45,7 +60,7 @@ SLT;
     {
         $config = Config::getInstance();
         return <<<"SA"
-                    <div class="article_content" id="{$renderer->post->getFilename()}">
+                    <div class="article_content box0n" id="{$renderer->post->getFilename()}">
                         <h1 class="article_title"><a href="{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
                         {$renderer->post->getMarkdownText()}
                     </div>
@@ -57,7 +72,7 @@ SA;
     {
         $config = Config::getInstance();
         return <<<"MA"
-                    <div class="article_content" id="{$renderer->post->getFilename()}">
+                    <div class="article_content box0n" id="{$renderer->post->getFilename()}">
                         <h1 class="article_title"><a href="{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
                         {$renderer->post->getMarkdownText()}
                         <a href="#" onclick="showthatshizzle();return false;">Comments</a>
@@ -83,8 +98,8 @@ MA;
 <html>
     <head>
         <title>{$config->Post->prepended_title}</title>
-        <link rel="stylesheet" type="text/css" href="reset.css" />
-        <link rel="stylesheet" type="text/css" href="site.css" />
+        <link rel="stylesheet" type="text/css" href="/reset.css" />
+        <link rel="stylesheet" type="text/css" href="/site.css" />
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
             var dsloaded = false;
@@ -125,7 +140,16 @@ MA;
                     </div>
                 </div>
                 <div id="right" class="float_left">
-                    {$renderer->getLinkString()}
+                    <div class="box0n">
+                        <h2>Tags</h2>
+                        <br />
+{$renderer->getTagCloud()}
+                    </div>
+                    <div class="box0n">
+                        <h2>Categories</h2>
+                        <br />
+{$renderer->getCategorySet()}
+                    </div>
                 </div>
                 <br class="clear_both" />
             </div>

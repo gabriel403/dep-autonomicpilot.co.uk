@@ -11,6 +11,7 @@ class BlogIntro extends Post
         $this->publishedTime = 1341704910;
         $this->filename = "BlogIntro";
         $this->title = "Blog Introduction";
+        $this->tags = ["html", "responsive", "php", "noframework", "blog"];
         return $this;
     }
 }
