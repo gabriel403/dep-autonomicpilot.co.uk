@@ -20,11 +20,11 @@ class TemplateStrings
         $config = Config::getInstance();
         return <<<"SLT"
                     <div class="article_link box0n">
+                        <a class="article_link_main" href='{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
                         <div class="article_link_text">
                             <a href="{$config->Post->blog_base_url}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
-                            {$renderer->post->getPublishedDatetime()}
+                            {$renderer->post->getPublishedDatetime()}{$renderer->post->getCategoryLink()}
                         </div>
-                        <a class="article_link_main" href='{$config->Post->blog_base_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
                         <br class="clear_both" />
                         <div class="article_tags">
                         {$renderer->post->getTagLinks()}

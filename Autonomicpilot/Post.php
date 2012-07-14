@@ -58,6 +58,13 @@ abstract class Post
         return $return;
     }
 
+    public function getCategoryLink()
+    {
+        $return = "";
+        $return = TemplateStrings::categoryLinkText($this->category);
+        return $return;
+    }
+
     /**
      *
      */
