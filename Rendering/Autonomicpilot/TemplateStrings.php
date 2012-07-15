@@ -97,8 +97,8 @@ MA;
 <html>
     <head>
         <title>{$config->Post->prepended_title}</title>
-        <link rel="stylesheet" type="text/css" href="{$config->Post->blog_base_url}reset.css" />
-        <link rel="stylesheet" type="text/css" href="{$config->Post->blog_base_url}site.css" />
+        <link rel="stylesheet" type="text/css" href="{$config->site->css_path}reset.css" />
+        <link rel="stylesheet" type="text/css" href="{$config->site->css_path}site.css" />
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
             var dsloaded = false;
