@@ -78,6 +78,9 @@ body
 #main > div {
     padding: 0% 1% 0% 1%;
 }
+#main img {
+    max-width: 100%;
+}
 #header {
     /*height: 200px;*/
     margin: 20px auto 0px auto;

@@ -157,12 +157,12 @@ class Renderer
                 $this->tags[$tag][] = $this->post;
             }
 
-            $this->content[$this->post->getPublishedDatetime()] = TemplateStrings::getSmallArticleText($this);
-            $this->links[$this->post->getPublishedDatetime()]   = TemplateStrings::getSideLinkText($this);
+            $this->content[$this->post->getPublishedTimestamp()] = TemplateStrings::getSmallArticleText($this);
+            $this->links[$this->post->getPublishedTimestamp()]   = TemplateStrings::getSideLinkText($this);
         }
 
-        ksort($this->content);
-        ksort($this->links);
+        krsort($this->content);
+        krsort($this->links);
 
         $output = TemplateStrings::getMainTemplateText($this);
         if ( file_exists("$cp/index.html") ) {

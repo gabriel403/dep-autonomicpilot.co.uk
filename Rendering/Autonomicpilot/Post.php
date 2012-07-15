@@ -32,6 +32,11 @@ abstract class Post
         return date("d/m/y H:i:s", $this->publishedTime);
     }
 
+    public function getPublishedTimestamp()
+    {
+        return $this->publishedTime;
+    }
+
     /**
      *
      */
