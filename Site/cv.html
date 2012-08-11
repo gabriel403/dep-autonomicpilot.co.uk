@@ -4,20 +4,12 @@
         <title>Autonomicpilot - Home</title>
         <link rel="stylesheet" type="text/css" href="/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/css/site.css" />
-        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
-
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-16183577-1']);
             _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-
         </script>
+
     </head>
     <body>
         <div id="main_box">
@@ -28,7 +20,7 @@
             </div>
             <div id="top_nav">
                 <div class="box0n float_left third_width"><a href="/">Home</a></div>
-                <div class="box0n float_left third_width"><a href="/Blog/">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/blog/">Blog</a></div>
                 <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
                 <br class="clear_both" />
             </div>
@@ -66,17 +58,25 @@
                             <p>
                                 It seems fairly standard that at this point I should show you what I look like, so here is my foot:
                                 <br />
-                                <img height="163px" width="122px" src="/css/me.jpg" />
+                                <a href='/css/me.jpg'><img height="163px" width="122px" src="/css/me_small.jpg" /></a>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div id="right" class="float_left">
-                    <div class="box0n">&nbsp;
+                    <div class="box0n">
+                        <h2>twitter</h2>
+                        <ul id="twitter_update_list">
+                           <su li>Loading Tweets..</li>
+                        </ul>
                     </div>
                 </div>
                 <br class="clear_both" />
             </div>
         </div>
+        <script type="text/javascript" src="/js/blogger.js"></script>
+        <script type="text/javascript" src="/js/ga.js"></script>
+        <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/gabriel403.json?callback=twitterCallback2&count=5"></script>
+
     </body>
 </html>
