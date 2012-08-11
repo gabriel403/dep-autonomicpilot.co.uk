@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Henny Penny';
+    src: url('HennyPenny-Regular.eot');
+    src: local('Henny Penny'), local('HennyPenny-Regular'), url('HennyPenny-Regular.ttf') format('truetype');
+
+}
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('PressStart2P-Regular.eot');
+    src: local('Press Start 2P'), local('PressStart2P-Regular'), url('PressStart2P-Regular.ttf') format('truetype');
+}
+
 body
 {
     font-size: 12px;
