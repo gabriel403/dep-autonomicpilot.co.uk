@@ -51,6 +51,9 @@ body
     padding: 1%;
 }
 
+.box0n ul li {
+    list-style-type: none;
+}
 .article_link {
     /*height: 40px;*/
     min-width: 200px;
@@ -102,6 +105,10 @@ body
     padding-top: 90px;
     font-family: 'Press Start 2P', cursive;
     word-wrap: break-word;
+}
+
+.box0n > h2 {
+    font-family: 'Henny Penny', cursive;
 }
 
 #content_outer {

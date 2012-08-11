@@ -13,6 +13,10 @@ Simple HTML server for hosting the site.
 
 CHANGELOG:
 
+0.6.1
+
+* twitter feed on front page
+
 0.6
 
 * Reworked directories to seperate out the posts from the rendered html from the rendering library to potentially move the rendering library into it's own repo
