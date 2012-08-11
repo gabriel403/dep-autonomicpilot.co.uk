@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autonomicpilot</title>
+        <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="/css/site.css" />
+        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
+        <script type="text/javascript">
+            var dsloaded = false;
+            var disqus_div = 'disqus_thread';
+            function showthatshizzle() {
+                var disqus_shortname = 'autonomicpilot';
+
+                if ( dsloaded )
+                {
+                    return;
+                }
+
+                dsloaded = true;
+
+                document.getElementById(disqus_div).style.display = 'block';
+
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            }
+        </script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-16183577-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+    </head>
+    <body>
+        <div id="main_box">
+            <div id="header">
+                <a href='/'>&nbsp;</a>
+                <div>The 8-bit ramblings of a rabid mind</div>
+                <br class="clear_both" />
+            </div>
+            <div id="top_nav">
+                <div class="box0n float_left third_width"><a href="/">Home</a></div>
+                <div class="box0n float_left third_width"><a href="/Blog/">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
+                <br class="clear_both" />
+            </div>
+            <div id="content_outer">
+                <div id="left" class="float_left">
+                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/Blog/Posts/README.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/Blog/#README">Readme/Changes File</a><br />
+                            23/06/12 20:40:02        <a href="/Blog/Categories/readme.html">readme</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                                <a href="/Blog/Tags/html.html">html</a>        <a href="/Blog/Tags/blog.html">blog</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="main" class="float_left">
+                    <div>
+                    <div class="article_content box0n" id="README">
+                        <h1 class="article_title"><a href="/Blog/Posts/README.html">Readme/Changes File</a></h1>
+                        <h1>autonomicpilot.co.uk</h1>
+
+<h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
+
+<p>Content is written in markdown files in the Post folder, if extended properties are needed these can be placed in a php file of the same name which extends the Post abstract, if this is not provided it will be generated and initially set post created time as time() and the blog entry title as the filename.
+Running the GenerateAll.php file will parse the markdown files and render them into static html files inside the content directory.
+It will also create the central index.html with all blog entries listed shown in brief as well as a list of links on lhs to individual blog entries.</p>
+
+<p>Requirements:
+PHP5.4 on the rendering system.
+Simple HTML server for hosting the site.</p>
+
+<p>CHANGELOG:</p>
+
+<p>0.6</p>
+
+<ul>
+<li>Reworked directories to seperate out the posts from the rendered html from the rendering library to potentially move the rendering library into it's own repo</li>
+<li>Added gitignore for caps dir and handler.php</li>
+<li>Added isPublished with default to false in the post abstract</li>
+<li>Reworked markdown and markdown extra classes into PSR-0 compliance</li>
+<li>Made paths in config relative to base path and used getcwd for them</li>
+<li>Converted markdown php4 style constructors to php5</li>
+<li>Fluent interface for renderer</li>
+</ul>
+
+<p>0.5.3</p>
+
+<ul>
+<li>Changed krsort to ksort</li>
+</ul>
+
+<p>0.5.2</p>
+
+<ul>
+<li>Reworked disqus into single articles only</li>
+<li>Tweaks to css</li>
+</ul>
+
+<p>0.5.1</p>
+
+<ul>
+<li>Responsive CSS</li>
+<li>Initial attempt at disqus</li>
+</ul>
+
+<p>0.5</p>
+
+<ul>
+<li>Added disqus commenting system</li>
+<li>Moved disqus' js loading to an onclick</li>
+<li>Added some codesniffer stuff</li>
+</ul>
+
+<p>0.4</p>
+
+<ul>
+<li>Reworked backend to be more object oriented</li>
+<li>Reworked backend classnames to use namespaces</li>
+<li>Removed template files and converted to static strings &amp; heredocs using properties</li>
+<li>Added some basic phpdoc</li>
+<li>Added some basic configuration</li>
+<li>Renamed the content dir to Content</li>
+<li>Centralised generation into a single script and moved generation files into a single Renderer file</li>
+<li>Posts now sort by date of creation in descending order</li>
+<li>Post titles are now read to create links, and also header inside the post</li>
+<li>#refs inside individual entries now return to main page to go to anchors</li>
+<li>Replaced hardcoded directory refs to config refs</li>
+</ul>
+
+<p>0.3</p>
+
+<ul>
+<li>Reluctantly added abstract properties file associated with the markdown files.</li>
+<li>Added properties file generator</li>
+<li>Implemented psr-0 autoloader</li>
+<li>Renamed markdown directory to Post directory</li>
+<li>Added more UI work, logo, css, reworked links</li>
+<li>Reworked generator</li>
+</ul>
+
+<p>0.2</p>
+
+<ul>
+<li>Reworked include system for main page.</li>
+<li>Added links to blog post on side bar.</li>
+<li>Improved some ui.</li>
+</ul>
+
+<p>0.1</p>
+
+<ul>
+<li>Initial work done on markdown parsing into html.</li>
+</ul>
+
+                    </div>
+                    </div>
+                </div>
+                <div id="right" class="float_left">
+                    <div class="box0n">
+                        <h2>Tags</h2>
+                        <br />
+        <a href="/Blog/Tags/zf2.html">zf2</a>:1        <a href="/Blog/Tags/zfc.html">zfc</a>:1        <a href="/Blog/Tags/composer.html">composer</a>:1        <a href="/Blog/Tags/html.html">html</a>:2        <a href="/Blog/Tags/blog.html">blog</a>:2        <a href="/Blog/Tags/responsive.html">responsive</a>:1        <a href="/Blog/Tags/php.html">php</a>:1        <a href="/Blog/Tags/noframework.html">noframework</a>:1
+                    </div>
+                    <div class="box0n">
+                        <h2>Categories</h2>
+                        <br />
+        <a href="/Blog/Categories/ZF2.html">ZF2</a><br />        <a href="/Blog/Categories/readme.html">readme</a><br />        <a href="/Blog/Categories/blog.html">blog</a><br />
+                    </div>
+                </div>
+                <br class="clear_both" />
+            </div>
+        </div>
+    </body>
+</html>
