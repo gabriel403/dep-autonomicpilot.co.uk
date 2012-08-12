@@ -4,7 +4,6 @@
         <title>Autonomicpilot</title>
         <link rel="stylesheet" type="text/css" href="/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/css/site.css" />
-        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
             var dsloaded = false;
             var disqus_div = 'disqus_thread';
@@ -30,12 +29,6 @@
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-16183577-1']);
             _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
 
         </script>
     </head>
@@ -103,6 +96,13 @@ PHP5.4 on the rendering system.
 Simple HTML server for hosting the site.</p>
 
 <p>CHANGELOG:</p>
+
+<p>0.6.1</p>
+
+<ul>
+<li>twitter feed on front page</li>
+<li>Font's hosted locally</li>
+</ul>
 
 <p>0.6</p>
 
@@ -206,5 +206,6 @@ Simple HTML server for hosting the site.</p>
                 <br class="clear_both" />
             </div>
         </div>
+        <script type="text/javascript" src="/js/ga.js"></script>
     </body>
 </html>

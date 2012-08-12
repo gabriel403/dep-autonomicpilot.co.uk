@@ -16,6 +16,7 @@ CHANGELOG:
 0.6.1
 
 * twitter feed on front page
+* Font's hosted locally
 
 0.6
 
