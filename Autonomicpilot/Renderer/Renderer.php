@@ -193,12 +193,17 @@ class Renderer
             $this->content = [];
             $this->links = [];
             krsort($tagPosts);
+            $genericTags = [];
             foreach ( $tagPosts as $tagPost )
             {
                 $this->post = $tagPost;
                 $this->content[$this->post->getPublishedDatetime()] = TemplateStrings::getSmallArticleText($this);
                 $this->links[$this->post->getPublishedDatetime()]   = TemplateStrings::getSideLinkText($this);
+                $genericTags = array_merge($genericTags, $this->post->getTags());
             }
+            $this->post->setTitle($tag." Tag Page");
+            $this->post->setTags($genericTags);
+
             $output = TemplateStrings::getMainTemplateText($this);
             file_put_contents(getcwd()."$cp/Tags/$tag.html", $output);
         }
@@ -223,6 +228,8 @@ class Renderer
                 $this->content[$this->post->getPublishedDatetime()] = TemplateStrings::getSmallArticleText($this);
                 $this->links[$this->post->getPublishedDatetime()]   = TemplateStrings::getSideLinkText($this);
             }
+            $this->post->setTitle($this->post->getCategory()." Category Page");
+            $this->post->setTags([$this->post->getCategory()]);
             $output = TemplateStrings::getMainTemplateText($this);
             file_put_contents(getcwd()."$cp/Categories/$category.html", $output);
         }
