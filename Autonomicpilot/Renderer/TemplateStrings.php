@@ -183,7 +183,7 @@ MT;
         return <<<"PC"
 <?php
 namespace Post;
-use \Autonomicpilot\Post as Post;
+use \Autonomicpilot\Renderer\Post as Post;
 class {$renderer->getClassname()} extends Post
 {
     /**

@@ -4,7 +4,6 @@
         <title>Autonomicpilot</title>
         <link rel="stylesheet" type="text/css" href="/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/css/site.css" />
-        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Press+Start+2P' />
         <script type="text/javascript">
             var dsloaded = false;
             var disqus_div = 'disqus_thread';
@@ -31,12 +30,6 @@
             _gaq.push(['_setAccount', 'UA-16183577-1']);
             _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-
         </script>
     </head>
     <body>
@@ -48,17 +41,17 @@
             </div>
             <div id="top_nav">
                 <div class="box0n float_left third_width"><a href="/">Home</a></div>
-                <div class="box0n float_left third_width"><a href="/Blog/">Blog</a></div>
-                <div class="box0n float_left third_width"><a href="/cv">CV</a></div>
+                <div class="box0n float_left third_width"><a href="/blog/">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
                 <br class="clear_both" />
             </div>
             <div id="content_outer">
                 <div id="left" class="float_left">
                     <div class="article_link box0n">
-                        <a class="article_link_main" href='/Blog/ZSAAndZFCUser.html'>&nbsp;</a>
+                        <a class="article_link_main" href='/blog/Posts/ZSAAndG403Translator.html'>&nbsp;</a>
                         <div class="article_link_text">
-                            <a href="/Blog/#ZSAAndZFCUser">ZSAAndZFCUser</a><br />
-                            15/07/12 15:58:14        <a href="/Blog/Categories/Uncategorised.html">Uncategorised</a><br />
+                            <a href="/blog/#ZSAAndG403Translator">ZSAAndG403Translator</a><br />
+                            27/08/12 15:37:10        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
                         </div>
                         <br class="clear_both" />
                         <div class="article_tags">
@@ -68,25 +61,42 @@
                 </div>
                 <div id="main" class="float_left">
                     <div>
-                    <div class="article_content box0n" id="ZSAAndZFCUser">
-                        <h1 class="article_title"><a href="/Blog/ZSAAndZFCUser.html">ZSAAndZFCUser</a></h1>
-                        <p>So I've been playing a lot with <a href="https://github.com/zendframework/zf2/">zf2</a> recently and inspired by <a href="http://blog.evan.pro/getting-started-with-the-zf2-skeleton-and-zfcuser">EvanDotPro's post</a> on getting things working using pure git I thought I'd throw one up using composer+git.</p>
+                    <div class="article_content box0n" id="ZSAAndG403Translator">
+                        <h1 class="article_title"><a href="/blog/Posts/ZSAAndG403Translator.html">ZSAAndG403Translator</a></h1>
+                        <p>I recently had need to do some translations with ZF2, the current state of ZF2 means that you can only load translations from files so I decided to take this oppertunity to experiment with creating my own module for doing it.</p>
 
-<p>So after forking the <a href="https://github.com/zendframework/ZendSkeletonApplication">Zend Skeleton Application</a> I got one with working with it locally, I cloned the remote repo and checked out a new branch for playing with <img src="http://autonomicpilot.co.uk/caps/e73ec8.png" alt="zsa cloning" /></p>
+<p><a href="http://www.dasprids.de/blog/2012/08/23/feeding-zend-i18n-translator-from-a-database">DASPRiD</a> had already had a bash at creating something for this but unfortunately it didn't work, I was able to take the code and work with it to produce this module.</p>
 
-<p>I then edited the composer.json file to fetch <a href="https://github.com/ZF-Commons/ZfcUser">ZfcUser</a> which in turn fetches <a href="https://github.com/ZF-Commons/ZfcBase">ZfcBase</a> like this <img src="http://autonomicpilot.co.uk/caps/3d49ea.png" alt="zsa composer.json editing" /></p>
+<p>There's a generic <a href="https://github.com/zendframework/ZendSkeletonModule">Zend Skeleton Module</a> which I cloned locally and created my own <a href="https://github.com/gabriel403/G403Translator">GitHub repo</a> for storing the final product. It's also punlished in <a href="http://packagist.org/packages/gabriel403/g403-translator">Packagist</a> so it's dead easy to install.</p>
 
-<p>I then proceeded to get composer to install Zend Framework as well as the other dependencies list (zfuser etc) <img src="http://autonomicpilot.co.uk/caps/7c7105.png" alt="composer install" /></p>
+<p>So first we fork or clone the ZendSkeleton Application and then checkout a new branch to work on<br />
+<img src="http://autonomicpilot.co.uk/caps/ad4c7e.png" alt="" /><br />
+we edited the composer.json to get the latest version of ZF2 and also to fetch our G403Translation module<br />
+<img src="http://autonomicpilot.co.uk/caps/cb8da4.png" alt="composer.json file" /></p>
 
-<p>And it all worked lovely, using just php's inbuilt webserver. <img src="http://autonomicpilot.co.uk/caps/03d9e2.png" alt="phps webserver" /> <img src="http://autonomicpilot.co.uk/caps/256488.png" alt="zsa initial load" /></p>
+<p>Then we get composer to install our modules for us 
+<img src="http://autonomicpilot.co.uk/caps/973717.png" alt="composer install command" /></p>
 
-<p>I then added the new modules to application configuration <img src="http://autonomicpilot.co.uk/caps/888d7e.png" alt="application config for new mods" />. You may be thinking there's some trickery going on the get zf-commons/zfc-user loading as ZfcUser, and you'd be right <img src="http://autonomicpilot.co.uk/caps/2fa6e8.png" alt="zfc trickery" /></p>
+<p>After that we set up our db and user and imported our SQL that's in the README.md for the module <img src="http://autonomicpilot.co.uk/caps/31434f.png" alt="sql" /> Here we're using custom table names, the default assumed within the module are zend_locale and zend_translate_message.</p>
 
-<p>And then I set up the sqlite db using the schema that comes with ZfcUer <img src="http://autonomicpilot.co.uk/caps/351dc9.png" alt="sqlite schema setup" /> and added the file for local database configuration <img src="http://autonomicpilot.co.uk/caps/49d299.png" alt="db config" /></p>
+<p>Then we set up the db connection within the code itself 
+<img src="http://autonomicpilot.co.uk/caps/811988.png" alt="db connection config file" /><br />
+this file is within config/autoload/ and also another file for setting up the translator, as with all configs this can be done in a module config or in the config/autoload/ directory in this example inside the autload config 
+<img src="http://autonomicpilot.co.uk/caps/d4a006.png" alt="translator config file" /></p>
 
-<p>The next time I ran the webserver I was able to navigat to /user and get to a lovely login page! <img src="http://autonomicpilot.co.uk/caps/76a23d.png" alt="zfcuser login page" /></p>
+<p>We then insert some data into the tables</p>
 
-<p>It was all just that easy to get going!</p>
+<p><img src="http://autonomicpilot.co.uk/caps/d24bcf.png" alt="locale table" />
+<img src="http://autonomicpilot.co.uk/caps/0804cf.png" alt="messages table" /></p>
+
+<p>And we can see the change in our Zend Skeleton Application from
+<img src="http://autonomicpilot.co.uk/caps/c12fb6.png" alt="Original ZSA" /> 
+to
+<img src="http://autonomicpilot.co.uk/caps/fb2cdb.png" alt="New ZSA" /></p>
+
+<p>Tah dah!</p>
+
+<p>To learn a bit about plurals read <a href="http://translate.sourceforge.net/wiki/l10n/pluralforms">here.</a></p>
 
                     </div>
                     </div>
@@ -95,16 +105,17 @@
                     <div class="box0n">
                         <h2>Tags</h2>
                         <br />
-        <a href="/Blog/Tags/html.html">html</a>:2        <a href="/Blog/Tags/responsive.html">responsive</a>:1        <a href="/Blog/Tags/php.html">php</a>:1        <a href="/Blog/Tags/noframework.html">noframework</a>:1        <a href="/Blog/Tags/blog.html">blog</a>:2
+        <a href="/blog/Tags/html.html">html</a>:2        <a href="/blog/Tags/responsive.html">responsive</a>:1        <a href="/blog/Tags/php.html">php</a>:1        <a href="/blog/Tags/noframework.html">noframework</a>:1        <a href="/blog/Tags/blog.html">blog</a>:2        <a href="/blog/Tags/zf2.html">zf2</a>:1        <a href="/blog/Tags/zfc.html">zfc</a>:1        <a href="/blog/Tags/composer.html">composer</a>:1
                     </div>
                     <div class="box0n">
                         <h2>Categories</h2>
                         <br />
-        <a href="/Blog/Categories/blog.html">blog</a><br />        <a href="/Blog/Categories/readme.html">readme</a><br />        <a href="/Blog/Categories/Uncategorised.html">Uncategorised</a><br />
+        <a href="/blog/Categories/blog.html">blog</a><br />        <a href="/blog/Categories/ZF2.html">ZF2</a><br />        <a href="/blog/Categories/readme.html">readme</a><br />        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
                     </div>
                 </div>
                 <br class="clear_both" />
             </div>
         </div>
+        <script type="text/javascript" src="/js/ga.js"></script>
     </body>
 </html>

@@ -67,6 +67,26 @@
                         <div class="article_tags">
                                 <a href="/blog/Tags/zf2.html">zf2</a>        <a href="/blog/Tags/zfc.html">zfc</a>        <a href="/blog/Tags/composer.html">composer</a>
                         </div>
+                    </div>                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/blog/Posts/BlogIntro.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/blog/#BlogIntro">Blog Introduction</a><br />
+                            07/07/12 23:48:30        <a href="/blog/Categories/blog.html">blog</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                                <a href="/blog/Tags/html.html">html</a>        <a href="/blog/Tags/responsive.html">responsive</a>        <a href="/blog/Tags/php.html">php</a>        <a href="/blog/Tags/noframework.html">noframework</a>        <a href="/blog/Tags/blog.html">blog</a>
+                        </div>
+                    </div>                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/blog/Posts/README.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/blog/#README">Readme/Changes File</a><br />
+                            23/06/12 20:40:02        <a href="/blog/Categories/readme.html">readme</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                                <a href="/blog/Tags/html.html">html</a>        <a href="/blog/Tags/blog.html">blog</a>
+                        </div>
                     </div>
                 </div>
                 <div id="main" class="float_left">
@@ -108,30 +128,9 @@ to
 
 <p>To learn a bit about plurals read <a href="http://translate.sourceforge.net/wiki/l10n/pluralforms">here.</a></p>
 
-                    </div>                    <div class="article_content box0n" id="ZSAAndZFCUser">
-                        <h1 class="article_title"><a href="/blog/Posts/ZSAAndZFCUser.html">ZSA And ZFCUser</a></h1>
-                        <p>So I've been playing a lot with <a href="https://github.com/zendframework/zf2/">zf2</a> recently and inspired by <a href="http://blog.evan.pro/getting-started-with-the-zf2-skeleton-and-zfcuser">EvanDotPro's post</a> on getting things working using pure git I thought I'd throw one up using composer+git.</p>
-
-<p>So after forking the <a href="https://github.com/zendframework/ZendSkeletonApplication">Zend Skeleton Application</a> I got one with working with it locally, I cloned the remote repo and checked out a new branch for playing with <img src="http://autonomicpilot.co.uk/caps/e73ec8.png" alt="zsa cloning" /></p>
-
-<p>I then edited the composer.json file to fetch <a href="https://github.com/ZF-Commons/ZfcUser">ZfcUser</a> which in turn fetches <a href="https://github.com/ZF-Commons/ZfcBase">ZfcBase</a> like this <img src="http://autonomicpilot.co.uk/caps/3d49ea.png" alt="zsa composer.json editing" /></p>
-
-<p>I then proceeded to get composer to install Zend Framework as well as the other dependencies list (zfuser etc) <img src="http://autonomicpilot.co.uk/caps/7c7105.png" alt="composer install" /></p>
-
-<p>And it all worked lovely, using just php's inbuilt webserver. <img src="http://autonomicpilot.co.uk/caps/03d9e2.png" alt="phps webserver" /> <img src="http://autonomicpilot.co.uk/caps/256488.png" alt="zsa initial load" /></p>
-
-<p>I then added the new modules to application configuration <img src="http://autonomicpilot.co.uk/caps/888d7e.png" alt="application config for new mods" />. You may be thinking there's some trickery going on the get zf-commons/zfc-user loading as ZfcUser, and you'd be right <img src="http://autonomicpilot.co.uk/caps/2fa6e8.png" alt="zfc trickery" /></p>
-
-<p>And then I set up the sqlite db using the schema that comes with ZfcUer <img src="http://autonomicpilot.co.uk/caps/351dc9.png" alt="sqlite schema setup" /> and added the file for local database configuration <img src="http://autonomicpilot.co.uk/caps/49d299.png" alt="db config" /></p>
-
-<p>The next time I ran the webserver I was able to navigate to /user and get to a lovely login page.</p>
-
-<p><img src="http://autonomicpilot.co.uk/caps/76a23d.png" alt="zfcuser login page" /></p>
-
-<p>It was all just that easy to get going!</p>
-
-<p>Have a look on <a href="https://github.com/gabriel403/ZendSkeletonApplication/tree/ZFCUser">github</a></p>
-
+                        <a href="#" onclick="showthatshizzle();return false;">Comments</a>
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     </div>
                     </div>
                 </div>
