@@ -92,11 +92,13 @@ MA;
     public static function getMainTemplateText(Renderer $renderer)
     {
         $config = Config::getInstance();
+        $tags = implode(', ', $renderer->post->getTags());
         return <<<"MT"
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{$config->Post->prepended_title}</title>
+        <title>{$config->Post->prepended_title} - {$renderer->post->getTitle()}</title>
+        <meta name="description=" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. {$tags}"></meta>
         <link rel="stylesheet" type="text/css" href="{$config->site->css_path}reset.css" />
         <link rel="stylesheet" type="text/css" href="{$config->site->css_path}site.css" />
         <script type="text/javascript">

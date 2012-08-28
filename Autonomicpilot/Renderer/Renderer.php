@@ -168,6 +168,9 @@ class Renderer
         krsort($this->content);
         krsort($this->links);
 
+        $this->post->setTitle("Blog");
+        $this->post->setTags([]);
+
         $output = TemplateStrings::getMainTemplateText($this);
         if ( file_exists(getcwd()."$cp/index.html") ) {
             unlink(getcwd()."$cp/index.html");
