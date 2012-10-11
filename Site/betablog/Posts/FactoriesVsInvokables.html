@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autonomicpilot - FactoriesVsInvokables</title>
+        <meta name="description=" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. "></meta>
+        <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="/css/site.css" />
+        <script type="text/javascript">
+            var dsloaded = false;
+            var disqus_div = 'disqus_thread';
+            function showthatshizzle() {
+                var disqus_shortname = 'autonomicpilot';
+
+                if ( dsloaded )
+                {
+                    return;
+                }
+
+                dsloaded = true;
+
+                document.getElementById(disqus_div).style.display = 'block';
+
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            }
+        </script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-16183577-1']);
+            _gaq.push(['_trackPageview']);
+
+        </script>
+    </head>
+    <body>
+        <div id="main_box">
+            <div id="header">
+                <a href='/'>&nbsp;</a>
+                <div>The 8-bit ramblings of a rabid mind</div>
+                <br class="clear_both" />
+            </div>
+            <div id="top_nav">
+                <div class="box0n float_left third_width"><a href="/">Home</a></div>
+                <div class="box0n float_left third_width"><a href="/blog/">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
+                <br class="clear_both" />
+            </div>
+            <div id="content_outer">
+                <div id="left" class="float_left">
+                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/blog/Posts/FactoriesVsInvokables.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/blog/#FactoriesVsInvokables">FactoriesVsInvokables</a><br />
+                            11/10/12 14:55:54        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/blog/Posts/ZSAAndDojoStoreJsonRest.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/blog/#ZSAAndDojoStoreJsonRest">ZSAAndDojoStoreJsonRest</a><br />
+                            05/10/12 20:38:09        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/blog/Posts/ZSAZFUserBjyAuth.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/blog/#ZSAZFUserBjyAuth">ZSAZFUserBjyAuth</a><br />
+                            10/08/12 22:27:24        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>
+                </div>
+                <div id="main" class="float_left">
+                    <div>
+                    <div class="article_content box0n" id="FactoriesVsInvokables">
+                        <h1 class="article_title"><a href="/blog/Posts/FactoriesVsInvokables.html">FactoriesVsInvokables</a></h1>
+                        <p>These are just some quick notes really, just for some future reference.</p>
+
+<h1>Invokables</h1>
+
+<p>No deps, can just be instantiated when needed, like controllers normally have no direct dependencies that are required during construction.</p>
+
+<h1>Factories</h1>
+
+<p>Dependent on other objects that need fetching before instantiating can occur, a factory can be a closure straight in the config (but this stops caching), in the module.php or as concrete classes implementing the FactoryInterface.</p>
+
+<p>The concrete class way is best when you're doing some fairly substancial work, you implement the createService method (which takes a servicelocatorinterface object), you retrieve other objects from the servicemanager (invokables or factories) and then return an instance or some object as a result.</p>
+
+<p>And that's it!</p>
+
+                        <a href="#" onclick="showthatshizzle();return false;">Comments</a>
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+                    </div>
+                </div>
+                <div id="right" class="float_left">
+                    <div class="box0n">
+                        <h2>Tags</h2>
+                        <br />
+        <a href="/blog/Tags/html.html">html</a>:2        <a href="/blog/Tags/responsive.html">responsive</a>:1        <a href="/blog/Tags/php.html">php</a>:1        <a href="/blog/Tags/noframework.html">noframework</a>:1        <a href="/blog/Tags/blog.html">blog</a>:2        <a href="/blog/Tags/zf2.html">zf2</a>:2        <a href="/blog/Tags/zfc.html">zfc</a>:1        <a href="/blog/Tags/composer.html">composer</a>:2        <a href="/blog/Tags/translation.html">translation</a>:1
+                    </div>
+                    <div class="box0n">
+                        <h2>Categories</h2>
+                        <br />
+        <a href="/blog/Categories/blog.html">blog</a><br />        <a href="/blog/Categories/ZF2.html">ZF2</a><br />        <a href="/blog/Categories/readme.html">readme</a><br />        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
+                    </div>
+                </div>
+                <br class="clear_both" />
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/ga.js"></script>
+    </body>
+</html>

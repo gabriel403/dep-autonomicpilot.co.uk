@@ -1,3 +1,6 @@
+ZSA And Db Driven Translation
+=============================
+
 I recently had need to do some translations with ZF2, the current state of ZF2 means that you can only load translations from files so I decided to take this oppertunity to experiment with creating my own module for doing it.
 
 [DASPRiD](http://www.dasprids.de/blog/2012/08/23/feeding-zend-i18n-translator-from-a-database) had already had a bash at creating something for this but unfortunately it didn't work, I was able to take the code and work with it to produce this module.

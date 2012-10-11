@@ -13,5 +13,7 @@ $ar->preRenderConsumption()
 ->renderMainPage()
 ->renderArticlePages()
 ->renderTagPages()
-->renderCategoryPages();
+->renderCategoryPages()
+->renderMainPage('beta')
+->renderArticlePages('beta');
 

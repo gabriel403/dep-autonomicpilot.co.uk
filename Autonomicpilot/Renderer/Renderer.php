@@ -131,11 +131,11 @@ class Renderer
      * 
      * @return void
      */
-    public function renderMainPage()
+    public function renderMainPage($type = "")
     {
+        $this->links = [];
         $config = Config::getInstance();
         $pp = $config->Post->post_path;
-        $cp = $config->Post->content_path;
 
         foreach ($this->posts as $filename => $markdown) {
             $this->classname = $filename;
@@ -147,9 +147,19 @@ class Renderer
             $class          = "Post\\$filename";
 
             $this->post     = new $class();
-
-            if ( !$this->post->getIsPublished() ) {
-                continue;
+            switch($type) {
+                case "beta":
+                    if ( $this->post->getIsPublished() ) {
+                        continue 2;
+                    }
+                    $cp = $config->Post->beta_content_path;
+                    break;
+                default:
+                    if ( !$this->post->getIsPublished() ) {
+                        continue 2;
+                    }
+                    $cp = $config->Post->content_path;
+                    break;
             }
 
             if ( "" !== $this->post->getCategory()) 
@@ -240,25 +250,38 @@ class Renderer
      * 
      * @return void
      */
-    public function renderArticlePages()
+    public function renderArticlePages($type = '')
     {
         $config = Config::getInstance();
 
-        $cp = $config->Post->content_path;
 
         foreach ($this->posts as $filename => $markdown) {
+
+            $cp = $config->Post->content_path;
 
             $class          = "Post\\$filename";
 
             $this->post     = new $class();
-
-            if ( !$this->post->getIsPublished() ) 
+            switch($type) {
+                case "beta":
+                    var_dump("betabetabeta");
+                    if ( $this->post->getIsPublished() ) {
+                        var_dump("skip to the loo");
+                        continue 2;
+                    }
+                    $cp = $config->Post->beta_content_path;
+                    break;
+                default:
+                    var_dump("defaultdefaultdefault");
+                    if ( !$this->post->getIsPublished() ) {
+                        var_dump("skip to the loo too");
+                        continue 2;
+                    }
+                    break;
+            } 
+            if ( file_exists(getcwd()."$cp/Posts/$filename.html") )
             {
-                if ( file_exists(getcwd()."$cp/Posts/$filename.html") )
-                {
-                    unlink(getcwd()."$cp/Posts/$filename.html");
-                }
-                continue;
+                unlink(getcwd()."$cp/Posts/$filename.html");
             }
 
             $this->content  = [TemplateStrings::getMainArticleText($this)];
