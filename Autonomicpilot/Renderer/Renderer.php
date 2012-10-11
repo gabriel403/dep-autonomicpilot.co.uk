@@ -264,17 +264,13 @@ class Renderer
             $this->post     = new $class();
             switch($type) {
                 case "beta":
-                    var_dump("betabetabeta");
                     if ( $this->post->getIsPublished() ) {
-                        var_dump("skip to the loo");
                         continue 2;
                     }
                     $cp = $config->Post->beta_content_path;
                     break;
                 default:
-                    var_dump("defaultdefaultdefault");
                     if ( !$this->post->getIsPublished() ) {
-                        var_dump("skip to the loo too");
                         continue 2;
                     }
                     break;
