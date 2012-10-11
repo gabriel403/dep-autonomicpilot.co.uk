@@ -49,16 +49,6 @@
             <div id="content_outer">
                 <div id="left" class="float_left">
                     <div class="article_link box0n">
-                        <a class="article_link_main" href='/blog/Posts/FactoriesVsInvokables.html'>&nbsp;</a>
-                        <div class="article_link_text">
-                            <a href="/blog/#FactoriesVsInvokables">FactoriesVsInvokables</a><br />
-                            11/10/12 14:55:54        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
-                        </div>
-                        <br class="clear_both" />
-                        <div class="article_tags">
-                        
-                        </div>
-                    </div>                    <div class="article_link box0n">
                         <a class="article_link_main" href='/blog/Posts/ZSAAndDojoStoreJsonRest.html'>&nbsp;</a>
                         <div class="article_link_text">
                             <a href="/blog/#ZSAAndDojoStoreJsonRest">ZSAAndDojoStoreJsonRest</a><br />
@@ -82,24 +72,7 @@
                 </div>
                 <div id="main" class="float_left">
                     <div>
-                    <div class="article_content box0n" id="FactoriesVsInvokables">
-                        <h1 class="article_title"><a href="/blog/Posts/FactoriesVsInvokables.html">FactoriesVsInvokables</a></h1>
-                        <p>These are just some quick notes really, just for some future reference.</p>
-
-<h1>Invokables</h1>
-
-<p>No deps, can just be instantiated when needed, like controllers normally have no dependencies that are required during construction or required before the object can work properly, even if set via setters.</p>
-
-<h1>Factories</h1>
-
-<p>Dependent on other objects that need fetching before the object will work properly, even if these are set via setters rather than during construction. A factory can be a closure straight in the config (but this stops caching), in the module.php or as concrete classes. These classes are either invokable via __invoke or implement the FactoryInterface.</p>
-
-<p>The concrete class way is best when you're doing some fairly substancial work.
-You can either implement the FactoryInterface and then the createService method (which takes a servicelocatorinterface object) or just make the class invokable by implementing __invoke (which also takes the sm in). You can then retrieve other objects from the servicemanager (invokables or factories) and then return an instance of some object, of a singluar type per factory, as a result.</p>
-
-<p>And that's it!</p>
-
-                    </div>                    <div class="article_content box0n" id="ZSAAndDojoStoreJsonRest">
+                    <div class="article_content box0n" id="ZSAAndDojoStoreJsonRest">
                         <h1 class="article_title"><a href="/blog/Posts/ZSAAndDojoStoreJsonRest.html">ZSAAndDojoStoreJsonRest</a></h1>
                         <h1>Zend Framework 2 And Dojo/Store/JsonRest</h1>
 
@@ -224,109 +197,22 @@ http://autonomicpilot.co.uk/caps/0bebb3.png</p>
 
 <p>There is a controller plugin but it does pretty much the same as we already do, rather than restricting access inside the controller it's another way of checking if the user is allowed.</p>
 
-                    </div>                    <div class="article_content box0n" id="README">
-                        <h1 class="article_title"><a href="/blog/Posts/README.html">blog Tag Page</a></h1>
-                        <h1>autonomicpilot.co.uk</h1>
+                    </div>                    <div class="article_content box0n" id="FactoriesVsInvokables">
+                        <h1 class="article_title"><a href="/blog/Posts/FactoriesVsInvokables.html">FactoriesVsInvokables</a></h1>
+                        <p>These are just some quick notes really, just for some future reference.</p>
 
-<h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
+<h1>Invokables</h1>
 
-<p>Content is written in markdown files in the Post folder, if extended properties are needed these can be placed in a php file of the same name which extends the Post abstract, if this is not provided it will be generated and initially set post created time as time() and the blog entry title as the filename.
-Running the GenerateAll.php file will parse the markdown files and render them into static html files inside the content directory.
-It will also create the central index.html with all blog entries listed shown in brief as well as a list of links on lhs to individual blog entries.</p>
+<p>No deps, can just be instantiated when needed, like controllers normally have no dependencies that are required during construction or required before the object can work properly, even if set via setters.</p>
 
-<p>Requirements:
-PHP5.4 on the rendering system.
-Simple HTML server for hosting the site.</p>
+<h1>Factories</h1>
 
-<p>CHANGELOG:</p>
+<p>Dependent on other objects that need fetching before the object will work properly, even if these are set via setters rather than during construction. A factory can be a closure straight in the config (but this stops caching), in the module.php or as concrete classes. These classes are either invokable via __invoke or implement the FactoryInterface.</p>
 
-<p>0.6.1</p>
+<p>The concrete class way is best when you're doing some fairly substancial work.
+You can either implement the FactoryInterface and then the createService method (which takes a servicelocatorinterface object) or just make the class invokable by implementing __invoke (which also takes the sm in). You can then retrieve other objects from the servicemanager (invokables or factories) and then return an instance of some object, of a singluar type per factory, as a result.</p>
 
-<ul>
-<li>twitter feed on front page</li>
-<li>Font's hosted locally</li>
-</ul>
-
-<p>0.6</p>
-
-<ul>
-<li>Reworked directories to seperate out the posts from the rendered html from the rendering library to potentially move the rendering library into it's own repo</li>
-<li>Added gitignore for caps dir and handler.php</li>
-<li>Added isPublished with default to false in the post abstract</li>
-<li>Reworked markdown and markdown extra classes into PSR-0 compliance</li>
-<li>Made paths in config relative to base path and used getcwd for them</li>
-<li>Converted markdown php4 style constructors to php5</li>
-<li>Fluent interface for renderer</li>
-</ul>
-
-<p>0.5.3</p>
-
-<ul>
-<li>Changed krsort to ksort</li>
-</ul>
-
-<p>0.5.2</p>
-
-<ul>
-<li>Reworked disqus into single articles only</li>
-<li>Tweaks to css</li>
-</ul>
-
-<p>0.5.1</p>
-
-<ul>
-<li>Responsive CSS</li>
-<li>Initial attempt at disqus</li>
-</ul>
-
-<p>0.5</p>
-
-<ul>
-<li>Added disqus commenting system</li>
-<li>Moved disqus' js loading to an onclick</li>
-<li>Added some codesniffer stuff</li>
-</ul>
-
-<p>0.4</p>
-
-<ul>
-<li>Reworked backend to be more object oriented</li>
-<li>Reworked backend classnames to use namespaces</li>
-<li>Removed template files and converted to static strings &amp; heredocs using properties</li>
-<li>Added some basic phpdoc</li>
-<li>Added some basic configuration</li>
-<li>Renamed the content dir to Content</li>
-<li>Centralised generation into a single script and moved generation files into a single Renderer file</li>
-<li>Posts now sort by date of creation in descending order</li>
-<li>Post titles are now read to create links, and also header inside the post</li>
-<li>#refs inside individual entries now return to main page to go to anchors</li>
-<li>Replaced hardcoded directory refs to config refs</li>
-</ul>
-
-<p>0.3</p>
-
-<ul>
-<li>Reluctantly added abstract properties file associated with the markdown files.</li>
-<li>Added properties file generator</li>
-<li>Implemented psr-0 autoloader</li>
-<li>Renamed markdown directory to Post directory</li>
-<li>Added more UI work, logo, css, reworked links</li>
-<li>Reworked generator</li>
-</ul>
-
-<p>0.2</p>
-
-<ul>
-<li>Reworked include system for main page.</li>
-<li>Added links to blog post on side bar.</li>
-<li>Improved some ui.</li>
-</ul>
-
-<p>0.1</p>
-
-<ul>
-<li>Initial work done on markdown parsing into html.</li>
-</ul>
+<p>And that's it!</p>
 
                     </div>
                     </div>

@@ -9,6 +9,7 @@ class FactoriesVsInvokables extends Post
     public function __construct()
     {
         parent::__construct();
+        $this->isPublished = true;
         $this->publishedTime = 1349967354;
         $this->filename = "FactoriesVsInvokables";
         $this->title = "FactoriesVsInvokables";

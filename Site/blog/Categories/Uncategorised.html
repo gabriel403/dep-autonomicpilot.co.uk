@@ -49,26 +49,6 @@
             <div id="content_outer">
                 <div id="left" class="float_left">
                     <div class="article_link box0n">
-                        <a class="article_link_main" href='/blog/Posts/ZSAZFUserBjyAuth.html'>&nbsp;</a>
-                        <div class="article_link_text">
-                            <a href="/blog/#ZSAZFUserBjyAuth">ZSAZFUserBjyAuth</a><br />
-                            10/08/12 22:27:24        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
-                        </div>
-                        <br class="clear_both" />
-                        <div class="article_tags">
-                        
-                        </div>
-                    </div>                    <div class="article_link box0n">
-                        <a class="article_link_main" href='/blog/Posts/ZSAAndDojoStoreJsonRest.html'>&nbsp;</a>
-                        <div class="article_link_text">
-                            <a href="/blog/#ZSAAndDojoStoreJsonRest">ZSAAndDojoStoreJsonRest</a><br />
-                            05/10/12 20:38:09        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
-                        </div>
-                        <br class="clear_both" />
-                        <div class="article_tags">
-                        
-                        </div>
-                    </div>                    <div class="article_link box0n">
                         <a class="article_link_main" href='/blog/Posts/FactoriesVsInvokables.html'>&nbsp;</a>
                         <div class="article_link_text">
                             <a href="/blog/#FactoriesVsInvokables">FactoriesVsInvokables</a><br />
@@ -82,144 +62,20 @@
                 </div>
                 <div id="main" class="float_left">
                     <div>
-                    <div class="article_content box0n" id="ZSAZFUserBjyAuth">
-                        <h1 class="article_title"><a href="/blog/Posts/ZSAZFUserBjyAuth.html">ZSAZFUserBjyAuth</a></h1>
-                        <p>After getting zfuser working well with zsa I wanted to try and get something ACL-like working.</p>
-
-<p>The ZFCACL is a bit out of date BjyAuthentication was recommended as a decent alternative.</p>
-
-<p>http://autonomicpilot.co.uk/caps/1c9cbe.png</p>
-
-<p>http://autonomicpilot.co.uk/caps/c11bbc.png
-don't strictly need zfc-user as bjyauth installs it, but as this is an extension of the previous I left it in</p>
-
-<p>http://autonomicpilot.co.uk/caps/8758cd.png</p>
-
-<p>http://autonomicpilot.co.uk/caps/5ecceb.png</p>
-
-<p>http://autonomicpilot.co.uk/caps/d8c82e.png</p>
-
-<p>http://autonomicpilot.co.uk/caps/a2fe19.png</p>
-
-<p>install and enable intl php extension</p>
-
-<p>enable modules
-http://autonomicpilot.co.uk/caps/aa5361.png</p>
-
-<p>add db config
-http://autonomicpilot.co.uk/caps/3e5c0b.png</p>
-
-<p>and we have a working users page
-http://autonomicpilot.co.uk/caps/76a23d.png</p>
-
-<p>and working registration
-http://autonomicpilot.co.uk/caps/de9e0e.png</p>
-
-<p>Next up we want to get the autorisation working, so we can restrict access to certain areas.
-http://autonomicpilot.co.uk/caps/5dcb94.png
-The first sections specify providers for how to get current user access etc, we also set up our list of roles, so guest, user with admin extending user, it can also be setup to load roles from the db we set up earlier.
-We add a default guard which blocks all access to all controller actions by default :
-http://autonomicpilot.co.uk/caps/ec61a4.png
-http://autonomicpilot.co.uk/caps/6e0eeb.png as you can see we also restrict access to the users controller, which is no good for registering people, so we modify the guard to allow access to actions in the zfcuser controller
-http://autonomicpilot.co.uk/caps/99cc3e.png
-this allows all roles to access all actions in the zfcuser controller, if wanted we could restrict so only certain actions are allowed like this
-http://autonomicpilot.co.uk/caps/5d71c5.png
-thus we gain access to the user controller for login and registering
-http://autonomicpilot.co.uk/caps/0bebb3.png</p>
-
-<p>There is a controller plugin but it does pretty much the same as we already do, rather than restricting access inside the controller it's another way of checking if the user is allowed.</p>
-
-                    </div>                    <div class="article_content box0n" id="ZSAAndDojoStoreJsonRest">
-                        <h1 class="article_title"><a href="/blog/Posts/ZSAAndDojoStoreJsonRest.html">ZSAAndDojoStoreJsonRest</a></h1>
-                        <h1>Zend Framework 2 And Dojo/Store/JsonRest</h1>
-
-<p>We work mainly with dojo at Go MAD Tech and a few of the prototypes I've been working on use json stores, so it seemed an obvious choice to go for using the Dojo/Store/JsonRest implementation for moving the prototypes into the real world. It means I don't have to worry too much about setting up the xhr myself and leave it all to dojo to deal with.</p>
-
-<p>So this entry will cover setting up dojo 1.8 in the Zend Framework 2 skeleton application, setting up a simple RESTful controller and some javascript to test out the dojo store and the zf2 rest controller.</p>
-
-<p>So we setup the zsa as normal using composer
-http://autonomicpilot.co.uk/caps/f9e06d.png</p>
-
-<p>As we're just doing this as an example we'll use the dojo CDN
-http://autonomicpilot.co.uk/caps/cff75d.png
-and configure dojo
-http://autonomicpilot.co.uk/caps/8ee8a4.png</p>
-
-<p>We then need to add a new controller that implements the abstract restful controller
-http://autonomicpilot.co.uk/caps/d93cf8.png</p>
-
-<p>We'll keep this simple and knock out some fake responses in a bit.</p>
-
-<p>We need to allow access to the controller so we add a new child route to the application config for the rest controller
-http://autonomicpilot.co.uk/caps/a76aa4.png</p>
-
-<p>We then need to add the rest controller to our controller's invokables array
-http://autonomicpilot.co.uk/caps/884cfa.png</p>
-
-<p>and then add the JsonViewStrategy to the view_manager configuration, this enables the JsonModel to work without phtml files for automatic json encoding and not displaying the layout
-http://autonomicpilot.co.uk/caps/c1d87d.png</p>
-
-<p>We then add json handling in our controller
-http://autonomicpilot.co.uk/caps/ec91f7.png</p>
-
-<p>And we can test this action with curl from the command line
-http://autonomicpilot.co.uk/caps/8c3e4a.png</p>
-
-<p>Add some fake data
-http://autonomicpilot.co.uk/caps/94aff6.png
-and test from the command line again
-http://autonomicpilot.co.uk/caps/0503a6.png</p>
-
-<p>And then put some more dummy responses into our controller</p>
-
-<p>Add a custom not found action to the controller that returns a json error
-http://autonomicpilot.co.uk/caps/38facd.png</p>
-
-<p>First a get with an id param
-http://autonomicpilot.co.uk/caps/df3f86.png
-and test
-http://autonomicpilot.co.uk/caps/1b7747.png
-and test failure
-http://autonomicpilot.co.uk/caps/1b79f2.png</p>
-
-<p>This will be enough for for testing with the Dojo/Store/JsonRest
-as our config puts our zsa dojo modules in /js/zsa we create our file there, 
-this file could be spread over an mvc setup, but just the one file for now.</p>
-
-<p>We declare our module with a constructor and mix any properties passed into it into itself.
-http://autonomicpilot.co.uk/caps/4201a8.png</p>
-
-<p>We then call our functions for setting up the dom, then creating the store and finally for setting up the select dijit.
-And then we write those functions ;)</p>
-
-<p>We setup a container node inside the phtml file and then assign that in our js to a member variable.
-http://autonomicpilot.co.uk/caps/858067.png
-http://autonomicpilot.co.uk/caps/7bcd04.png</p>
-
-<p>Create a Dojo/Store/JsonRest instance and set the url to point to our rest controller.
-http://autonomicpilot.co.uk/caps/ce1cb2.png</p>
-
-<p>Then create an nstance of our select and pass it our JsonRest store and place it inside our node.
-http://autonomicpilot.co.uk/caps/6bb132.png</p>
-
-<p>We create a launcher file that we use to instantiate our modules further.
-http://autonomicpilot.co.uk/caps/d106b9.png
-and append it to our head scripts
-http://autonomicpilot.co.uk/caps/2c61f6.png</p>
-
-                    </div>                    <div class="article_content box0n" id="FactoriesVsInvokables">
+                    <div class="article_content box0n" id="FactoriesVsInvokables">
                         <h1 class="article_title"><a href="/blog/Posts/FactoriesVsInvokables.html">FactoriesVsInvokables</a></h1>
                         <p>These are just some quick notes really, just for some future reference.</p>
 
 <h1>Invokables</h1>
 
-<p>No deps, can just be instantiated when needed, like controllers normally have no direct dependencies that are required during construction.</p>
+<p>No deps, can just be instantiated when needed, like controllers normally have no dependencies that are required during construction or required before the object can work properly, even if set via setters.</p>
 
 <h1>Factories</h1>
 
-<p>Dependent on other objects that need fetching before instantiating can occur, a factory can be a closure straight in the config (but this stops caching), in the module.php or as concrete classes implementing the FactoryInterface.</p>
+<p>Dependent on other objects that need fetching before the object will work properly, even if these are set via setters rather than during construction. A factory can be a closure straight in the config (but this stops caching), in the module.php or as concrete classes. These classes are either invokable via __invoke or implement the FactoryInterface.</p>
 
-<p>The concrete class way is best when you're doing some fairly substancial work, you implement the createService method (which takes a servicelocatorinterface object), you retrieve other objects from the servicemanager (invokables or factories) and then return an instance or some object as a result.</p>
+<p>The concrete class way is best when you're doing some fairly substancial work.
+You can either implement the FactoryInterface and then the createService method (which takes a servicelocatorinterface object) or just make the class invokable by implementing __invoke (which also takes the sm in). You can then retrieve other objects from the servicemanager (invokables or factories) and then return an instance of some object, of a singluar type per factory, as a result.</p>
 
 <p>And that's it!</p>
 
