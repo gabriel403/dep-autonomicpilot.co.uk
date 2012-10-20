@@ -102,6 +102,7 @@ MA;
     <head>
         <title>{$Config->prepended_title} - {$renderer->post->getTitle()}</title>
         <meta name="description=" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. {$tags}"></meta>
+        <meta name="google-site-verification" content="mjgCQDZxwMpRvHRHAagtY-XMbybQcepn_5DAYvkQYf8" />
         <link rel="stylesheet" type="text/css" href="{$site->css_path}reset.css" />
         <link rel="stylesheet" type="text/css" href="{$site->css_path}site.css" />
         <script type="text/javascript">
