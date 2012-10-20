@@ -68,7 +68,7 @@ body
 }
 .article_link {
     /*height: 40px;*/
-    min-width: 200px;
+    /*min-width: 200px;*/
 }
 .article_content {
     min-height: 100px;
@@ -161,7 +161,7 @@ a:active {
     }
 }
 
-@media screen and (max-width: 1089px) {
+@media screen and (max-width: 800px) {
     #header > div {
         float: none;
         padding-top: 10px;
@@ -175,7 +175,7 @@ a:active {
     }
 }
 
-@media screen and (max-width: 1088px) {
+@media screen and (max-width: 800px) {
 
     #main {
         float: none;
