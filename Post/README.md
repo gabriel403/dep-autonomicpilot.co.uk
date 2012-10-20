@@ -13,6 +13,10 @@ Simple HTML server for hosting the site.
 
 CHANGELOG:
 
+0.6.5
+
+* Added beta blog
+
 0.6.1
 
 * twitter feed on front page

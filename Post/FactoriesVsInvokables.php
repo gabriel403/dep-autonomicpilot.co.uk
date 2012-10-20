@@ -12,7 +12,8 @@ class FactoriesVsInvokables extends Post
         $this->isPublished = true;
         $this->publishedTime = 1349967354;
         $this->filename = "FactoriesVsInvokables";
-        $this->title = "FactoriesVsInvokables";
+        $this->title = "Factories Vs Invokables";
+        $this->tags = ["invokables", "factories", "php", "zf2", "zendframework2"];
         return $this;
     }
 }

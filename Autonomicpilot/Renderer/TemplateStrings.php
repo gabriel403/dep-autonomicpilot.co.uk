@@ -17,12 +17,12 @@ class TemplateStrings
      */
     public static function getSideLinkText(Renderer $renderer)
     {
-        $config = Config::getInstance();
+        $Config = Config::getStateO();
         return <<<"SLT"
                     <div class="article_link box0n">
-                        <a class="article_link_main" href='{$config->Post->blog_posts_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
+                        <a class="article_link_main" href='{$Config->blog_posts_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
                         <div class="article_link_text">
-                            <a href="{$config->Post->blog_base_url}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
+                            <a href="{$Config->blog_base_url}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
                             {$renderer->post->getPublishedDatetime()}{$renderer->post->getCategoryLink()}
                         </div>
                         <br class="clear_both" />
@@ -35,17 +35,17 @@ SLT;
 
     public static function tagLinkText($tag)
     {
-        $config = Config::getInstance();
+        $Config = Config::getStateO();
         return <<< "CLT"
-        <a href="{$config->Post->blog_base_url}Tags/$tag.html">$tag</a>
+        <a href="{$Config->blog_base_url}Tags/$tag.html">$tag</a>
 CLT;
     }
 
     public static function categoryLinkText($category)
     {
-        $config = Config::getInstance();
+        $Config = Config::getStateO();
         return <<< "CLT"
-        <a href="{$config->Post->blog_base_url}Categories/$category.html">$category</a><br />
+        <a href="{$Config->blog_base_url}Categories/$category.html">$category</a><br />
 CLT;
     }
 
@@ -58,10 +58,12 @@ CLT;
      */
     public static function getSmallArticleText(Renderer $renderer)
     {
-        $config = Config::getInstance();
+        $Config = Config::getStateO();
+        // var_dump($Config);
+        // exit;
         return <<<"SA"
                     <div class="article_content box0n" id="{$renderer->post->getFilename()}">
-                        <h1 class="article_title"><a href="{$config->Post->blog_posts_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
+                        <h1 class="article_title"><a href="{$Config->blog_posts_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
                         {$renderer->post->getMarkdownText()}
                     </div>
 SA;
@@ -70,10 +72,10 @@ SA;
 
     public static function getMainArticleText(Renderer $renderer)
     {
-        $config = Config::getInstance();
+        $Config = Config::getStateO();
         return <<<"MA"
                     <div class="article_content box0n" id="{$renderer->post->getFilename()}">
-                        <h1 class="article_title"><a href="{$config->Post->blog_posts_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
+                        <h1 class="article_title"><a href="{$Config->blog_posts_url}{$renderer->post->getFilename()}.html">{$renderer->post->getTitle()}</a></h1>
                         {$renderer->post->getMarkdownText()}
                         <a href="#" onclick="showthatshizzle();return false;">Comments</a>
                         <div id="disqus_thread"></div>
@@ -91,16 +93,17 @@ MA;
      */
     public static function getMainTemplateText(Renderer $renderer)
     {
-        $config = Config::getInstance();
+        $Config = Config::getStateO();
+        $site = Config::getInstance()->site;
         $tags = implode(', ', $renderer->post->getTags());
         return <<<"MT"
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{$config->Post->prepended_title} - {$renderer->post->getTitle()}</title>
+        <title>{$Config->prepended_title} - {$renderer->post->getTitle()}</title>
         <meta name="description=" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. {$tags}"></meta>
-        <link rel="stylesheet" type="text/css" href="{$config->site->css_path}reset.css" />
-        <link rel="stylesheet" type="text/css" href="{$config->site->css_path}site.css" />
+        <link rel="stylesheet" type="text/css" href="{$site->css_path}reset.css" />
+        <link rel="stylesheet" type="text/css" href="{$site->css_path}site.css" />
         <script type="text/javascript">
             var dsloaded = false;
             var disqus_div = 'disqus_thread';
@@ -138,7 +141,7 @@ MA;
             </div>
             <div id="top_nav">
                 <div class="box0n float_left third_width"><a href="/">Home</a></div>
-                <div class="box0n float_left third_width"><a href="{$config->Post->blog_base_url}">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="{$Config->blog_base_url}">Blog</a></div>
                 <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
                 <br class="clear_both" />
             </div>
@@ -182,6 +185,7 @@ MT;
      */
     public static function getPostClassDefinition(Renderer $renderer) 
     {
+        $Config = Config::getStateO();
         return <<<"PC"
 <?php
 namespace Post;
@@ -205,6 +209,7 @@ PC;
 
     public static function getSitemap()
     {
+        $Config = Config::getStateO();
         return <<<"SM"
         <?xml version="1.0" encoding="UTF-8"?\>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -216,10 +221,10 @@ SM;
 
     public static function getSitemapEntry(Renderer $renderer, $spacer)
     {
-        $config = Config::getInstance();
+        $Config = Config::getStateO();
         return <<<"SME"
            <url>
-              <loc>{$config->site->address}{$config->Post->blog_base_url}{$spacer}{$renderer->post->getFilename()}.html</loc>
+              <loc>{Config->site->address}{Config->Post->blog_base_url}{$spacer}{$renderer->post->getFilename()}.html</loc>
               <lastmod>{$renderer->post->getPublishedDatetime()}</lastmod>
               <changefreq>daily</changefreq>
               <priority>0.8</priority>

@@ -1,5 +1,6 @@
 <?php
 namespace Autonomicpilot\Renderer;
+
 /**
  * Renderer class
  * 
@@ -131,11 +132,14 @@ class Renderer
      * 
      * @return void
      */
-    public function renderMainPage($type = "")
+    public function renderMainPage()
     {
         $this->links = [];
-        $config = Config::getInstance();
-        $pp = $config->Post->post_path;
+// var_dump(Config::setup());
+// Config::setState('beta');
+// var_dump(Config::$state);
+// exit;
+        $pp = Config::$state->post_path;
 
         foreach ($this->posts as $filename => $markdown) {
             $this->classname = $filename;
@@ -147,18 +151,18 @@ class Renderer
             $class          = "Post\\$filename";
 
             $this->post     = new $class();
-            switch($type) {
+            $cp = Config::$state->content_path;
+
+            switch(Config::getState()) {
                 case "beta":
                     if ( $this->post->getIsPublished() ) {
                         continue 2;
                     }
-                    $cp = $config->Post->beta_content_path;
                     break;
                 default:
                     if ( !$this->post->getIsPublished() ) {
                         continue 2;
                     }
-                    $cp = $config->Post->content_path;
                     break;
             }
 
@@ -192,9 +196,8 @@ class Renderer
 
     public function renderTagPages()
     {
-        $config = Config::getInstance();
-        $pp = $config->Post->post_path;
-        $cp = $config->Post->content_path;
+        $pp = Config::$state->post_path;
+        $cp = Config::$state->content_path;
 
         $output = "";
         foreach ( $this->tags as $tag => $tagPosts )
@@ -222,9 +225,8 @@ class Renderer
 
     public function renderCategoryPages()
     {
-        $config = Config::getInstance();
-        $pp = $config->Post->post_path;
-        $cp = $config->Post->content_path;
+        $pp = Config::$state->post_path;
+        $cp = Config::$state->content_path;
 
         $output = "";
         foreach ( $this->categories as $category => $categoryPosts )
@@ -250,24 +252,20 @@ class Renderer
      * 
      * @return void
      */
-    public function renderArticlePages($type = '')
+    public function renderArticlePages()
     {
-        $config = Config::getInstance();
-
-
         foreach ($this->posts as $filename => $markdown) {
 
-            $cp = $config->Post->content_path;
+            $cp = Config::$state->content_path;
 
             $class          = "Post\\$filename";
 
             $this->post     = new $class();
-            switch($type) {
+            switch(Config::getState()) {
                 case "beta":
                     if ( $this->post->getIsPublished() ) {
                         continue 2;
                     }
-                    $cp = $config->Post->beta_content_path;
                     break;
                 default:
                     if ( !$this->post->getIsPublished() ) {

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Autonomicpilot - ZSAZFUserBjyAuth</title>
-        <meta name="description=" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. "></meta>
+        <title>Autonomicpilot - Inversion of Control: Service Locator Vs Dependency Injection</title>
+        <meta name="description=" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. Service Locator, Service Manager, Dependency Injection, invokables, factories, php, zf2, zendframework2"></meta>
         <link rel="stylesheet" type="text/css" href="/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/css/site.css" />
         <script type="text/javascript">
@@ -82,52 +82,32 @@
                 </div>
                 <div id="main" class="float_left">
                     <div>
-                    <div class="article_content box0n" id="ZSAZFUserBjyAuth">
-                        <h1 class="article_title"><a href="/betablog/Posts/ZSAZFUserBjyAuth.html">ZSAZFUserBjyAuth</a></h1>
-                        <p>After getting zfuser working well with zsa I wanted to try and get something ACL-like working.</p>
+                    <div class="article_content box0n" id="SMVsDIAndIoC">
+                        <h1 class="article_title"><a href="/betablog/Posts/SMVsDIAndIoC.html">Inversion of Control: Service Locator Vs Dependency Injection</a></h1>
+                        <p>Quick notes for dependency injection vs service locator, this is mainly for zf2 but the basics apply elsewhere.</p>
 
-<p>The ZFCACL is a bit out of date BjyAuthentication was recommended as a decent alternative.</p>
+<h1>Inversion of Control</h1>
 
-<p>http://autonomicpilot.co.uk/caps/1c9cbe.png</p>
+<p>IoC is a way of getting modules or objects into the right class when they're needed, the instantiation of an object is abstracted away from the class requiring it, in a way that makes duck typing a practical reality.</p>
 
-<p>http://autonomicpilot.co.uk/caps/c11bbc.png
-don't strictly need zfc-user as bjyauth installs it, but as this is an extension of the previous I left it in</p>
+<h1>Dependency Injection</h1>
 
-<p>http://autonomicpilot.co.uk/caps/8758cd.png</p>
+<p>Dependency injection relies on reflection to ascertain what objects are required for the construction of a particular object. Configuration is set up so that when the DI container is required to construct a certain object, it knows that it either needs to pass instances of certain other objects to the constructor or to call a 'set' function for that dependency. e.g. obj a requires obj b and obj c, the __construct function signature calls for an object of type b and there is a setC function whos signature calls for an object of type C.
+Objects B and C may require further dependencies that can be configured to be injected as well.</p>
 
-<p>http://autonomicpilot.co.uk/caps/5ecceb.png</p>
+<p>This can be considered as an implicit way of injecting dependencies.</p>
 
-<p>http://autonomicpilot.co.uk/caps/d8c82e.png</p>
+<h1>Service Locator</h1>
 
-<p>http://autonomicpilot.co.uk/caps/a2fe19.png</p>
+<p>In a service locator we set a key in the sl to be an instance of an object, if the instance it's self has no dependencies that's the end, however if it does have dependencies then we use a factory or an invokable to pass the sl to an inteligent object that then gets further dependencies from the sl. e.g. obj a relies on obj b and obj c, we pass a factory to the sl as the way of instantiating a, in this factory the sl is passed into it and the factory uses the sl to retrieve instances of obj b and obj c which are used to construct obj a and the new instance of obj a is returned.</p>
 
-<p>install and enable intl php extension</p>
+<p>This can be considered an explicit way of injecting dependencies.</p>
 
-<p>enable modules
-http://autonomicpilot.co.uk/caps/aa5361.png</p>
+<h1>DI vs SL</h1>
 
-<p>add db config
-http://autonomicpilot.co.uk/caps/3e5c0b.png</p>
-
-<p>and we have a working users page
-http://autonomicpilot.co.uk/caps/76a23d.png</p>
-
-<p>and working registration
-http://autonomicpilot.co.uk/caps/de9e0e.png</p>
-
-<p>Next up we want to get the autorisation working, so we can restrict access to certain areas.
-http://autonomicpilot.co.uk/caps/5dcb94.png
-The first sections specify providers for how to get current user access etc, we also set up our list of roles, so guest, user with admin extending user, it can also be setup to load roles from the db we set up earlier.
-We add a default guard which blocks all access to all controller actions by default :
-http://autonomicpilot.co.uk/caps/ec61a4.png
-http://autonomicpilot.co.uk/caps/6e0eeb.png as you can see we also restrict access to the users controller, which is no good for registering people, so we modify the guard to allow access to actions in the zfcuser controller
-http://autonomicpilot.co.uk/caps/99cc3e.png
-this allows all roles to access all actions in the zfcuser controller, if wanted we could restrict so only certain actions are allowed like this
-http://autonomicpilot.co.uk/caps/5d71c5.png
-thus we gain access to the user controller for login and registering
-http://autonomicpilot.co.uk/caps/0bebb3.png</p>
-
-<p>There is a controller plugin but it does pretty much the same as we already do, rather than restricting access inside the controller it's another way of checking if the user is allowed.</p>
+<p>DI is a bit easier to set up, as it just requires a lot of writing configs, it's also less magical as all the deps for a class are in front of your face in the config files, but it does require a lot of reflection (which may be cacheable) to work out how to get the dep into the class, this can be costly on reources in large classes. 
+On the other hand SL uses individual closures or factories to retrieve the deps for instantiating the service requested, and these deps could need further factories for further deps etc requiring a further coder to peice through more and more classes(factories or closures) to understand all the deps being used but you get the service when you need, if in some circumstances you don't need the dep you don't ask for it and you save some resources, with DI you will always have all deps in place, whether you use them or not. 
+Also as DI is configured as deps for a class, if multiple places require the same dep you'd have to configure each, whereas with SL you'd just ask for it and it'd already be available without extra configuration.</p>
 
                         <a href="#" onclick="showthatshizzle();return false;">Comments</a>
                         <div id="disqus_thread"></div>

@@ -7,13 +7,13 @@
 
 chdir(dirname(__DIR__));
 include "autoload.php";
-
-$ar = new Autonomicpilot\Renderer\Renderer();
+\Autonomicpilot\Renderer\Config::setup();
+$ar = new \Autonomicpilot\Renderer\Renderer;
 $ar->preRenderConsumption()
 ->renderMainPage()
 ->renderArticlePages()
 ->renderTagPages()
-->renderCategoryPages()
-->renderMainPage('beta')
-->renderArticlePages('beta');
-
+->renderCategoryPages();
+\Autonomicpilot\Renderer\Config::setState("beta");
+$ar->renderMainPage()
+->renderArticlePages();
