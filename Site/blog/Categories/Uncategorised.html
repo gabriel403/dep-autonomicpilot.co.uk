@@ -97,7 +97,7 @@
 
 class SomethingFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function createService(ServiceLocatorInterface $sm)
     {
         $se = $sm-&gt;get('somethingelse');
         $s = new Something($se);
@@ -117,7 +117,7 @@ class SomethingFactory implements FactoryInterface
 
 class Something
 {
-    public function __invoke(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ServiceLocatorInterface $sm)
     {
         $se = $sm-&gt;get('somethingelse');
         $s = new Something($se);

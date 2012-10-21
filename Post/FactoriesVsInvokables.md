@@ -31,7 +31,7 @@ If your dependency is dependent on other objects that need fetching before the o
 
 class SomethingFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function createService(ServiceLocatorInterface $sm)
     {
        	$se = $sm->get('somethingelse');
        	$s = new Something($se);
@@ -50,7 +50,7 @@ class SomethingFactory implements FactoryInterface
 
 class Something
 {
-    public function __invoke(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ServiceLocatorInterface $sm)
     {
        	$se = $sm->get('somethingelse');
        	$s = new Something($se);
