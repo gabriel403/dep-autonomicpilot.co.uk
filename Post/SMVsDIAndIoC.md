@@ -9,8 +9,8 @@ Dependency Injection
 
 DI is, in it's most basic form, the process of inserting dependencies(obj b and c) into the object requiring them(obj a) without that object(obj a) needing to know how it happened.
 ~~~~~~~~~~~~~~~~~~~~~
-$a = New A(new B);
-$a->setC(new C);
+$a = new A(new B);	//constructor injection
+$a->setC(new C);	//setter injection
 ~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -29,8 +29,6 @@ class A
 	}
 }
 
-$a = new A(new B);	//constructor injection
-$a->setC(new C);	//setter injection
 ~~~~~~~~~~~~~~~~~~~~~
 
 This can be considered as an implicit way of injecting dependencies.

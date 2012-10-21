@@ -124,8 +124,8 @@
 
 <p>DI is, in it's most basic form, the process of inserting dependencies(obj b and c) into the object requiring them(obj a) without that object(obj a) needing to know how it happened.</p>
 
-<pre><code>$a = New A(new B);
-$a-&gt;setC(new C);
+<pre><code>$a = new A(new B);  //constructor injection
+$a-&gt;setC(new C);    //setter injection
 </code></pre>
 
 <p>In ZF2, the dependency injection is implemented as a depenedency injection container, it relies on reflection to ascertain what objects are required for the construction of a particular object. Configuration is set up so that when the DI container is required to construct a certain object, it knows that it either needs to pass instances of certain other objects to the constructor or to call a 'set' function for that dependency. e.g. obj a requires obj b and obj c, the __construct function signature calls for an object of type b and there is a setC function whos signature calls for an object of type C.
@@ -142,8 +142,6 @@ Objects B and C may require further dependencies that can be configured to be in
     }
 }
 
-$a = new A(new B);  //constructor injection
-$a-&gt;setC(new C);    //setter injection
 </code></pre>
 
 <p>This can be considered as an implicit way of injecting dependencies.</p>
