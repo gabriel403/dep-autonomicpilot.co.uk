@@ -73,7 +73,8 @@ This can be considered an explicit way of injecting dependencies.
 DI vs SL
 ===
 
-DI is a bit easier to set up, as it just requires a lot of writing configs, it's also less magical as all the deps for a class are in front of your face in the config files, but it does require a lot of reflection (which may be cacheable) to work out how to get the dep into the class, this can be costly on reources in large classes. 
-On the other hand SL uses individual closures or factories to retrieve the deps for instantiating the service requested, and these deps could need further factories for further deps etc requiring a further coder to peice through more and more classes(factories or closures) to understand all the deps being used but you get the service when you need, if in some circumstances you don't need the dep you don't ask for it and you save some resources, with DI you will always have all deps in place, whether you use them or not. 
-Also as DI is configured as deps for a class, if multiple places require the same dep you'd have to configure each, whereas with SL you'd just ask for it and it'd already be available without extra configuration.
+Di is a bit easier to set up, as it just requires a lot of writing configs, it's also less magical as all the deps for a class are in front of your face in the config files, however Zend\Di is a lot more magical than the classical version of it, as it does require a lot of reflection (which may be cacheable) to work out how to get the dep into the class, this can be costly on resources in large classes.
 
+On the other hand Zend/ServiceManager uses individual closures or factories to retrieve the deps for instantiating the service requested, and these deps could need further factories for further deps etc requiring a further coder to piece through more and more classes(factories or closures) to understand all the deps being used but you get the service when you need, if in some circumstances you don't need the dep you don't ask for it and you save some resources, with DI you will always have all deps in place, whether you use them or not.
+
+Also as DI is configured as deps for a class, if multiple places require the same dep you'd have to configure each, whereas with SL you'd just ask for it and it'd already be available without extra configuration.
