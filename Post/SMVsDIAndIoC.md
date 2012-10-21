@@ -1,18 +1,16 @@
 Quick notes for dependency injection vs service locator, this is mainly for zf2 but the basics apply elsewhere.
 
-Inversion of Control
-===
+##Inversion of Control {#smvdiioc-ioc}
+
 IoC is a way of getting modules or objects into the right class when they're needed, the instantiation of an object is abstracted away from the class requiring it, in a way that makes duck typing a practical reality.
 
-Dependency Injection
-===
+##Dependency Injection {#smvdiioc-di}
+
 
 DI is, in it's most basic form, the process of inserting dependencies(obj b and c) into the object requiring them(obj a) without that object(obj a) needing to know how it happened.
 ~~~~~~~~~~~~~~~~~~~~~
 $a = new A(new B);	//constructor injection
 $a->setC(new C);	//setter injection
-
-
 
 class A
 {
@@ -33,13 +31,13 @@ Objects B and C may require further dependencies that can be configured to be in
 
 This can be considered as an implicit way of injecting dependencies.
 
-Service Locator
-===
+##Service Locator {#smvdiioc-sl}
+
 
 SL is in essence a way for the object(obj a) to get it's own dependencies without having to rely on an external source to set them for it. Rather than instantiating them itself an SL is injected into the object(obj a) and that is used to fetch the dependencies.
 
+####Classic Service Loctor {#smvdiioc-sl}
 ~~~~~~~~~~~~~~~~~~~~~
-
 class A
 {
 	public __construct(ServiceLocator $sl) {
@@ -66,10 +64,11 @@ class A
 
 In ZF2, we use the Zend/ServiceManager(SM) as an implementation of the service locator pattern, in the SM we set a key to be an instance of an object, if the object being constructed itself has no dependencies that's the end, however if it does have dependencies then we use a factory or an invokable to pass the sm to an inteligent object that then gets further dependencies from the SM. e.g. obj a relies on obj b and obj c, we pass a factory to the SM as the way of instantiating a, in this factory the sl is passed into it and the factory uses the sl to retrieve instances of obj b and obj c which are used to construct obj a and the new instance of obj a is returned.
 
+####SM Invokable {#smvdiioc-slinvoke}
 ~~~~~~~~~~~~~~~~~~~~~
 class A
 {
-	public function invokable(ServiceManager $sm) {
+	public function __invoke(ServiceManager $sm) {
 		$b = $sm->get('b');
 		$c = $sm->get('c');
 		$a = new A($b);
