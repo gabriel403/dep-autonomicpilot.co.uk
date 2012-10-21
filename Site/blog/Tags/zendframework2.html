@@ -86,12 +86,10 @@
 
 <pre><code>$a = new A(new B);  //constructor injection
 $a-&gt;setC(new C);    //setter injection
-</code></pre>
 
-<p>In ZF2, the dependency injection is implemented as a depenedency injection container, it relies on reflection to ascertain what objects are required for the construction of a particular object. Configuration is set up so that when the DI container is required to construct a certain object, it knows that it either needs to pass instances of certain other objects to the constructor or to call a 'set' function for that dependency. e.g. obj a requires obj b and obj c, the __construct function signature calls for an object of type b and there is a setC function whos signature calls for an object of type C.
-Objects B and C may require further dependencies that can be configured to be injected as well.</p>
 
-<pre><code>class A
+
+class A
 {
     public __contructor(B $b) {
         $this-&gt;b = $b;
@@ -104,11 +102,14 @@ Objects B and C may require further dependencies that can be configured to be in
 
 </code></pre>
 
+<p>In ZF2, the dependency injection is implemented as a depenedency injection container, Zend/Di, it relies on reflection to ascertain what objects are required for the construction of a particular object. Configuration is set up so that when Zend/Di is required to construct a certain object, it knows that it either needs to pass instances of certain other objects to the constructor or to call a 'set' function for that dependency. e.g. obj a requires obj b and obj c, the __construct function signature calls for an object of type b and there is a setC function whos signature calls for an object of type C.
+Objects B and C may require further dependencies that can be configured to be injected as well.</p>
+
 <p>This can be considered as an implicit way of injecting dependencies.</p>
 
 <h1>Service Locator</h1>
 
-<p>SL is in essence a way for the object(obj a) to get it's own dependencies without having to rely on an external source to set them for it, rather than instantiating them it's self an SL is injected into the object(obj a) and that is used to fetch the dependencies.</p>
+<p>SL is in essence a way for the object(obj a) to get it's own dependencies without having to rely on an external source to set them for it. Rather than instantiating them itself an SL is injected into the object(obj a) and that is used to fetch the dependencies.</p>
 
 <pre><code><br />class A
 {
@@ -132,7 +133,19 @@ Objects B and C may require further dependencies that can be configured to be in
 
 </code></pre>
 
-<p>In ZF2, we use the service manager as an implementation of the service locator pattern, in the service locator we set a key in the sl to be an instance of an object, if the instance it's self has no dependencies that's the end, however if it does have dependencies then we use a factory or an invokable to pass the sl to an inteligent object that then gets further dependencies from the sl. e.g. obj a relies on obj b and obj c, we pass a factory to the sl as the way of instantiating a, in this factory the sl is passed into it and the factory uses the sl to retrieve instances of obj b and obj c which are used to construct obj a and the new instance of obj a is returned.</p>
+<p>In ZF2, we use the Zend/ServiceManager(SM) as an implementation of the service locator pattern, in the SM we set a key to be an instance of an object, if the object being constructed itself has no dependencies that's the end, however if it does have dependencies then we use a factory or an invokable to pass the sm to an inteligent object that then gets further dependencies from the SM. e.g. obj a relies on obj b and obj c, we pass a factory to the SM as the way of instantiating a, in this factory the sl is passed into it and the factory uses the sl to retrieve instances of obj b and obj c which are used to construct obj a and the new instance of obj a is returned.</p>
+
+<pre><code>class A
+{
+    public function invokable(ServiceManager $sm) {
+        $b = $sm-&gt;get('b');
+        $c = $sm-&gt;get('c');
+        $a = new A($b);
+        $a-&gt;setC($c);
+        return $a;
+    }
+}
+</code></pre>
 
 <p>This can be considered an explicit way of injecting dependencies.</p>
 
