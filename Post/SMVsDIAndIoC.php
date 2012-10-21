@@ -9,6 +9,7 @@ class SMVsDIAndIoC extends Post
     public function __construct()
     {
         parent::__construct();
+        $this->isPublished = true;
         $this->publishedTime = 1350219346;
         $this->category = "IoC";
         $this->filename = "SMVsDIAndIoC";

@@ -28,6 +28,9 @@ class A
 		$this->c = $c;
 	}
 }
+
+$a = new A(new B);	//constructor injection
+$a->setC(new C);	//setter injection
 ~~~~~~~~~~~~~~~~~~~~~
 
 This can be considered as an implicit way of injecting dependencies.

@@ -111,6 +111,9 @@ Objects B and C may require further dependencies that can be configured to be in
         $this-&gt;c = $c;
     }
 }
+
+$a = new A(new B);  //constructor injection
+$a-&gt;setC(new C);    //setter injection
 </code></pre>
 
 <p>This can be considered as an implicit way of injecting dependencies.</p>
