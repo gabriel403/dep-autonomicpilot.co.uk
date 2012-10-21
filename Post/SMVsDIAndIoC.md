@@ -6,14 +6,64 @@ IoC is a way of getting modules or objects into the right class when they're nee
 
 Dependency Injection
 ===
-Dependency injection relies on reflection to ascertain what objects are required for the construction of a particular object. Configuration is set up so that when the DI container is required to construct a certain object, it knows that it either needs to pass instances of certain other objects to the constructor or to call a 'set' function for that dependency. e.g. obj a requires obj b and obj c, the __construct function signature calls for an object of type b and there is a setC function whos signature calls for an object of type C.
+
+DI is, in it's most basic form, the process of inserting dependencies(obj b and c) into the object requiring them(obj a) without that object(obj a) needing to know how it happened.
+~~~~~~~~~~~~~~~~~~~~~
+$a = New A(new B);
+$a->setC(new C);
+~~~~~~~~~~~~~~~~~~~~~
+
+
+In ZF2, the dependency injection is implemented as a depenedency injection container, it relies on reflection to ascertain what objects are required for the construction of a particular object. Configuration is set up so that when the DI container is required to construct a certain object, it knows that it either needs to pass instances of certain other objects to the constructor or to call a 'set' function for that dependency. e.g. obj a requires obj b and obj c, the __construct function signature calls for an object of type b and there is a setC function whos signature calls for an object of type C.
 Objects B and C may require further dependencies that can be configured to be injected as well.
+
+~~~~~~~~~~~~~~~~~~~~~
+class A
+{
+	public __contructor(B $b) {
+		$this->b = $b;
+	}
+
+	public setC(C $c) {
+		$this->c = $c;
+	}
+}
+~~~~~~~~~~~~~~~~~~~~~
 
 This can be considered as an implicit way of injecting dependencies.
 
 Service Locator
 ===
-In a service locator we set a key in the sl to be an instance of an object, if the instance it's self has no dependencies that's the end, however if it does have dependencies then we use a factory or an invokable to pass the sl to an inteligent object that then gets further dependencies from the sl. e.g. obj a relies on obj b and obj c, we pass a factory to the sl as the way of instantiating a, in this factory the sl is passed into it and the factory uses the sl to retrieve instances of obj b and obj c which are used to construct obj a and the new instance of obj a is returned.
+
+SL is in essence a way for the object(obj a) to get it's own dependencies without having to rely on an external source to set them for it, rather than instantiating them it's self an SL is injected into the object(obj a) and that is used to fetch the dependencies.
+
+~~~~~~~~~~~~~~~~~~~~~
+
+class A
+{
+	public __construct(ServiceLocator $sl) {
+		$this->sl = $sl;
+	}
+
+	public getC() {
+		if ( !is_set($this->c) ) {
+			$this->c = $this->sl->get('c');
+		}
+		return $this->c;
+	}
+	public getB() {
+		if ( !is_set($this->b) ) {
+			$this->b = $this->sl->get('b');
+		}
+		return $this->b;
+	}
+}
+
+~~~~~~~~~~~~~~~~~~~~~
+
+
+
+In ZF2, we use the service manager as an implementation of the service locator pattern, in the service locator we set a key in the sl to be an instance of an object, if the instance it's self has no dependencies that's the end, however if it does have dependencies then we use a factory or an invokable to pass the sl to an inteligent object that then gets further dependencies from the sl. e.g. obj a relies on obj b and obj c, we pass a factory to the sl as the way of instantiating a, in this factory the sl is passed into it and the factory uses the sl to retrieve instances of obj b and obj c which are used to construct obj a and the new instance of obj a is returned.
 
 This can be considered an explicit way of injecting dependencies.
 

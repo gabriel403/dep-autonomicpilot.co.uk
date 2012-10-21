@@ -42,6 +42,18 @@ class Renderer
     //     }
     // }
 
+    public function init() {
+        //$this->posts        = [];
+        $this->content      = [];
+        $this->links        = [];
+        $this->classname    = "";
+        $this->tags         = [];
+        $this->categories   = [];
+        $this->sitemapURLs  = "";
+        $this->post         = null;
+        return $this;
+    }
+
     public function getTagCloud()
     {
         $return = "";
@@ -151,7 +163,6 @@ class Renderer
             $class          = "Post\\$filename";
 
             $this->post     = new $class();
-            $cp = Config::$state->content_path;
 
             switch(Config::getState()) {
                 case "beta":
@@ -165,6 +176,8 @@ class Renderer
                     }
                     break;
             }
+
+            $cp = Config::$state->content_path;
 
             if ( "" !== $this->post->getCategory()) 
             {
@@ -181,6 +194,10 @@ class Renderer
         }
         krsort($this->content);
         krsort($this->links);
+
+        if ( is_null($this->post) ) {
+            return $this;
+        }
 
         $this->post->setTitle("Blog");
         $this->post->setTags([]);
