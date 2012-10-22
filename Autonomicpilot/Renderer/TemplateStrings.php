@@ -100,8 +100,9 @@ MA;
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{$Config->prepended_title} - {$renderer->post->getTitle()}</title>
-        <meta name="description=" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. {$tags}"></meta>
+        <title>{$Config->prepended_title} - {$renderer->post->getTitle()} - {$tags}</title>
+        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. {$tags}"></meta>
+        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. {$tags}"></meta>
         <link rel="stylesheet" type="text/css" href="{$site->css_path}reset.css" />
         <link rel="stylesheet" type="text/css" href="{$site->css_path}site.css" />
         <script type="text/javascript">
