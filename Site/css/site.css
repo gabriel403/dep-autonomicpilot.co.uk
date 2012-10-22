@@ -203,3 +203,7 @@ a:active {
 @media screen and (max-width: 800px) {
     /*Add stuff for select b0xen*/
 }
+
+h4[id^=""] {
+    color: red;
+}

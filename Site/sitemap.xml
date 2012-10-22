@@ -8,145 +8,175 @@
 
 <url>
   <loc>http://autonomicpilot.co.uk/</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-20T22:10:42+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/cv.html</loc>
-  <lastmod>2012-08-11T21:21:09+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>0.70</priority>
-</url>
-<url>
-  <loc>http://autonomicpilot.co.uk/blog/Posts/FactoriesVsInvokables.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-20T22:28:33+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://autonomicpilot.co.uk/blog/Categories/Uncategorised.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <loc>http://autonomicpilot.co.uk/blog/Posts/SMVsDIAndIoC.html</loc>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://autonomicpilot.co.uk/blog/Categories/IoC.html</loc>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://autonomicpilot.co.uk/blog/Tags/Service%20Locator.html</loc>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://autonomicpilot.co.uk/blog/Tags/Service%20Manager.html</loc>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://autonomicpilot.co.uk/blog/Tags/Dependency%20Injection.html</loc>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/invokables.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/factories.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/php.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/zf2.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/zendframework2.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T22:14:38+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://autonomicpilot.co.uk/blog/Posts/FactoriesVsInvokables.html</loc>
+  <lastmod>2012-10-21T21:56:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://autonomicpilot.co.uk/blog/Categories/Uncategorised.html</loc>
+  <lastmod>2012-10-21T21:56:53+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Posts/ZSAAndG403Translator.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Categories/ZF2.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/composer.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/translation.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Posts/ZSAAndZFCUser.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/zfc.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Posts/BlogIntro.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Categories/blog.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/html.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/responsive.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/noframework.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Tags/blog.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Posts/README.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://autonomicpilot.co.uk/blog/Categories/readme.html</loc>
-  <lastmod>2012-10-20T16:23:05+00:00</lastmod>
+  <lastmod>2012-10-21T15:27:17+00:00</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
