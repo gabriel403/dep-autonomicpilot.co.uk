@@ -89,44 +89,44 @@ https://github.com/bjyoungblood/SpeckAddress/blob/master/view/speck-address/addr
 
 <p>The ZFCACL is a bit out of date BjyAuthentication was recommended as a decent alternative.</p>
 
-<p>http://autonomicpilot.co.uk/caps/1c9cbe.png</p>
+<p>http://blackdwarf.autonomicpilot.co.uk/caps/1c9cbe.png</p>
 
-<p>http://autonomicpilot.co.uk/caps/c11bbc.png
+<p>http://blackdwarf.autonomicpilot.co.uk/caps/c11bbc.png
 don't strictly need zfc-user as bjyauth installs it, but as this is an extension of the previous I left it in</p>
 
-<p>http://autonomicpilot.co.uk/caps/8758cd.png</p>
+<p>http://blackdwarf.autonomicpilot.co.uk/caps/8758cd.png</p>
 
-<p>http://autonomicpilot.co.uk/caps/5ecceb.png</p>
+<p>http://blackdwarf.autonomicpilot.co.uk/caps/5ecceb.png</p>
 
-<p>http://autonomicpilot.co.uk/caps/d8c82e.png</p>
+<p>http://blackdwarf.autonomicpilot.co.uk/caps/d8c82e.png</p>
 
-<p>http://autonomicpilot.co.uk/caps/a2fe19.png</p>
+<p>http://blackdwarf.autonomicpilot.co.uk/caps/a2fe19.png</p>
 
 <p>install and enable intl php extension</p>
 
 <p>enable modules
-http://autonomicpilot.co.uk/caps/aa5361.png</p>
+http://blackdwarf.autonomicpilot.co.uk/caps/aa5361.png</p>
 
 <p>add db config
-http://autonomicpilot.co.uk/caps/3e5c0b.png</p>
+http://blackdwarf.autonomicpilot.co.uk/caps/3e5c0b.png</p>
 
 <p>and we have a working users page
-http://autonomicpilot.co.uk/caps/76a23d.png</p>
+http://blackdwarf.autonomicpilot.co.uk/caps/76a23d.png</p>
 
 <p>and working registration
-http://autonomicpilot.co.uk/caps/de9e0e.png</p>
+http://blackdwarf.autonomicpilot.co.uk/caps/de9e0e.png</p>
 
 <p>Next up we want to get the autorisation working, so we can restrict access to certain areas.
-http://autonomicpilot.co.uk/caps/5dcb94.png
+http://blackdwarf.autonomicpilot.co.uk/caps/5dcb94.png
 The first sections specify providers for how to get current user access etc, we also set up our list of roles, so guest, user with admin extending user, it can also be setup to load roles from the db we set up earlier.
 We add a default guard which blocks all access to all controller actions by default :
-http://autonomicpilot.co.uk/caps/ec61a4.png
-http://autonomicpilot.co.uk/caps/6e0eeb.png as you can see we also restrict access to the users controller, which is no good for registering people, so we modify the guard to allow access to actions in the zfcuser controller
-http://autonomicpilot.co.uk/caps/99cc3e.png
+http://blackdwarf.autonomicpilot.co.uk/caps/ec61a4.png
+http://blackdwarf.autonomicpilot.co.uk/caps/6e0eeb.png as you can see we also restrict access to the users controller, which is no good for registering people, so we modify the guard to allow access to actions in the zfcuser controller
+http://blackdwarf.autonomicpilot.co.uk/caps/99cc3e.png
 this allows all roles to access all actions in the zfcuser controller, if wanted we could restrict so only certain actions are allowed like this
-http://autonomicpilot.co.uk/caps/5d71c5.png
+http://blackdwarf.autonomicpilot.co.uk/caps/5d71c5.png
 thus we gain access to the user controller for login and registering
-http://autonomicpilot.co.uk/caps/0bebb3.png</p>
+http://blackdwarf.autonomicpilot.co.uk/caps/0bebb3.png</p>
 
 <p>There is a controller plugin but it does pretty much the same as we already do, rather than restricting access inside the controller it's another way of checking if the user is allowed.</p>
 

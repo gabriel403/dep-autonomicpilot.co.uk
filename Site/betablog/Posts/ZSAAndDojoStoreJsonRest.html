@@ -82,82 +82,82 @@
 <p>So this entry will cover setting up dojo 1.8 in the Zend Framework 2 skeleton application, setting up a simple RESTful controller and some javascript to test out the dojo store and the zf2 rest controller.</p>
 
 <p>So we setup the zsa as normal using composer
-<img src="http://autonomicpilot.co.uk/caps/f9e06d.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/f9e06d.png" alt="" /></p>
 
 <p>As we're just doing this as an example we'll use the dojo CDN
-<img src="http://autonomicpilot.co.uk/caps/cff75d.png" alt="" />
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/cff75d.png" alt="" />
 and configure dojo
-<img src="http://autonomicpilot.co.uk/caps/8ee8a4.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/8ee8a4.png" alt="" /></p>
 
 <p>We then need to add a new controller that implements the abstract restful controller
-<img src="http://autonomicpilot.co.uk/caps/d93cf8.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/d93cf8.png" alt="" /></p>
 
 <p>We'll keep this simple and knock out some fake responses in a bit.</p>
 
 <p>We need to allow access to the controller so we add a new child route to the application config for the rest controller
-<img src="http://autonomicpilot.co.uk/caps/a76aa4.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/a76aa4.png" alt="" /></p>
 
 <p>We then need to add the rest controller to our controller's invokables array
-<img src="http://autonomicpilot.co.uk/caps/884cfa.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/884cfa.png" alt="" /></p>
 
 <p>and then add the JsonViewStrategy to the view_manager configuration, this enables the JsonModel to work without phtml files for automatic json encoding and not displaying the layout
-<img src="http://autonomicpilot.co.uk/caps/c1d87d.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/c1d87d.png" alt="" /></p>
 
 <p>We then add json handling in our controller
-<img src="http://autonomicpilot.co.uk/caps/ec91f7.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/ec91f7.png" alt="" /></p>
 
 <p>And we can test this action with curl from the command line
-<img src="http://autonomicpilot.co.uk/caps/8c3e4a.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/8c3e4a.png" alt="" /></p>
 
 <p>Add some fake data<br />
-<img src="http://autonomicpilot.co.uk/caps/502486.png" alt="" /><br />
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/502486.png" alt="" /><br />
 and test from the command line again<br />
-<img src="http://autonomicpilot.co.uk/caps/fab64d.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/fab64d.png" alt="" /></p>
 
 <p>And then put some more dummy responses into our controller</p>
 
 <p>Add a custom not found action to the controller that returns a json error
-<img src="http://autonomicpilot.co.uk/caps/cf060c.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/cf060c.png" alt="" /></p>
 
 <p>First a get with an id param<br />
-<img src="http://autonomicpilot.co.uk/caps/df3f86.png" alt="" /><br />
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/df3f86.png" alt="" /><br />
 and test<br />
-<img src="http://autonomicpilot.co.uk/caps/9ab748.png" alt="" /><br />
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/9ab748.png" alt="" /><br />
 and test failure<br />
-<img src="http://autonomicpilot.co.uk/caps/ccca93.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/ccca93.png" alt="" /></p>
 
 <p>This will be enough for for testing with the Dojo/Store/JsonRest
 as our config puts our zsa dojo modules in /js/zsa we create our file there, 
 this file could be spread over an mvc setup, but just the one file for now.</p>
 
 <p>We declare our module with a constructor and mix any properties passed into it into itself.
-<img src="http://autonomicpilot.co.uk/caps/4201a8.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/4201a8.png" alt="" /></p>
 
 <p>We then call our functions for setting up the dom, then creating the store and finally for setting up the select dijit.</p>
 
 <p>And then we write those functions ;)</p>
 
 <p>We setup an action inside the index controller to work with our test view and then in the view file we setup a container node inside and then assign that in our js to a member variable.<br />
-<img src="http://autonomicpilot.co.uk/caps/ec4d3d.png" alt="" /><br />
-<img src="http://autonomicpilot.co.uk/caps/858067.png" alt="" /><br />
-<img src="http://autonomicpilot.co.uk/caps/7bcd04.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/ec4d3d.png" alt="" /><br />
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/858067.png" alt="" /><br />
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/7bcd04.png" alt="" /></p>
 
 <p>Create a Dojo/Store/JsonRest instance and set the url to point to our rest controller.<br />
-<img src="http://autonomicpilot.co.uk/caps/b54355.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/b54355.png" alt="" /></p>
 
 <p>Then create an instance of our select and pass it our JsonRest store and place it inside our node.<br />
-<img src="http://autonomicpilot.co.uk/caps/bb4235.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/bb4235.png" alt="" /></p>
 
 <p>We create a launcher file that we use to instantiate our modules further.<br />
-<img src="http://autonomicpilot.co.uk/caps/d106b9.png" alt="" /><br />
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/d106b9.png" alt="" /><br />
 and append it to our head scripts<br />
-<img src="http://autonomicpilot.co.uk/caps/2c61f6.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/2c61f6.png" alt="" /></p>
 
 <p>Then we have the final source for the rest js module<br />
-<img src="http://autonomicpilot.co.uk/caps/1f42bd.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/1f42bd.png" alt="" /></p>
 
 <p>And finally look at the view we created
-<img src="http://autonomicpilot.co.uk/caps/5e398b.png" alt="" /></p>
+<img src="http://blackdwarf.autonomicpilot.co.uk/caps/5e398b.png" alt="" /></p>
 
 <p>This is on github for viewing<br />
 https://github.com/gabriel403/ZendSkeletonApplication/tree/dojoreststore<br />
