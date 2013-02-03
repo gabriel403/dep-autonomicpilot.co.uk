@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autonomicpilot - Blog - </title>
+        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. "></meta>
+        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. "></meta>
+        <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="/css/site.css" />
+        <script type="text/javascript">
+            var dsloaded = false;
+            var disqus_div = 'disqus_thread';
+            function showthatshizzle() {
+                var disqus_shortname = 'autonomicpilot';
+
+                if ( dsloaded )
+                {
+                    return;
+                }
+
+                dsloaded = true;
+
+                document.getElementById(disqus_div).style.display = 'block';
+
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            }
+        </script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-16183577-1']);
+            _gaq.push(['_trackPageview']);
+
+        </script>
+    </head>
+    <body>
+        <div id="main_box">
+            <div id="header">
+                <a href='/'>&nbsp;</a>
+                <div>The 8-bit ramblings of a rabid mind</div>
+                <br class="clear_both" />
+            </div>
+            <div id="top_nav">
+                <div class="box0n float_left third_width"><a href="/">Home</a></div>
+                <div class="box0n float_left third_width"><a href="/betablog/">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
+                <br class="clear_both" />
+            </div>
+            <div id="content_outer">
+                <div id="left" class="float_left">
+                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/betablog/Posts/ZF2FormElementRendering.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/betablog/#ZF2FormElementRendering">ZF2FormElementRendering</a><br />
+                            05/10/12 20:38:09        <a href="/betablog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/betablog/Posts/ZSAZFUserBjyAuth.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/betablog/#ZSAZFUserBjyAuth">ZSAZFUserBjyAuth</a><br />
+                            10/08/12 22:27:24        <a href="/betablog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>
+                </div>
+                <div id="main" class="float_left">
+                    <div>
+                    <div class="article_content box0n" id="ZF2FormElementRendering">
+                        <h1 class="article_title"><a href="/betablog/Posts/ZF2FormElementRendering.html">ZF2FormElementRendering</a></h1>
+                        <h1>Customising the Rendering of Zend\Form Elements</h1>
+
+<p>If you ever need to change the way a form element is rendered</p>
+
+<p>https://github.com/bjyoungblood/SpeckAddress/blob/master/src/SpeckAddress/Form/View/Helper/FormSelect.php
+https://github.com/bjyoungblood/SpeckAddress/blob/master/Module.php#L68
+https://github.com/bjyoungblood/SpeckAddress/blob/master/view/speck-address/address/add.phtml#L13</p>
+
+                    </div>                    <div class="article_content box0n" id="ZSAZFUserBjyAuth">
+                        <h1 class="article_title"><a href="/betablog/Posts/ZSAZFUserBjyAuth.html">ZSAZFUserBjyAuth</a></h1>
+                        <p>After getting zfuser working well with zsa I wanted to try and get something ACL-like working.</p>
+
+<p>The ZFCACL is a bit out of date BjyAuthentication was recommended as a decent alternative.</p>
+
+<p>http://autonomicpilot.co.uk/caps/1c9cbe.png</p>
+
+<p>http://autonomicpilot.co.uk/caps/c11bbc.png
+don't strictly need zfc-user as bjyauth installs it, but as this is an extension of the previous I left it in</p>
+
+<p>http://autonomicpilot.co.uk/caps/8758cd.png</p>
+
+<p>http://autonomicpilot.co.uk/caps/5ecceb.png</p>
+
+<p>http://autonomicpilot.co.uk/caps/d8c82e.png</p>
+
+<p>http://autonomicpilot.co.uk/caps/a2fe19.png</p>
+
+<p>install and enable intl php extension</p>
+
+<p>enable modules
+http://autonomicpilot.co.uk/caps/aa5361.png</p>
+
+<p>add db config
+http://autonomicpilot.co.uk/caps/3e5c0b.png</p>
+
+<p>and we have a working users page
+http://autonomicpilot.co.uk/caps/76a23d.png</p>
+
+<p>and working registration
+http://autonomicpilot.co.uk/caps/de9e0e.png</p>
+
+<p>Next up we want to get the autorisation working, so we can restrict access to certain areas.
+http://autonomicpilot.co.uk/caps/5dcb94.png
+The first sections specify providers for how to get current user access etc, we also set up our list of roles, so guest, user with admin extending user, it can also be setup to load roles from the db we set up earlier.
+We add a default guard which blocks all access to all controller actions by default :
+http://autonomicpilot.co.uk/caps/ec61a4.png
+http://autonomicpilot.co.uk/caps/6e0eeb.png as you can see we also restrict access to the users controller, which is no good for registering people, so we modify the guard to allow access to actions in the zfcuser controller
+http://autonomicpilot.co.uk/caps/99cc3e.png
+this allows all roles to access all actions in the zfcuser controller, if wanted we could restrict so only certain actions are allowed like this
+http://autonomicpilot.co.uk/caps/5d71c5.png
+thus we gain access to the user controller for login and registering
+http://autonomicpilot.co.uk/caps/0bebb3.png</p>
+
+<p>There is a controller plugin but it does pretty much the same as we already do, rather than restricting access inside the controller it's another way of checking if the user is allowed.</p>
+
+                    </div>
+                    </div>
+                </div>
+                <div id="right" class="float_left">
+                    <div class="box0n">
+                        <h2>Tags</h2>
+                        <br />
+
+                    </div>
+                    <div class="box0n">
+                        <h2>Categories</h2>
+                        <br />
+        <a href="/betablog/Categories/Uncategorised.html">Uncategorised</a><br />
+                    </div>
+                </div>
+                <br class="clear_both" />
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/ga.js"></script>
+    </body>
+</html>
