@@ -20,15 +20,16 @@ class TemplateStrings
         $Config = Config::getStateO();
         return <<<"SLT"
                     <div class="article_link box0n">
-                        <a class="article_link_main" href='{$Config->blog_posts_url}{$renderer->post->getFilename()}.html'>&nbsp;</a>
-                        <div class="article_link_text">
-                            <a href="{$Config->blog_base_url}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a><br />
-                            {$renderer->post->getPublishedDatetime()}{$renderer->post->getCategoryLink()}
-                        </div>
-                        <br class="clear_both" />
-                        <div class="article_tags">
+                        <br />
+                        <a href="{$Config->blog_base_url}#{$renderer->post->getFilename()}">{$renderer->post->getTitle()}</a>
+                        <table><tbody>
+                        <tr><td class='enbolden'>Static:</td><td><a class="article_link_main" href='{$Config->blog_posts_url}{$renderer->post->getFilename()}.html'>link</a></td></tr>
+                        <tr><td class='enbolden'>Published:</td><td>{$renderer->post->getPublishedDatetime()}</td></tr>
+                        <tr><td class='enbolden'>Category:</td><td>{$renderer->post->getCategoryLink()}</td></tr>
+                        <tr><td class='enbolden'>Tags:</td><td><div class="article_tags">
                         {$renderer->post->getTagLinks()}
-                        </div>
+                        </div></td></tr>
+                        </tbody></table>
                     </div>
 SLT;
     }
@@ -170,6 +171,7 @@ MA;
                 <br class="clear_both" />
             </div>
         </div>
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?autoload=true&skin=sons-of-obsidian" defer="defer"></script>
         <script type="text/javascript" src="/js/ga.js"></script>
     </body>
 </html>

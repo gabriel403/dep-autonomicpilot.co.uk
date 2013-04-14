@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autonomicpilot - ComposedObject Tag Page - zf2, zendframework2, Zend\Form, Zend\Form\Annotation, ComposedObject</title>
+        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. zf2, zendframework2, Zend\Form, Zend\Form\Annotation, ComposedObject"></meta>
+        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. zf2, zendframework2, Zend\Form, Zend\Form\Annotation, ComposedObject"></meta>
+        <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="/css/site.css" />
+        <script type="text/javascript">
+            var dsloaded = false;
+            var disqus_div = 'disqus_thread';
+            function showthatshizzle() {
+                var disqus_shortname = 'autonomicpilot';
+
+                if ( dsloaded )
+                {
+                    return;
+                }
+
+                dsloaded = true;
+
+                document.getElementById(disqus_div).style.display = 'block';
+
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            }
+        </script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-16183577-1']);
+            _gaq.push(['_trackPageview']);
+
+        </script>
+    </head>
+    <body>
+        <div id="main_box">
+            <div id="header">
+                <a href='/'>&nbsp;</a>
+                <div>The 8-bit ramblings of a rabid mind</div>
+                <br class="clear_both" />
+            </div>
+            <div id="top_nav">
+                <div class="box0n float_left third_width"><a href="/">Home</a></div>
+                <div class="box0n float_left third_width"><a href="/blog/">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
+                <br class="clear_both" />
+            </div>
+            <div id="content_outer">
+                <div id="left" class="float_left">
+                    <div class="article_link box0n">
+                        <br />
+                        <a href="/blog/#ZF2ComposedObjects">Zend\Form\Annotation Tag Page</a>
+                        <table><tbody>
+                        <tr><td class='enbolden'>Static:</td><td><a class="article_link_main" href='/blog/Posts/ZF2ComposedObjects.html'>link</a></td></tr>
+                        <tr><td class='enbolden'>Published:</td><td>14/04/13 13:00:18</td></tr>
+                        <tr><td class='enbolden'>Category:</td><td>        <a href="/blog/Categories/ZF2.html">ZF2</a><br /></td></tr>
+                        <tr><td class='enbolden'>Tags:</td><td><div class="article_tags">
+                                <a href="/blog/Tags/zf2.html">zf2</a>        <a href="/blog/Tags/zendframework2.html">zendframework2</a>        <a href="/blog/Tags/Zend\Form.html">Zend\Form</a>        <a href="/blog/Tags/Zend\Form\Annotation.html">Zend\Form\Annotation</a>        <a href="/blog/Tags/ComposedObject.html">ComposedObject</a>
+                        </div></td></tr>
+                        </tbody></table>
+                    </div>
+                </div>
+                <div id="main" class="float_left">
+                    <div>
+                    <div class="article_content box0n" id="ZF2ComposedObjects">
+                        <h1 class="article_title"><a href="/blog/Posts/ZF2ComposedObjects.html">Zend\Form\Annotation Tag Page</a></h1>
+                        <h1>ZF2 Annotated Forms and ComposedObject</h1>
+
+<p>So you're using the data mapper pattern, just for awesomeness. You're also using annotated entities being parsed into forms, since in most cases your entities are in a one to one relationship with your forms.</p>
+
+<p>However you do occasionally need forms that are made up of multiple entities.</p>
+
+<p>you could create a new entity with all the bits in and then parse them into seperate entities for persisting.</p>
+
+<p>However it's easier to create a new entity using multiple @Annotation/ComposedObject annotations, this gives us unified validation and can get the seperate entities easily from the outer entity.</p>
+
+<p>Here we have the factory for creating the form.<br />
+Form Factory:</p>
+
+<pre class="language-php prettyprint linenums"><code>'WelcomeMessageForm' =&gt; function ($sm) {
+
+    $msg = new Model\WelcomeMessage;
+
+    $fc =  new Model\LicenceContent;
+    $msg-&gt;setFutureMessage($fc);
+
+    $cc =  new Model\LicenceContent;
+    $msg-&gt;setCurrentMessage($cc);
+
+    $builder = new \Zend\Form\Annotation\AnnotationBuilder;
+    $form = $builder-&gt;createForm($msg);
+    $form-&gt;bind($msg);
+
+    $form-&gt;get('current_message')-&gt;setObject(new Model\LicenceContent);
+    $form-&gt;get('future_message')-&gt;setObject(new Model\LicenceContent);
+    return $form;
+},
+</code></pre>
+
+<p>When using ComposedObject, the composed objects are parsed into fieldsets within the form.<br />
+By doing the setObject calls on the fieldsets in the factory, this allows the form to iterate through the composed objects in a 'populated' main entity to populate values in the form.</p>
+
+<p>WelcomeMessage Entity:</p>
+
+<pre class="language-php prettyprint linenums"><code>namespace Module\Model;
+use Zend\Form\Annotation;
+/**
+ * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+ */
+class WelcomeMessage
+{
+
+    /**
+     * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+     * @Annotation\ComposedObject("Module\Model\LicenceContent")
+     */
+    protected $current_message;
+
+    /**
+     * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+     * @Annotation\ComposedObject("Module\Model\LicenceContent")
+     */
+    protected $future_message;
+
+    public function getCurrentMessage()
+    {
+        return $this-&gt;current_message;
+    }
+
+    public function setCurrentMessage($currentMessage)
+    {
+        $this-&gt;current_message = $currentMessage;
+        return $this;
+    }
+
+    public function getFutureMessage()
+    {
+        return $this-&gt;future_message;
+    }
+
+    public function setFutureMessage($futureMessage)
+    {
+        $this-&gt;future_message = $futureMessage;
+        return $this;
+    }
+
+}
+</code></pre>
+
+<p>Here we have a simple 'super' entity composed of 2 other objects (in this example, both the same type).</p>
+
+<p>Controller Action:</p>
+
+<pre class="language-php prettyprint linenums"><code>public function welcomeAction()
+{
+    //get id from session
+    $licence_id = $this-&gt;zfcUserAuthentication()-&gt;getIdentity()-&gt;getId();
+    $viewModel = new ViewModel();
+    $form      = $this-&gt;getCustomiseService()-&gt;getWelcomeMessageForm();
+    if ($this-&gt;getRequest()-&gt;isPost()) {
+        $data = $this-&gt;params()-&gt;fromPost();
+        $form-&gt;setData($data);
+        if ($form-&gt;isValid()) {
+            /* @var $entity \Module\Model\WelcomeMessage */
+            $entity = $form-&gt;getData();
+
+            /* @var $curMsg \Module\Model\LicenceContent */
+            $curMsg = $entity-&gt;getCurrentMessage();
+
+            /* @var $ftrMsg \Module\Model\LicenceContent */
+            $ftrMsg = $entity-&gt;getFutureMessage();
+
+            $this-&gt;getCustomiseService()-&gt;updateWelcomeMessage($licence_id, $curMsg, $ftrMsg);
+
+        }
+    }
+    $form-&gt;setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods);
+    $entity = $this-&gt;getCustomiseService()-&gt;getWelcomeMessage($licence_id);
+    $form-&gt;bind($entity);
+    $viewModel-&gt;setVariable('form', $form);
+    return $viewModel;
+}
+</code></pre>
+
+<p>Here we have a simple action for validating and saving a form, and for also fetching a 'populated' entity from the db.</p>
+
+<p>And that's it, we have a main object made out of 2 composed objects, the 2 composed objects are parsed into fieldsets in the main form. You can retrieve and set/populate the values of the composed objects easily.</p>
+
+                    </div>
+                    </div>
+                </div>
+                <div id="right" class="float_left">
+                    <div class="box0n">
+                        <h2>Tags</h2>
+                        <br />
+        <a href="/blog/Tags/Service Locator.html">Service Locator</a>:1        <a href="/blog/Tags/Service Manager.html">Service Manager</a>:1        <a href="/blog/Tags/Dependency Injection.html">Dependency Injection</a>:1        <a href="/blog/Tags/invokables.html">invokables</a>:2        <a href="/blog/Tags/factories.html">factories</a>:2        <a href="/blog/Tags/php.html">php</a>:3        <a href="/blog/Tags/zf2.html">zf2</a>:6        <a href="/blog/Tags/zendframework2.html">zendframework2</a>:4        <a href="/blog/Tags/Zend\Form.html">Zend\Form</a>:2        <a href="/blog/Tags/Zend\Form\Annotation.html">Zend\Form\Annotation</a>:1        <a href="/blog/Tags/ComposedObject.html">ComposedObject</a>:1        <a href="/blog/Tags/composer.html">composer</a>:2        <a href="/blog/Tags/translation.html">translation</a>:1        <a href="/blog/Tags/html.html">html</a>:2        <a href="/blog/Tags/responsive.html">responsive</a>:1        <a href="/blog/Tags/noframework.html">noframework</a>:1        <a href="/blog/Tags/blog.html">blog</a>:2        <a href="/blog/Tags/zfc.html">zfc</a>:1
+                    </div>
+                    <div class="box0n">
+                        <h2>Categories</h2>
+                        <br />
+        <a href="/blog/Categories/IoC.html">IoC</a><br />        <a href="/blog/Categories/ZF2.html">ZF2</a><br />        <a href="/blog/Categories/blog.html">blog</a><br />        <a href="/blog/Categories/readme.html">readme</a><br />        <a href="/blog/Categories/Uncategorised.html">Uncategorised</a><br />
+                    </div>
+                </div>
+                <br class="clear_both" />
+            </div>
+        </div>
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?autoload=true&skin=sons-of-obsidian" defer="defer"></script>
+        <script type="text/javascript" src="/js/ga.js"></script>
+    </body>
+</html>

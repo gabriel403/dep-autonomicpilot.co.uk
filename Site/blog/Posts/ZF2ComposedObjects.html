@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Autonomicpilot - Readme/Changes File - html, blog</title>
-        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. html, blog"></meta>
-        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. html, blog"></meta>
+        <title>Autonomicpilot - ZF2 Forms, Annotations and Composed Objects - zf2, zendframework2, Zend\Form, Zend\Form\Annotation, ComposedObject</title>
+        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. zf2, zendframework2, Zend\Form, Zend\Form\Annotation, ComposedObject"></meta>
+        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. zf2, zendframework2, Zend\Form, Zend\Form\Annotation, ComposedObject"></meta>
         <link rel="stylesheet" type="text/css" href="/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/css/site.css" />
         <script type="text/javascript">
@@ -141,115 +141,129 @@
                 </div>
                 <div id="main" class="float_left">
                     <div>
-                    <div class="article_content box0n" id="README">
-                        <h1 class="article_title"><a href="/blog/Posts/README.html">Readme/Changes File</a></h1>
-                        <h1>autonomicpilot.co.uk</h1>
+                    <div class="article_content box0n" id="ZF2ComposedObjects">
+                        <h1 class="article_title"><a href="/blog/Posts/ZF2ComposedObjects.html">ZF2 Forms, Annotations and Composed Objects</a></h1>
+                        <h1>ZF2 Annotated Forms and ComposedObject</h1>
 
-<h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
+<p>So you're using the data mapper pattern, just for awesomeness. You're also using annotated entities being parsed into forms, since in most cases your entities are in a one to one relationship with your forms.</p>
 
-<p>Content is written in markdown files in the Post folder, if extended properties are needed these can be placed in a php file of the same name which extends the Post abstract, if this is not provided it will be generated and initially set post created time as time() and the blog entry title as the filename.
-Running the GenerateAll.php file will parse the markdown files and render them into static html files inside the content directory.
-It will also create the central index.html with all blog entries listed shown in brief as well as a list of links on lhs to individual blog entries.</p>
+<p>However you do occasionally need forms that are made up of multiple entities.</p>
 
-<p>Requirements:
-PHP5.4 on the rendering system.
-Simple HTML server for hosting the site.</p>
+<p>you could create a new entity with all the bits in and then parse them into seperate entities for persisting.</p>
 
-<p>CHANGELOG:</p>
+<p>However it's easier to create a new entity using multiple @Annotation/ComposedObject annotations, this gives us unified validation and can get the seperate entities easily from the outer entity.</p>
 
-<p>0.6.5</p>
+<p>Here we have the factory for creating the form.<br />
+Form Factory:</p>
 
-<ul>
-<li>Added beta blog</li>
-</ul>
+<pre class="language-php prettyprint linenums"><code>'WelcomeMessageForm' =&gt; function ($sm) {
 
-<p>0.6.1</p>
+    $msg = new Model\WelcomeMessage;
 
-<ul>
-<li>twitter feed on front page</li>
-<li>Font's hosted locally</li>
-</ul>
+    $fc =  new Model\LicenceContent;
+    $msg-&gt;setFutureMessage($fc);
 
-<p>0.6</p>
+    $cc =  new Model\LicenceContent;
+    $msg-&gt;setCurrentMessage($cc);
 
-<ul>
-<li>Reworked directories to seperate out the posts from the rendered html from the rendering library to potentially move the rendering library into it's own repo</li>
-<li>Added gitignore for caps dir and handler.php</li>
-<li>Added isPublished with default to false in the post abstract</li>
-<li>Reworked markdown and markdown extra classes into PSR-0 compliance</li>
-<li>Made paths in config relative to base path and used getcwd for them</li>
-<li>Converted markdown php4 style constructors to php5</li>
-<li>Fluent interface for renderer</li>
-</ul>
+    $builder = new \Zend\Form\Annotation\AnnotationBuilder;
+    $form = $builder-&gt;createForm($msg);
+    $form-&gt;bind($msg);
 
-<p>0.5.3</p>
+    $form-&gt;get('current_message')-&gt;setObject(new Model\LicenceContent);
+    $form-&gt;get('future_message')-&gt;setObject(new Model\LicenceContent);
+    return $form;
+},
+</code></pre>
 
-<ul>
-<li>Changed krsort to ksort</li>
-</ul>
+<p>When using ComposedObject, the composed objects are parsed into fieldsets within the form.<br />
+By doing the setObject calls on the fieldsets in the factory, this allows the form to iterate through the composed objects in a 'populated' main entity to populate values in the form.</p>
 
-<p>0.5.2</p>
+<p>WelcomeMessage Entity:</p>
 
-<ul>
-<li>Reworked disqus into single articles only</li>
-<li>Tweaks to css</li>
-</ul>
+<pre class="language-php prettyprint linenums"><code>namespace Module\Model;
+use Zend\Form\Annotation;
+/**
+ * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+ */
+class WelcomeMessage
+{
 
-<p>0.5.1</p>
+    /**
+     * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+     * @Annotation\ComposedObject("Module\Model\LicenceContent")
+     */
+    protected $current_message;
 
-<ul>
-<li>Responsive CSS</li>
-<li>Initial attempt at disqus</li>
-</ul>
+    /**
+     * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
+     * @Annotation\ComposedObject("Module\Model\LicenceContent")
+     */
+    protected $future_message;
 
-<p>0.5</p>
+    public function getCurrentMessage()
+    {
+        return $this-&gt;current_message;
+    }
 
-<ul>
-<li>Added disqus commenting system</li>
-<li>Moved disqus' js loading to an onclick</li>
-<li>Added some codesniffer stuff</li>
-</ul>
+    public function setCurrentMessage($currentMessage)
+    {
+        $this-&gt;current_message = $currentMessage;
+        return $this;
+    }
 
-<p>0.4</p>
+    public function getFutureMessage()
+    {
+        return $this-&gt;future_message;
+    }
 
-<ul>
-<li>Reworked backend to be more object oriented</li>
-<li>Reworked backend classnames to use namespaces</li>
-<li>Removed template files and converted to static strings &amp; heredocs using properties</li>
-<li>Added some basic phpdoc</li>
-<li>Added some basic configuration</li>
-<li>Renamed the content dir to Content</li>
-<li>Centralised generation into a single script and moved generation files into a single Renderer file</li>
-<li>Posts now sort by date of creation in descending order</li>
-<li>Post titles are now read to create links, and also header inside the post</li>
-<li>#refs inside individual entries now return to main page to go to anchors</li>
-<li>Replaced hardcoded directory refs to config refs</li>
-</ul>
+    public function setFutureMessage($futureMessage)
+    {
+        $this-&gt;future_message = $futureMessage;
+        return $this;
+    }
 
-<p>0.3</p>
+}
+</code></pre>
 
-<ul>
-<li>Reluctantly added abstract properties file associated with the markdown files.</li>
-<li>Added properties file generator</li>
-<li>Implemented psr-0 autoloader</li>
-<li>Renamed markdown directory to Post directory</li>
-<li>Added more UI work, logo, css, reworked links</li>
-<li>Reworked generator</li>
-</ul>
+<p>Here we have a simple 'super' entity composed of 2 other objects (in this example, both the same type).</p>
 
-<p>0.2</p>
+<p>Controller Action:</p>
 
-<ul>
-<li>Reworked include system for main page.</li>
-<li>Added links to blog post on side bar.</li>
-<li>Improved some ui.</li>
-</ul>
+<pre class="language-php prettyprint linenums"><code>public function welcomeAction()
+{
+    //get id from session
+    $licence_id = $this-&gt;zfcUserAuthentication()-&gt;getIdentity()-&gt;getId();
+    $viewModel = new ViewModel();
+    $form      = $this-&gt;getCustomiseService()-&gt;getWelcomeMessageForm();
+    if ($this-&gt;getRequest()-&gt;isPost()) {
+        $data = $this-&gt;params()-&gt;fromPost();
+        $form-&gt;setData($data);
+        if ($form-&gt;isValid()) {
+            /* @var $entity \Module\Model\WelcomeMessage */
+            $entity = $form-&gt;getData();
 
-<p>0.1</p>
+            /* @var $curMsg \Module\Model\LicenceContent */
+            $curMsg = $entity-&gt;getCurrentMessage();
 
-<ul>
-<li>Initial work done on markdown parsing into html.</li>
-</ul>
+            /* @var $ftrMsg \Module\Model\LicenceContent */
+            $ftrMsg = $entity-&gt;getFutureMessage();
+
+            $this-&gt;getCustomiseService()-&gt;updateWelcomeMessage($licence_id, $curMsg, $ftrMsg);
+
+        }
+    }
+    $form-&gt;setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods);
+    $entity = $this-&gt;getCustomiseService()-&gt;getWelcomeMessage($licence_id);
+    $form-&gt;bind($entity);
+    $viewModel-&gt;setVariable('form', $form);
+    return $viewModel;
+}
+</code></pre>
+
+<p>Here we have a simple action for validating and saving a form, and for also fetching a 'populated' entity from the db.</p>
+
+<p>And that's it, we have a main object made out of 2 composed objects, the 2 composed objects are parsed into fieldsets in the main form. You can retrieve and set/populate the values of the composed objects easily.</p>
 
                         <a href="#" onclick="showthatshizzle();return false;">Comments</a>
                         <div id="disqus_thread"></div>

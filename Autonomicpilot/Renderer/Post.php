@@ -22,7 +22,8 @@ abstract class Post
 
     public function __construct()
     {
-        $this->markdown = new MarkdownExtraParser();
+        $this->markdown = new \Michelf\MarkdownExtra();
+        $this->markdown->code_attr_on_pre = true;
         return $this;
     }
 

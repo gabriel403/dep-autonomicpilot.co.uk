@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Autonomicpilot - Readme/Changes File - html, blog</title>
-        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. html, blog"></meta>
-        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. html, blog"></meta>
+        <title>Autonomicpilot - ZF2 Custom Form Element - zf2, zendframework2, Zend\Form</title>
+        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. zf2, zendframework2, Zend\Form"></meta>
+        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. zf2, zendframework2, Zend\Form"></meta>
         <link rel="stylesheet" type="text/css" href="/css/reset.css" />
         <link rel="stylesheet" type="text/css" href="/css/site.css" />
         <script type="text/javascript">
@@ -141,115 +141,122 @@
                 </div>
                 <div id="main" class="float_left">
                     <div>
-                    <div class="article_content box0n" id="README">
-                        <h1 class="article_title"><a href="/blog/Posts/README.html">Readme/Changes File</a></h1>
-                        <h1>autonomicpilot.co.uk</h1>
+                    <div class="article_content box0n" id="Zf2CustomFormElement">
+                        <h1 class="article_title"><a href="/blog/Posts/Zf2CustomFormElement.html">ZF2 Custom Form Element</a></h1>
+                        <h1>ZF2 Custom Form Element</h1>
 
-<h2>A simple PHP driven blog using mark down parsed into html and rendered statically.</h2>
+<p>I recently needed a way to output plain text as part of a form, that would take a value just like a normal form element would.<br />
+It's very similar to something I needed to do in ZF1 and it always weirds me that ZF doesn't include something like this by default.</p>
 
-<p>Content is written in markdown files in the Post folder, if extended properties are needed these can be placed in a php file of the same name which extends the Post abstract, if this is not provided it will be generated and initially set post created time as time() and the blog entry title as the filename.
-Running the GenerateAll.php file will parse the markdown files and render them into static html files inside the content directory.
-It will also create the central index.html with all blog entries listed shown in brief as well as a list of links on lhs to individual blog entries.</p>
-
-<p>Requirements:
-PHP5.4 on the rendering system.
-Simple HTML server for hosting the site.</p>
-
-<p>CHANGELOG:</p>
-
-<p>0.6.5</p>
+<p>We need 4 files to add our new element:</p>
 
 <ul>
-<li>Added beta blog</li>
+<li>The form element</li>
+<li>The view helper for the element</li>
+<li>An override of the generic FormElement view helper</li>
+<li>A Module.php to add our element to the view helper config</li>
 </ul>
 
-<p>0.6.1</p>
+<p>I've been putting things that tend to be site wide in the application module, or seperate them into another module to be added at the vendor level.</p>
 
-<ul>
-<li>twitter feed on front page</li>
-<li>Font's hosted locally</li>
-</ul>
+<p>This is our form element, we don't do anything fancy, it's just declaring the type.</p>
 
-<p>0.6</p>
+<pre><code>namespace Application\Form\Element;
 
-<ul>
-<li>Reworked directories to seperate out the posts from the rendered html from the rendering library to potentially move the rendering library into it's own repo</li>
-<li>Added gitignore for caps dir and handler.php</li>
-<li>Added isPublished with default to false in the post abstract</li>
-<li>Reworked markdown and markdown extra classes into PSR-0 compliance</li>
-<li>Made paths in config relative to base path and used getcwd for them</li>
-<li>Converted markdown php4 style constructors to php5</li>
-<li>Fluent interface for renderer</li>
-</ul>
+use Zend\Form\Element;
 
-<p>0.5.3</p>
+class PlainText extends Element
+{
+    protected $attributes = array(
+        'type' =&gt; 'plaintext',
+    );
+}
+</code></pre>
 
-<ul>
-<li>Changed krsort to ksort</li>
-</ul>
+<p>This is our view helper, very basic, just returns the value rather than parsing it into some fancy html</p>
 
-<p>0.5.2</p>
+<pre><code>namespace Application\Form\View\Helper;
 
-<ul>
-<li>Reworked disqus into single articles only</li>
-<li>Tweaks to css</li>
-</ul>
+use Zend\Form\View\Helper\AbstractHelper;
+use Zend\Form\ElementInterface;
 
-<p>0.5.1</p>
+class FormPlainText extends AbstractHelper {
 
-<ul>
-<li>Responsive CSS</li>
-<li>Initial attempt at disqus</li>
-</ul>
+    public function render(ElementInterface $element) {
+        return $element-&gt;getValue();
+    }
 
-<p>0.5</p>
+    public function __invoke(ElementInterface $element = null) {
+        return $this-&gt;render($element);
+    }
 
-<ul>
-<li>Added disqus commenting system</li>
-<li>Moved disqus' js loading to an onclick</li>
-<li>Added some codesniffer stuff</li>
-</ul>
+}
+</code></pre>
 
-<p>0.4</p>
+<p>Here we override the generic FormElement helper so that generic rendering methods, such as $this->formRow will work with our new element.</p>
 
-<ul>
-<li>Reworked backend to be more object oriented</li>
-<li>Reworked backend classnames to use namespaces</li>
-<li>Removed template files and converted to static strings &amp; heredocs using properties</li>
-<li>Added some basic phpdoc</li>
-<li>Added some basic configuration</li>
-<li>Renamed the content dir to Content</li>
-<li>Centralised generation into a single script and moved generation files into a single Renderer file</li>
-<li>Posts now sort by date of creation in descending order</li>
-<li>Post titles are now read to create links, and also header inside the post</li>
-<li>#refs inside individual entries now return to main page to go to anchors</li>
-<li>Replaced hardcoded directory refs to config refs</li>
-</ul>
+<pre><code>namespace Application\Form\View\Helper;
 
-<p>0.3</p>
+use Application\Form\Element;
+use Zend\Form\View\Helper\FormElement as BaseFormElement;
+use Zend\Form\ElementInterface;
 
-<ul>
-<li>Reluctantly added abstract properties file associated with the markdown files.</li>
-<li>Added properties file generator</li>
-<li>Implemented psr-0 autoloader</li>
-<li>Renamed markdown directory to Post directory</li>
-<li>Added more UI work, logo, css, reworked links</li>
-<li>Reworked generator</li>
-</ul>
+class FormElement extends BaseFormElement
+{
+    public function render(ElementInterface $element)
+    {
+        $renderer = $this-&gt;getView();
+        if (!method_exists($renderer, 'plugin')) {
+            // Bail early if renderer is not pluggable
+            return '';
+        }
 
-<p>0.2</p>
+        if ($element instanceof Element\PlainText) {
+            $helper = $renderer-&gt;plugin('form_plain_text');
+            return $helper($element);
+        }
 
-<ul>
-<li>Reworked include system for main page.</li>
-<li>Added links to blog post on side bar.</li>
-<li>Improved some ui.</li>
-</ul>
+        return parent::render($element);
+    }
+}
+</code></pre>
 
-<p>0.1</p>
+<p>And finally we add our bits to the module configuration</p>
 
-<ul>
-<li>Initial work done on markdown parsing into html.</li>
-</ul>
+<pre><code>namespace Application;
+
+use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
+
+class Module
+{
+
+    public function getViewHelperConfig()
+    {
+        return array(
+            'invokables' =&gt; array(
+                'formelement'       =&gt; 'Application\Form\View\Helper\FormElement',
+                'formPlainText'     =&gt; 'Application\Form\View\Helper\FormPlainText',
+            ),
+        );
+    }
+</code></pre>
+
+<p>Now when we declare our forms we can add a plaintext form element</p>
+
+<pre><code><br />                    $form-&gt;add(array(
+                        'type' =&gt; 'Application\Form\Element\PlainText',
+                        'name' =&gt; 'start_date',
+                        'attributes' =&gt; array(
+                            'id' =&gt; 'TrialStart',
+                        ),
+                        'options' =&gt; array(
+                            'label' =&gt; 'Trial Start Date',
+                        ),
+                    ));
+</code></pre>
+
+<p>And jobs done, you could add a second element which also renders a hidden field along with the plain text if you need the value being submitted too.</p>
 
                         <a href="#" onclick="showthatshizzle();return false;">Comments</a>
                         <div id="disqus_thread"></div>

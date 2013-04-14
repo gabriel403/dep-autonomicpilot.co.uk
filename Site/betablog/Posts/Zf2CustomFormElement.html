@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Autonomicpilot - Zf2CustomFormElement - </title>
+        <meta name="description" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. "></meta>
+        <meta name="keywords" content="Autonomicpilot is a development blog mainly concerntrating on PHP, MySQL, HTML, dojo js and Zend Framework. "></meta>
+        <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="/css/site.css" />
+
+        <script type="text/javascript">
+            var dsloaded = false;
+            var disqus_div = 'disqus_thread';
+            function showthatshizzle() {
+                var disqus_shortname = 'autonomicpilot';
+
+                if ( dsloaded )
+                {
+                    return;
+                }
+
+                dsloaded = true;
+
+                document.getElementById(disqus_div).style.display = 'block';
+
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            }
+        </script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-16183577-1']);
+            _gaq.push(['_trackPageview']);
+
+        </script>
+    </head>
+    <body>
+        <div id="main_box">
+            <div id="header">
+                <a href='/'>&nbsp;</a>
+                <div>The 8-bit ramblings of a rabid mind</div>
+                <br class="clear_both" />
+            </div>
+            <div id="top_nav">
+                <div class="box0n float_left third_width"><a href="/">Home</a></div>
+                <div class="box0n float_left third_width"><a href="/betablog/">Blog</a></div>
+                <div class="box0n float_left third_width"><a href="/cv.html">CV</a></div>
+                <br class="clear_both" />
+            </div>
+            <div id="content_outer">
+                <div id="left" class="float_left">
+                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/betablog/Posts/Zf2CustomFormElement.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/betablog/#Zf2CustomFormElement">Zf2CustomFormElement</a><br />
+                            29/03/13 08:19:03        <a href="/betablog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/betablog/Posts/ZF2FormElementRendering.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/betablog/#ZF2FormElementRendering">ZF2FormElementRendering</a><br />
+                            05/10/12 20:38:09        <a href="/betablog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>                    <div class="article_link box0n">
+                        <a class="article_link_main" href='/betablog/Posts/ZSAZFUserBjyAuth.html'>&nbsp;</a>
+                        <div class="article_link_text">
+                            <a href="/betablog/#ZSAZFUserBjyAuth">ZSAZFUserBjyAuth</a><br />
+                            10/08/12 22:27:24        <a href="/betablog/Categories/Uncategorised.html">Uncategorised</a><br />
+                        </div>
+                        <br class="clear_both" />
+                        <div class="article_tags">
+                        
+                        </div>
+                    </div>
+                </div>
+                <div id="main" class="float_left">
+                    <div>
+                    <div class="article_content box0n" id="Zf2CustomFormElement">
+                        <h1 class="article_title"><a href="/betablog/Posts/Zf2CustomFormElement.html">Zf2CustomFormElement</a></h1>
+                        <h1>ZF2 Custom Form Element</h1>
+
+<p>I recently needed a way to output plain text as part of a form, that would take a value just like a normal form element would.<br />
+It's very similar to something I needed to do in ZF1 and it always weirds me that ZF doesn't include something like this by default.</p>
+
+<p>We need 4 files to add our new element:</p>
+
+<ul>
+<li>The form element</li>
+<li>The view helper for the element</li>
+<li>An override of the generic FormElement view helper</li>
+<li>A Module.php to add our element to the view helper config</li>
+</ul>
+
+<p>I've been putting things that tend to be site wide in the application module, or seperate them into another module to be added at the vendor level.</p>
+
+<p>This is our form element, we don't do anything fancy, it's just declaring the type.</p>
+
+<pre><code>namespace Application\Form\Element;
+
+use Zend\Form\Element;
+
+class PlainText extends Element
+{
+    protected $attributes = array(
+        'type' =&gt; 'plaintext',
+    );
+}
+</code></pre>
+
+<p>This is our view helper, very basic, just returns the value rather than parsing it into some fancy html</p>
+
+<pre><code>namespace Application\Form\View\Helper;
+
+use Zend\Form\View\Helper\AbstractHelper;
+use Zend\Form\ElementInterface;
+
+class FormPlainText extends AbstractHelper {
+
+    public function render(ElementInterface $element) {
+        return $element-&gt;getValue();
+    }
+
+    public function __invoke(ElementInterface $element = null) {
+        return $this-&gt;render($element);
+    }
+
+}
+</code></pre>
+
+<p>Here we over-ride the generic FormElement helper so that generic rendering methods, such as $this->formRow will work with our new element.</p>
+
+<pre><code>namespace Application\Form\View\Helper;
+
+use Application\Form\Element;
+use Zend\Form\View\Helper\FormElement as BaseFormElement;
+use Zend\Form\ElementInterface;
+
+class FormElement extends BaseFormElement
+{
+    public function render(ElementInterface $element)
+    {
+        $renderer = $this-&gt;getView();
+        if (!method_exists($renderer, 'plugin')) {
+            // Bail early if renderer is not pluggable
+            return '';
+        }
+
+        if ($element instanceof Element\PlainText) {
+            $helper = $renderer-&gt;plugin('form_plain_text');
+            return $helper($element);
+        }
+
+        return parent::render($element);
+    }
+}
+</code></pre>
+
+<p>And finally we add our bits to the module configuration</p>
+
+<pre><code>namespace Application;
+
+use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
+
+class Module
+{
+
+    public function getViewHelperConfig()
+    {
+        return array(
+            'invokables' =&gt; array(
+                'formelement'       =&gt; 'Application\Form\View\Helper\FormElement',
+                'formPlainText'     =&gt; 'Application\Form\View\Helper\FormPlainText',
+            ),
+        );
+    }
+</code></pre>
+
+<p>Now when we declare our forms we can add a plaintext form element</p>
+
+<pre><code><br />                    $form-&gt;add(array(
+                        'type' =&gt; 'Application\Form\Element\PlainText',
+                        'name' =&gt; 'start_date',
+                        'attributes' =&gt; array(
+                            'id' =&gt; 'TrialStart',
+                        ),
+                        'options' =&gt; array(
+                            'label' =&gt; 'Trial Start Date',
+                        ),
+                    ));
+</code></pre>
+
+<p>And jobs done, you could add a second element which also renders a hidden field along with the plain text if you need the value being submitted too.</p>
+
+                        <a href="#" onclick="showthatshizzle();return false;">Comments</a>
+                        <div id="disqus_thread"></div>
+                        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+                    </div>
+                </div>
+                <div id="right" class="float_left">
+                    <div class="box0n">
+                        <h2>Tags</h2>
+                        <br />
+
+                    </div>
+                    <div class="box0n">
+                        <h2>Categories</h2>
+                        <br />
+        <a href="/betablog/Categories/Uncategorised.html">Uncategorised</a><br />
+                    </div>
+                </div>
+                <br class="clear_both" />
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/ga.js"></script>
+    </body>
+</html>
