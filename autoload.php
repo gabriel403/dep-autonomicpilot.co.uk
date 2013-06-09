@@ -1,9 +1,9 @@
 <?php
 /**
  * Autoloader psr-0
- * 
+ *
  * @param string $className Name of the class trying to be instantiated
- * 
+ *
  * @return bool
  */
 function __autoload($className)

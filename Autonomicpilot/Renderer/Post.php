@@ -1,8 +1,7 @@
 <?php
-/**
- *
- */
+
 namespace Autonomicpilot\Renderer;
+
 abstract class Post
 {
     /** */
@@ -27,7 +26,7 @@ abstract class Post
         return $this;
     }
 
-    public function getIsPublished() 
+    public function getIsPublished()
     {
         return $this->isPublished;
     }

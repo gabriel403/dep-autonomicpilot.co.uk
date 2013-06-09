@@ -1,8 +1,10 @@
 <?php
+
 namespace Autonomicpilot\Renderer;
+
 /**
  * Static class and functions for templates
- * 
+ *
  * @package Autonomicpilot
  */
 class TemplateStrings
@@ -10,9 +12,9 @@ class TemplateStrings
 
     /**
      * Side link text
-     * 
+     *
      * @param Renderer $renderer Renderer object
-     * 
+     *
      * @return string
      */
     public static function getSideLinkText(Renderer $renderer)
@@ -52,9 +54,9 @@ CLT;
 
     /**
      * Small article text
-     * 
+     *
      * @param Renderer $renderer Renderer object
-     * 
+     *
      * @return string
      */
     public static function getSmallArticleText(Renderer $renderer)
@@ -88,7 +90,7 @@ MA;
 
     /**
      * Main html template
-     * 
+     *
      * @param Renderer $renderer Renderer object
      * @return string
      */
@@ -167,6 +169,11 @@ MA;
                         <br />
 {$renderer->getCategorySet()}
                     </div>
+                    <div class="box0n">
+                        <h2>Twitter</h2>
+                        <a class="twitter-timeline" href="https://twitter.com/gabriel403" data-widget-id="333345937793617921" data-chrome="noheader nofooter noborders transparent">Tweets by @gabriel403</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
                 </div>
                 <br class="clear_both" />
             </div>
@@ -181,12 +188,12 @@ MT;
 
     /**
      * Class definition for post properties
-     * 
+     *
      * @param Renderer $renderer Renderer object
-     * 
+     *
      * @return string
      */
-    public static function getPostClassDefinition(Renderer $renderer) 
+    public static function getPostClassDefinition(Renderer $renderer)
     {
         $Config = Config::getStateO();
         return <<<"PC"

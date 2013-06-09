@@ -10,10 +10,17 @@
     src: local('Press Start 2P'), local('PressStart2P-Regular'), url('PressStart2P-Regular.ttf') format('truetype');
 }
 
+#top_nav div {
+    text-align: center;
+    font-size: 1.3em;
+}
+
 body
 {
     font-size: 12px;
     font-family: "Courier New", Courier, monospace;
+    background-color: #974B4B;
+    word-break: hyphenate;
 }
 
 pre {
@@ -61,8 +68,8 @@ li {
 }
 
 .box0n {
-    background-color: #D8D8D8;
-    border-top: black solid 4px;
+    background-color: #D6E4E1;
+    border-top: #485C5A solid 4px;
     font-size: 1.2em;
     margin-bottom: 10px;
     padding: 1%;
@@ -85,14 +92,18 @@ li {
 }
 
 #left {
-
+    margin-left: 10px;
+}
+#right {
+    margin-right: 10px;
+    float: right;
 }
 
 #left,#right {
     width: 20%;
 }
 #main {
-    width: 60%;
+    width: 58%;
     margin: 0px auto 0px auto;
 }
 #main > div {
@@ -134,7 +145,11 @@ li {
 }
 
 #main_box {
-    background-color: #E8E8E8;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    border-radius: 10px; /* CSS3 */
+
+    background-color: white;
     width: 98%;
     margin: 20px auto 0px auto;
 }
@@ -162,7 +177,7 @@ a:active {
     }
 
     #main {
-        width: 80%;
+        width: 78%;
     }
 }
 

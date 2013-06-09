@@ -76,7 +76,7 @@
 
 <p>DI is, in it's most basic form, the process of inserting dependencies(obj b and c) into the object requiring them(obj a) without that object(obj a) needing to know how it happened.</p>
 
-<pre><code>$a = new A(new B);  //constructor injection
+<pre class="language-php prettyprint linenums"><code>$a = new A(new B);  //constructor injection
 $a-&gt;setC(new C);    //setter injection
 
 class A
@@ -103,7 +103,7 @@ Objects B and C may require further dependencies that can be configured to be in
 
 <h4 id="smvdiioc-sl">Classic Service Loctor</h4>
 
-<pre><code>class A
+<pre class="language-php prettyprint linenums"><code>class A
 {
     public __construct(ServiceLocator $sl) {
         $this-&gt;sl = $sl;
@@ -129,7 +129,7 @@ Objects B and C may require further dependencies that can be configured to be in
 
 <h4 id="smvdiioc-slinvoke">SM Invokable</h4>
 
-<pre><code>class A
+<pre class="language-php prettyprint linenums"><code>class A
 {
     public function __invoke(ServiceManager $sm) {
         $b = $sm-&gt;get('b');

@@ -1,9 +1,10 @@
 <?php
+
 namespace Autonomicpilot\Renderer;
 
 /**
  * Renderer class
- * 
+ *
  * @package Autonomicpilot
  */
 class Renderer
@@ -76,7 +77,7 @@ class Renderer
 
 
     /**
-     * 
+     *
      * @return int
      */
     public function time()
@@ -86,7 +87,7 @@ class Renderer
 
 
     /**
-     * 
+     *
      * @return string
      */
     public function getClassname()
@@ -96,7 +97,7 @@ class Renderer
 
 
     /**
-     * 
+     *
      * @return string
      */
     public function getContentString()
@@ -106,7 +107,7 @@ class Renderer
 
 
     /**
-     * 
+     *
      * @return string
      */
     public function getLinkString()
@@ -116,7 +117,7 @@ class Renderer
 
 
     /**
-     * 
+     *
      * @return void
      */
     public function preRenderConsumption()
@@ -141,7 +142,7 @@ class Renderer
 
 
     /**
-     * 
+     *
      * @return void
      */
     public function renderMainPage()
@@ -179,7 +180,7 @@ class Renderer
 
             $cp = Config::$state->content_path;
 
-            if ( "" !== $this->post->getCategory()) 
+            if ( "" !== $this->post->getCategory())
             {
                 $this->categories[$this->post->getCategory()][] = $this->post;
             }
@@ -266,7 +267,7 @@ class Renderer
     }
 
     /**
-     * 
+     *
      * @return void
      */
     public function renderArticlePages()
@@ -289,7 +290,7 @@ class Renderer
                         continue 2;
                     }
                     break;
-            } 
+            }
             if ( file_exists(getcwd()."$cp/Posts/$filename.html") )
             {
                 unlink(getcwd()."$cp/Posts/$filename.html");

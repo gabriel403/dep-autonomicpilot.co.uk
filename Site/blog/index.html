@@ -269,7 +269,7 @@ class WelcomeMessage
                         <h1 class="article_title"><a href="/blog/Posts/Zf2CustomFormElement.html">ZF2 Custom Form Element</a></h1>
                         <h1>ZF2 Custom Form Element</h1>
 
-<p>I recently needed a way to output plain text as part of a form, that would take a value just like a normal form element would.<br />
+<p>I recently needed a way to output plain text as part of a form, that would take a value just like a normal form element would.
 It's very similar to something I needed to do in ZF1 and it always weirds me that ZF doesn't include something like this by default.</p>
 
 <p>We need 4 files to add our new element:</p>
@@ -285,7 +285,7 @@ It's very similar to something I needed to do in ZF1 and it always weirds me tha
 
 <p>This is our form element, we don't do anything fancy, it's just declaring the type.</p>
 
-<pre><code>namespace Application\Form\Element;
+<pre class="language-php prettyprint linenums"><code>namespace Application\Form\Element;
 
 use Zend\Form\Element;
 
@@ -299,7 +299,7 @@ class PlainText extends Element
 
 <p>This is our view helper, very basic, just returns the value rather than parsing it into some fancy html</p>
 
-<pre><code>namespace Application\Form\View\Helper;
+<pre class="language-php prettyprint linenums"><code>namespace Application\Form\View\Helper;
 
 use Zend\Form\View\Helper\AbstractHelper;
 use Zend\Form\ElementInterface;
@@ -319,7 +319,7 @@ class FormPlainText extends AbstractHelper {
 
 <p>Here we override the generic FormElement helper so that generic rendering methods, such as $this->formRow will work with our new element.</p>
 
-<pre><code>namespace Application\Form\View\Helper;
+<pre class="language-php prettyprint linenums"><code>namespace Application\Form\View\Helper;
 
 use Application\Form\Element;
 use Zend\Form\View\Helper\FormElement as BaseFormElement;
@@ -347,7 +347,7 @@ class FormElement extends BaseFormElement
 
 <p>And finally we add our bits to the module configuration</p>
 
-<pre><code>namespace Application;
+<pre class="language-php prettyprint linenums"><code>namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
@@ -368,16 +368,16 @@ class Module
 
 <p>Now when we declare our forms we can add a plaintext form element</p>
 
-<pre><code><br />                    $form-&gt;add(array(
-                        'type' =&gt; 'Application\Form\Element\PlainText',
-                        'name' =&gt; 'start_date',
-                        'attributes' =&gt; array(
-                            'id' =&gt; 'TrialStart',
-                        ),
-                        'options' =&gt; array(
-                            'label' =&gt; 'Trial Start Date',
-                        ),
-                    ));
+<pre class="language-php prettyprint linenums"><code>$form-&gt;add(array(
+    'type' =&gt; 'Application\Form\Element\PlainText',
+    'name' =&gt; 'start_date',
+    'attributes' =&gt; array(
+        'id' =&gt; 'TrialStart',
+    ),
+    'options' =&gt; array(
+        'label' =&gt; 'Trial Start Date',
+    ),
+));
 </code></pre>
 
 <p>And jobs done, you could add a second element which also renders a hidden field along with the plain text if you need the value being submitted too.</p>
@@ -394,7 +394,7 @@ class Module
 
 <p>DI is, in it's most basic form, the process of inserting dependencies(obj b and c) into the object requiring them(obj a) without that object(obj a) needing to know how it happened.</p>
 
-<pre><code>$a = new A(new B);  //constructor injection
+<pre class="language-php prettyprint linenums"><code>$a = new A(new B);  //constructor injection
 $a-&gt;setC(new C);    //setter injection
 
 class A
@@ -421,7 +421,7 @@ Objects B and C may require further dependencies that can be configured to be in
 
 <h4 id="smvdiioc-sl">Classic Service Loctor</h4>
 
-<pre><code>class A
+<pre class="language-php prettyprint linenums"><code>class A
 {
     public __construct(ServiceLocator $sl) {
         $this-&gt;sl = $sl;
@@ -447,7 +447,7 @@ Objects B and C may require further dependencies that can be configured to be in
 
 <h4 id="smvdiioc-slinvoke">SM Invokable</h4>
 
-<pre><code>class A
+<pre class="language-php prettyprint linenums"><code>class A
 {
     public function __invoke(ServiceManager $sm) {
         $b = $sm-&gt;get('b');
